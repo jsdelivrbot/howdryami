@@ -1,7 +1,7 @@
 import React from 'react';
 import PT from 'prop-types';
 
-import { Text } from '../base';
+import { Text } from '../../particles';
 
 import './header.css';
 

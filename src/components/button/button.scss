@@ -1,0 +1,11 @@
+@import '../styles/globalStyles.scss';
+
+.button {
+  padding:1em 2em;
+  margin:1em 2em;
+  font-size: $baseFontSize;
+  color: $white;
+  background: $turquoise;
+  box-shadow: 0 0 0.1em 0.1em rgba(0,0,0,0.09);
+  border-radius: 5px;
+}

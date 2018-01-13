@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import Header from '../../components/header/header';
+import { Header } from '../../components/header';
+import { Paragraph } from '../../components/paragraph';
+import { Button } from '../../components/button';
 
 import './welcome.css';
 
@@ -10,7 +11,9 @@ class Welcome extends Component {
     return (
       <div className="Welcome">
         <Header>Welcome</Header>
-        <Link to="/register">Go to register</Link>
+        <Paragraph>You know that fine line where you’re tipsy but still in control and having a good time?</Paragraph>
+        <Paragraph>This app helps you know when to grab that next drink to keep you in your happy-tipsy place.</Paragraph>
+        <Button>Join in</Button>
       </div>
     );
   }
