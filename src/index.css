@@ -5,9 +5,7 @@ body {
   height:100vh;
 }
 
-body, div {
+body, div, p, button, input, textarea {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex: 1;
 }

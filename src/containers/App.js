@@ -7,10 +7,6 @@ import Register from './register/register';
 import './App.css';
 
 class App extends Component {
-  componentWillMount(){
-
-  }
-
   render() {
     return (
       <div className="App">
