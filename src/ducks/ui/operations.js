@@ -7,6 +7,11 @@ const hydrateUI = () => dispatch => {
   });
 };
 
+const loadUIData = uiData => dispatch => {
+  dispatch(actions.loadUIData(uiData));
+};
+
 export {
   hydrateUI,
+  loadUIData,
 };

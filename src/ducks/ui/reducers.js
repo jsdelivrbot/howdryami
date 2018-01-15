@@ -5,6 +5,8 @@ const uiReducer = (state = false, action) => {
     case types.HYDRATE:
       return { ...state };
       /* ... */
+    case types.LOAD_UI_DATA:
+      return { ...state, genders: action.data.genders };
     default:
       return state;
   }
