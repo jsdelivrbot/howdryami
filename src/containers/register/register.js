@@ -16,7 +16,8 @@ class Register extends Component {
       <View className="Register">
         <Header>Register</Header>
         <Paragraph>To get for a correct-ish calculation of your Blood Alcohol Content (BAC), please swipe and set your correct body stats.</Paragraph>
-        <Stepper options={genderList} />
+        <Stepper label="gender" startIndex={0} stepList={genderList} />
+        <Stepper label="age" startIndex={18} clampRange={[18, 250]} />
         <Button type={Button.SUBMIT} onClick={() => console.log('clicked')}>Register</Button>
       </View>
     );

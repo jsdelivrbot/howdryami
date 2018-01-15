@@ -18,9 +18,9 @@ describe('Test that the stepper', () => {
       <Stepper options={mockOptions}/>
     );
 
-    expect(stepper.state().currentSelectedOptionIndex).toEqual(0);
+    expect(stepper.state().currentStepIndex).toEqual(0);
     stepper.instance().step(1);
-    expect(stepper.state().currentSelectedOptionIndex).toEqual(1);
+    expect(stepper.state().currentStepIndex).toEqual(1);
   })
 });
 

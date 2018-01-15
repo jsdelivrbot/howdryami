@@ -9,27 +9,33 @@ import { Button } from '../button';
 import './stepper.css';
 
 class Stepper extends Component {
-  state = {
-    currentSelectedOptionIndex: 0,
-  };
+  componentWillMount() {
+    this.setState({
+      currentStepIndex: this.props.startIndex,
+    });
+  }
 
   step = direction => {
-    const newIndex = this.state.currentSelectedOptionIndex + direction;
+    const { stepList } = this.props;
+
+    const newIndex = this.state.currentStepIndex + direction;
+    const clampRange = this.props.clampRange || [0, stepList.length - 1];
+    const newClampedIndex = ArrayHelper.clampRange(newIndex, clampRange[0], clampRange[1]);
+
     this.setState({
-      currentSelectedOptionIndex: ArrayHelper.clampRange(newIndex, 0, this.props.options.length - 1),
+      currentStepIndex: newClampedIndex,
     });
   };
 
   render() {
-    const { options, unit } = this.props;
-    const { currentSelectedOptionIndex } = this.state;
+    const { stepList, unit, label } = this.props;
+    const { currentStepIndex } = this.state;
 
-    const selectedStep = options[currentSelectedOptionIndex];
-    const stepperValue = (typeof selectedStep === 'object') ? selectedStep.value : selectedStep;
+    const stepperValue = stepList ? stepList[currentStepIndex].value : currentStepIndex;
 
     return (
       <View className="stepper">
-        <Text className="stepper__label">Slider label</Text>
+        <Text className="stepper__label">{label}</Text>
         <View className="stepper__wrapper">
           <Button onClick={() => this.step(-1)} className="stepper__button stepper__button--left" />
           <Text className="stepper__value">{stepperValue} {unit}</Text>
@@ -41,13 +47,19 @@ class Stepper extends Component {
 }
 
 Stepper.propTypes = {
-  options: PT.arrayOf(PT.shape({ key: PT.string, value: PT.string })),
+  label: PT.string,
+  stepList: PT.arrayOf(PT.shape({ key: PT.string, value: PT.string })),
   unit: PT.string,
+  clampRange: PT.array,
+  startIndex: PT.number,
 };
 
 Stepper.defaultProps = {
-  options: [],
+  label: '',
+  stepList: null,
   unit: '',
+  clampRange: null,
+  startIndex: 0,
 };
 
 export default Stepper;

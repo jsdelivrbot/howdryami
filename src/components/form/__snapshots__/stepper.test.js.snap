@@ -6,9 +6,7 @@ exports[`Test that the stepper renders without crashing 1`] = `
 >
   <Text
     className="stepper__label"
-  >
-    Slider label
-  </Text>
+  />
   <View
     className="stepper__wrapper"
   >
@@ -20,6 +18,7 @@ exports[`Test that the stepper renders without crashing 1`] = `
     <Text
       className="stepper__value"
     >
+      0
        
     </Text>
     <Button
