@@ -1,0 +1,8 @@
+{
+  "genders": [
+    {"key": "MALE", "value": "Male"},
+    {"key": "FEMALE", "value": "Female"},
+    {"key": "TRANS", "value": "Trans"},
+    {"key": "OTHER", "value": "Other"}
+  ]
+}
