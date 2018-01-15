@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test that the stepper renders without crashing 1`] = `
+<View
+  className="stepper"
+>
+  <Text
+    className="stepper__label"
+  >
+    Slider label
+  </Text>
+  <View
+    className="stepper__wrapper"
+  >
+    <Button
+      className="stepper__button stepper__button--left"
+      onClick={[Function]}
+      type="button/REGULAR"
+    />
+    <Text
+      className="stepper__value"
+    >
+       
+    </Text>
+    <Button
+      className="stepper__button stepper__button--right"
+      onClick={[Function]}
+      type="button/REGULAR"
+    />
+  </View>
+</View>
+`;

@@ -7,7 +7,7 @@ import './register.css';
 
 class Register extends Component {
   state = {
-    stepOptions: [60, 61, 61, 63, 64, 65, 66, 67, 68],
+    stepOptions: [{ key: 'MALE', value: 'Male' }, { key: 'FEMALE', value: 'Female' }, { key: 'OTHER', value: 'In between' }],
   }
   render() {
     return (
