@@ -36,5 +36,5 @@ const mapStateToProps = state => ({
   genderList: uiSelectors.genderListSelector(state),
 });
 
-
+export { Register as TestRegister };
 export default connect(mapStateToProps)(Register);
