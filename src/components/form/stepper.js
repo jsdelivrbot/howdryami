@@ -16,6 +16,17 @@ class Stepper extends Component {
     });
   }
 
+  getMyValue = () => {
+    const { stepList } = this.props;
+    const { currentStepIndex } = this.state;
+    return stepList ? stepList[currentStepIndex].value : currentStepIndex;
+  };
+
+  reportNewValue = () => {
+    const { fieldName, onUpdate } = this.props;
+    onUpdate(fieldName, this.getMyValue());
+  };
+
   stepOnce = direction => {
     const { stepList } = this.props;
     const { stepDirection = direction, stepSpeed } = this.state;
@@ -28,6 +39,8 @@ class Stepper extends Component {
       currentStepIndex: newClampedIndex,
       stepSpeed: Math.round(stepSpeed * 0.9),
     });
+
+    this.reportNewValue();
 
     if (stepDirection !== 0) {
       clearTimeout(this.pressTimeout);
@@ -47,10 +60,9 @@ class Stepper extends Component {
   };
 
   render() {
-    const { stepList, unit, label } = this.props;
-    const { currentStepIndex } = this.state;
+    const { unit, label } = this.props;
 
-    const stepperValue = stepList ? stepList[currentStepIndex].value : currentStepIndex;
+    const stepperValue = this.getMyValue();
 
     return (
       <View className="stepper">
@@ -74,6 +86,8 @@ class Stepper extends Component {
 }
 
 Stepper.propTypes = {
+  fieldName: PT.string.isRequired,
+  onUpdate: PT.func.isRequired,
   label: PT.string,
   stepList: PT.arrayOf(PT.shape({ key: PT.string, value: PT.string })),
   unit: PT.string,

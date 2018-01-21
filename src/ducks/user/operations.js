@@ -7,6 +7,11 @@ const hydrateUser = () => dispatch => {
   });
 };
 
+const registerUser = user => dispatch => {
+  dispatch(actions.registerUser(user));
+};
+
 export {
   hydrateUser,
+  registerUser,
 };

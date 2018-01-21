@@ -5,6 +5,8 @@ const userReducer = (state = false, action) => {
     case types.HYDRATE:
       return { ...state };
       /* ... */
+    case types.REGISTER:
+      return { ...state, ...action.user };
     default:
       return state;
   }
