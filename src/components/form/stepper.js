@@ -12,12 +12,13 @@ class Stepper extends Component {
   componentWillMount() {
     this.setState({
       currentStepIndex: this.props.startIndex,
+      stepSpeed: 500,
     });
   }
 
   stepOnce = direction => {
     const { stepList } = this.props;
-    const { stepDirection = direction } = this.state;
+    const { stepDirection = direction, stepSpeed } = this.state;
 
     const newIndex = this.state.currentStepIndex + stepDirection;
     const clampRange = this.props.clampRange || [0, stepList.length - 1];
@@ -25,11 +26,12 @@ class Stepper extends Component {
 
     this.setState({
       currentStepIndex: newClampedIndex,
+      stepSpeed: Math.round(stepSpeed * 0.9),
     });
 
     if (stepDirection !== 0) {
       clearTimeout(this.pressTimeout);
-      this.pressTimeout = setTimeout(() => this.stepOnce(), 200);
+      this.pressTimeout = setTimeout(() => this.stepOnce(), stepSpeed);
     }
   };
 
@@ -41,7 +43,7 @@ class Stepper extends Component {
 
   mouseUpHandler = () => {
     clearTimeout(this.pressTimeout);
-    this.setState({ stepDirection: undefined });
+    this.setState({ stepDirection: undefined, stepSpeed: 500 });
   };
 
   render() {
