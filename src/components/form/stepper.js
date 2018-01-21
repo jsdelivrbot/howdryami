@@ -21,8 +21,8 @@ class Stepper extends Component {
     const { stepDirection = direction, stepSpeed } = this.state;
 
     const newIndex = this.state.currentStepIndex + stepDirection;
-    const clampRange = this.props.clampRange || [0, stepList.length - 1];
-    const newClampedIndex = ArrayHelper.clampRange(newIndex, clampRange[0], clampRange[1]);
+    const [clampMin, clampMax] = this.props.clampRange || [0, stepList.length - 1];
+    const newClampedIndex = ArrayHelper.clampRange(newIndex, clampMin, clampMax);
 
     this.setState({
       currentStepIndex: newClampedIndex,
