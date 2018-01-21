@@ -15,16 +15,33 @@ class Stepper extends Component {
     });
   }
 
-  step = direction => {
+  stepOnce = direction => {
     const { stepList } = this.props;
+    const { stepDirection = direction } = this.state;
 
-    const newIndex = this.state.currentStepIndex + direction;
+    const newIndex = this.state.currentStepIndex + stepDirection;
     const clampRange = this.props.clampRange || [0, stepList.length - 1];
     const newClampedIndex = ArrayHelper.clampRange(newIndex, clampRange[0], clampRange[1]);
 
     this.setState({
       currentStepIndex: newClampedIndex,
     });
+
+    if (stepDirection !== 0) {
+      clearTimeout(this.pressTimeout);
+      this.pressTimeout = setTimeout(() => this.stepOnce(), 200);
+    }
+  };
+
+  mouseDownHandler = (e, direction) => {
+    e.preventDefault();
+    this.setState({ stepDirection: direction });
+    this.stepOnce(direction);
+  };
+
+  mouseUpHandler = () => {
+    clearTimeout(this.pressTimeout);
+    this.setState({ stepDirection: undefined });
   };
 
   render() {
@@ -37,9 +54,17 @@ class Stepper extends Component {
       <View className="stepper">
         <Text className="stepper__label">{label}</Text>
         <View className="stepper__wrapper">
-          <Button onClick={() => this.step(-1)} className="stepper__button stepper__button--left" />
+          <Button
+            onTouchStart={e => this.mouseDownHandler(e, -1)}
+            onTouchEnd={() => this.mouseUpHandler()}
+            className="stepper__button stepper__button--left"
+          />
           <Text className="stepper__value">{stepperValue} {unit}</Text>
-          <Button onClick={() => this.step(1)} className="stepper__button stepper__button--right" />
+          <Button
+            onTouchStart={e => this.mouseDownHandler(e, 1)}
+            onTouchEnd={() => this.mouseUpHandler()}
+            className="stepper__button stepper__button--right"
+          />
         </View>
       </View>
     );

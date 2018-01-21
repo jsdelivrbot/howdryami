@@ -14,7 +14,13 @@ const Button = props => {
   });
 
   return (
-    <button onClick={props.onClick} className={allClassNames}>{props.children}</button>
+    <button
+      onClick={props.onClick}
+      onTouchStart={props.onTouchStart}
+      onTouchEnd={props.onTouchEnd}
+      className={allClassNames}
+    >{props.children}
+    </button>
   );
 };
 
@@ -23,7 +29,9 @@ Button.SUBMIT = 'button/SUBMIT';
 
 Button.propTypes = {
   children: PT.any,
-  onClick: PT.func.isRequired,
+  onClick: PT.func,
+  onTouchStart: PT.func,
+  onTouchEnd: PT.func,
   type: PT.oneOf([Button.REGULAR, Button.SUBMIT]),
   className: PT.string,
 };
@@ -31,6 +39,9 @@ Button.propTypes = {
 Button.defaultProps = {
   children: '',
   type: Button.REGULAR,
+  onTouchStart: () => {},
+  onTouchEnd: () => {},
+  onClick: () => {},
   className: '',
 };
 
