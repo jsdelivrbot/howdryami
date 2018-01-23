@@ -1,7 +1,8 @@
 import * as types from './types';
 
-const hydrateUser = () => ({
+const hydrateUser = user => ({
   type: types.HYDRATE,
+  user,
 });
 
 const registerUser = user => ({

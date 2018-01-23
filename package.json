@@ -5,6 +5,7 @@
   "dependencies": {
     "classname": "^0.0.0",
     "eslint": "^4.15.0",
+    "localforage": "^1.5.6",
     "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",

@@ -13,6 +13,4 @@ const store = createStore(
   ),
 );
 
-store.subscribe(() => API.saveStateToLocal(store));
-
 export default store;

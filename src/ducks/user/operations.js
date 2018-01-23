@@ -1,14 +1,22 @@
 import * as actions from './actions';
+import API from '../../services/api';
 
+/** Load the user from local storage and try to hydrate if
+ * any user was available. If not, the reducer will default the state.
+ */
 const hydrateUser = () => dispatch => {
-  dispatch(actions.hydrateUser()).then(() => {
-    // dispatch(actions.swim(distance));
-    // dispatch(/* any action */);
+  API.loadUserFromLocal().then(user => {
+    if (user) { dispatch(actions.hydrateUser(user)); }
   });
 };
 
+/** Save the user to local storage and dispatch.
+ * @param user
+ */
 const registerUser = user => dispatch => {
-  dispatch(actions.registerUser(user));
+  API.saveUserToLocal(user).then(data => {
+    dispatch(actions.registerUser(user));
+  });
 };
 
 export {

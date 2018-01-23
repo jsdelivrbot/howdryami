@@ -10,7 +10,8 @@ const defaultState = {
 const userReducer = (state = defaultState, action) => {
   switch (action.type) {
     case types.HYDRATE:
-      return { ...state };
+      console.log('hydrating user', action.user);
+      return { ...state, ...action.user };
       /* ... */
     case types.REGISTER:
       return { ...state, ...action.user };

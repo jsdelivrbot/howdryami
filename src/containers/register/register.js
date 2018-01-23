@@ -15,6 +15,10 @@ class Register extends Component {
     this.setState({ localUser: { ...this.props.user } });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ localUser: { ...nextProps.user } });
+  }
+
   registerHandler = () => {
     this.props.registerUser(this.state.localUser);
   };
