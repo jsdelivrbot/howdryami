@@ -9,44 +9,46 @@ import { Button } from '../button';
 import './stepper.css';
 
 class Stepper extends Component {
-  componentWillMount() {
-    this.setState({
-      currentStepIndex: this.getIndexFromValue(),
-      stepSpeed: 500,
-    });
+  state = {
+    stepSpeed: 500,
   }
 
-  getMyValue = () => {
+  getValueFromIndex = index => {
     const { stepList } = this.props;
-    const { currentStepIndex } = this.state;
-    return stepList ? stepList[currentStepIndex].value : currentStepIndex;
+    return stepList ? stepList[index].value : index;
   };
 
   getIndexFromValue = () => {
     const { stepList, value } = this.props;
-    const stepListIndex = stepList && stepList.findIndex(step => (step.key === value));
+    const stepListIndex = stepList && stepList.findIndex(step => (step.value === value));
     return stepList ? stepListIndex : value;
   }
 
-  reportNewValue = () => {
+  getLabelFromValue = value => {
+    const { stepList } = this.props;
+    return stepList ? stepList.find(step => step.value === value).value : value;
+  }
+
+  reportNewValue = value => {
     const { fieldName, onUpdate } = this.props;
-    onUpdate(fieldName, this.getMyValue());
+    onUpdate(fieldName, value);
   };
 
   stepOnce = direction => {
     const { stepList } = this.props;
     const { stepDirection = direction, stepSpeed } = this.state;
 
-    const newIndex = this.state.currentStepIndex + stepDirection;
+    const newIndex = this.getIndexFromValue() + stepDirection;
     const [clampMin, clampMax] = this.props.clampRange || [0, stepList.length - 1];
     const newClampedIndex = ArrayHelper.clampRange(newIndex, clampMin, clampMax);
+    const newValue = stepList ? this.getValueFromIndex(newClampedIndex) : newClampedIndex;
+
+    this.reportNewValue(newValue);
 
     this.setState({
-      currentStepIndex: newClampedIndex,
       stepSpeed: Math.round(stepSpeed * 0.9),
     });
 
-    this.reportNewValue();
 
     if (stepDirection !== 0) {
       clearTimeout(this.pressTimeout);
@@ -65,9 +67,9 @@ class Stepper extends Component {
   };
 
   render() {
-    const { unit, label } = this.props;
+    const { unit, label, value } = this.props;
 
-    const stepperValue = this.getMyValue();
+    const stepperValue = this.getLabelFromValue(value);
 
     return (
       <View className="stepper">
@@ -94,7 +96,7 @@ Stepper.propTypes = {
   fieldName: PT.string.isRequired,
   onUpdate: PT.func.isRequired,
   label: PT.string,
-  stepList: PT.arrayOf(PT.shape({ key: PT.string, value: PT.string })),
+  stepList: PT.arrayOf(PT.shape({ value: PT.string, label: PT.string })),
   unit: PT.string,
   clampRange: PT.array,
   value: PT.oneOfType([PT.string, PT.number]).isRequired,
@@ -104,7 +106,7 @@ Stepper.defaultProps = {
   label: '',
   stepList: null,
   unit: '',
-  clampRange: null,
+  clampRange: [-9999999999, 9999999999],
 };
 
 export default Stepper;

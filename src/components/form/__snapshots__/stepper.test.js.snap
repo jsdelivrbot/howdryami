@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test that the stepper renders without crashing 1`] = `
+exports[`Test that the list stepper renders without crashing 1`] = `
 <View
   className="stepper"
 >
@@ -20,7 +20,41 @@ exports[`Test that the stepper renders without crashing 1`] = `
     <Text
       className="stepper__value"
     >
-      Foo
+      BANANA
+       
+    </Text>
+    <Button
+      className="stepper__button stepper__button--right"
+      onClick={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      type="button/REGULAR"
+    />
+  </View>
+</View>
+`;
+
+exports[`Test that the value stepper renders without crashing 1`] = `
+<View
+  className="stepper"
+>
+  <Text
+    className="stepper__label"
+  />
+  <View
+    className="stepper__wrapper"
+  >
+    <Button
+      className="stepper__button stepper__button--left"
+      onClick={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      type="button/REGULAR"
+    />
+    <Text
+      className="stepper__value"
+    >
+      100
        
     </Text>
     <Button

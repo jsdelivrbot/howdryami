@@ -11,20 +11,23 @@ import { Header, Paragraph, Stepper, Button } from '../../components';
 import './register.css';
 
 class Register extends Component {
-  state = { user: {} };
+  componentWillMount() {
+    this.setState({ localUser: { ...this.props.user } });
+  }
 
   registerHandler = () => {
-    this.props.registerUser(this.state.user);
+    this.props.registerUser(this.state.localUser);
   };
 
   updateField = (fieldName, value) => {
-    const { user } = this.state;
-    user[fieldName] = value;
-    this.setState({ user });
+    const { localUser } = this.state;
+    localUser[fieldName] = value;
+    this.setState({ localUser });
   };
 
   render() {
-    const { genderList, user } = this.props;
+    const { genderList } = this.props;
+    const { localUser } = this.state;
     const { registerHandler } = this;
 
     return (
@@ -33,7 +36,7 @@ class Register extends Component {
         <Paragraph>To get for a correct-ish calculation of your Blood Alcohol Content (BAC), please swipe and set your correct body stats.</Paragraph>
         <Stepper
           label="gender"
-          value={user.gender}
+          value={localUser.gender}
           stepList={genderList}
           fieldName="gender"
           onUpdate={this.updateField}
@@ -42,7 +45,7 @@ class Register extends Component {
           label="age"
           startIndex={30}
           clampRange={[18, 120]}
-          value={user.age}
+          value={localUser.age}
           unit="yrs"
           fieldName="age"
           onUpdate={this.updateField}
@@ -51,7 +54,7 @@ class Register extends Component {
           label="weight"
           startIndex={70}
           clampRange={[40, 250]}
-          value={user.weight}
+          value={localUser.weight}
           unit="kg"
           fieldName="weight"
           onUpdate={this.updateField}
@@ -60,7 +63,7 @@ class Register extends Component {
           label="height"
           startIndex={170}
           clampRange={[20, 250]}
-          value={user.height}
+          value={localUser.height}
           unit="cm"
           fieldName="height"
           onUpdate={this.updateField}
