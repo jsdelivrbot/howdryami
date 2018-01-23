@@ -1,6 +1,13 @@
 import * as types from './types';
 
-const userReducer = (state = false, action) => {
+const defaultState = {
+  age: 35,
+  gender: types.GENDERS.MALE,
+  height: 170,
+  weight: 75,
+};
+
+const userReducer = (state = defaultState, action) => {
   switch (action.type) {
     case types.HYDRATE:
       return { ...state };

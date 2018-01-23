@@ -11,7 +11,7 @@ import './stepper.css';
 class Stepper extends Component {
   componentWillMount() {
     this.setState({
-      currentStepIndex: this.props.startIndex,
+      currentStepIndex: this.getIndexFromValue(),
       stepSpeed: 500,
     });
   }
@@ -21,6 +21,12 @@ class Stepper extends Component {
     const { currentStepIndex } = this.state;
     return stepList ? stepList[currentStepIndex].value : currentStepIndex;
   };
+
+  getIndexFromValue = () => {
+    const { stepList, value } = this.props;
+    const stepListIndex = stepList && stepList.findIndex(step => (step.key === value));
+    return stepList ? stepListIndex : value;
+  }
 
   reportNewValue = () => {
     const { fieldName, onUpdate } = this.props;
@@ -49,7 +55,6 @@ class Stepper extends Component {
   };
 
   mouseDownHandler = (e, direction) => {
-    e.preventDefault();
     this.setState({ stepDirection: direction });
     this.stepOnce(direction);
   };
@@ -92,7 +97,7 @@ Stepper.propTypes = {
   stepList: PT.arrayOf(PT.shape({ key: PT.string, value: PT.string })),
   unit: PT.string,
   clampRange: PT.array,
-  startIndex: PT.number,
+  value: PT.oneOfType([PT.string, PT.number]).isRequired,
 };
 
 Stepper.defaultProps = {
@@ -100,7 +105,6 @@ Stepper.defaultProps = {
   stepList: null,
   unit: '',
   clampRange: null,
-  startIndex: 0,
 };
 
 export default Stepper;
