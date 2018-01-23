@@ -2,7 +2,6 @@ import localforage from 'localforage';
 import { STORAGE_KEY } from './constants';
 
 localforage.config({
-  driver: localforage.INDEXEDDB,
   name: 'howdryami',
   version: 1.0,
   size: 4980736,
