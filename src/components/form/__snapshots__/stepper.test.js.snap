@@ -13,17 +13,21 @@ exports[`Test that the stepper renders without crashing 1`] = `
     <Button
       className="stepper__button stepper__button--left"
       onClick={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       type="button/REGULAR"
     />
     <Text
       className="stepper__value"
     >
-      0
+      Foo
        
     </Text>
     <Button
       className="stepper__button stepper__button--right"
       onClick={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
       type="button/REGULAR"
     />
   </View>
