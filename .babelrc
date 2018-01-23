@@ -1,5 +1,5 @@
 {
-  "presets": ["flow"],
+  "presets": ["flow", "2015", "react"],
   "env": {
     "development": {
     }

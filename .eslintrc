@@ -9,9 +9,6 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "eslintConfig": {
-    "root": true
-  },
   "env": {
     "es6": true,
     "browser": true,

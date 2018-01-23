@@ -1,0 +1,8 @@
+{
+  "genders": [
+    {"value": "MALE", "label": "Male"},
+    {"value": "FEMALE", "label": "Female"},
+    {"value": "TRANS", "label": "Trans"},
+    {"value": "OTHER", "label": "Other"}
+  ]
+}

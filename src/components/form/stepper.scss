@@ -1,0 +1,41 @@
+@import '../styles/globalStyles.scss';
+
+.stepper {
+  margin: 1em 0;
+}
+
+.stepper__label {
+  text-align: center;
+  text-transform: uppercase;
+  color:$white;
+}
+
+.stepper__wrapper {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.stepper__value {
+  color:$white;
+  text-transform: uppercase;
+  font-size: $baseFontSize * 1.5;
+  font-weight:100;
+}
+
+.stepper__button {
+  width:30px;
+  height:30px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.stepper__button--right {
+  background-image: url('../icons/arrow_right.svg');
+  margin-right: 3em;
+}
+
+.stepper__button--left {
+  background-image: url('../icons/arrow_left.svg');
+  margin-left: 3em;
+}

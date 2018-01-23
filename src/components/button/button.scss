@@ -1,0 +1,21 @@
+@import '../styles/globalStyles.scss';
+
+.button {
+  background-color: $white;
+  border-radius: 0;
+  border:0;
+}
+
+.button--submit {
+  padding:1em 2em;
+  margin:1em 2em;
+  border-radius: 5px;
+  color: $white;
+  background: $turquoise;
+  box-shadow: 0 0 0.1em 0.1em rgba(0,0,0,0.09);
+  text-transform: uppercase;
+  font-size: $baseFontSize;
+  font-style: italic;
+  font-weight: 100;
+  align-items: center;
+}
