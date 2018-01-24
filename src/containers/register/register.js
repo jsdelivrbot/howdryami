@@ -34,7 +34,8 @@ class Register extends Component {
     const { localUser } = this.state;
     const { registerHandler } = this;
 
-    return (
+
+    return Object.keys(this.props.user).length > 0 ? (
       <View className="Register">
         <Header>Register</Header>
         <Paragraph>To get for a correct-ish calculation of your Blood Alcohol Content (BAC), please swipe and set your correct body stats.</Paragraph>
@@ -74,7 +75,7 @@ class Register extends Component {
         />
         <Button type={Button.SUBMIT} onClick={registerHandler}>Register</Button>
       </View>
-    );
+    ) : null;
   }
 }
 
@@ -90,12 +91,7 @@ Register.defaultProps = {
 
 const mapStateToProps = state => ({
   genderList: uiSelectors.genderListSelector(state),
-  user: {
-    age: userSelectors.age(state),
-    weight: userSelectors.weight(state),
-    height: userSelectors.height(state),
-    gender: userSelectors.gender(state),
-  },
+  user: userSelectors.allUser(state),
 });
 
 const mapDispatchToProps = dispatch => (

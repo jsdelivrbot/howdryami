@@ -20,10 +20,16 @@ const gender = createSelector(
   user => user.gender,
 );
 
+const allUser = createSelector(
+  store => store.user,
+  user => user || {},
+);
+
 
 export {
   age,
   weight,
   height,
   gender,
+  allUser,
 };

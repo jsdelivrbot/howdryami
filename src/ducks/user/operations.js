@@ -4,9 +4,20 @@ import API from '../../services/api';
 /** Load the user from local storage and try to hydrate if
  * any user was available. If not, the reducer will default the state.
  */
+const inflateUser = () => dispatch => {
+  dispatch(actions.inflateUser());
+};
+
+/** Load the user from local storage and try to hydrate if
+ * any user was available. If not, the reducer will default the state.
+ */
 const hydrateUser = () => dispatch => {
   API.loadUserFromLocal().then(user => {
-    if (user) { dispatch(actions.hydrateUser(user)); }
+    if (user) {
+      dispatch(actions.hydrateUser(user));
+    } else {
+      dispatch(inflateUser());
+    }
   });
 };
 
@@ -20,6 +31,7 @@ const registerUser = user => dispatch => {
 };
 
 export {
+  inflateUser,
   hydrateUser,
   registerUser,
 };
