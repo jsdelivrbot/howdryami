@@ -9,8 +9,8 @@ Optionally it exports the actions and types if they are needed in other ducks.
 
 import reducer from './reducers';
 
-import * as barSelector from './selectors';
-import * as barOperators from './operations';
+import * as barSelectors from './selectors';
+import * as barOperations from './operations';
 import * as barActions from './actions';
 import * as barType from './types';
 

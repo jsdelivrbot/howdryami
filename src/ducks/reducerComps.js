@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import drink from './bar';
+import bar from './bar';
 import user from './user';
 import ui from './ui';
 
 export default combineReducers({
-  drink,
+  bar,
   user,
   ui,
 });

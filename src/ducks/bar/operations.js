@@ -1,12 +1,14 @@
 import * as actions from './actions';
 
 const hydrateBar = () => dispatch => {
-  dispatch(actions.hydrateDrinks()).then(() => {
-    // dispatch(actions.swim(distance));
-    // dispatch(/* any action */);
-  });
+  dispatch(actions.hydrateBar());
+};
+
+const loadBarData = barData => dispatch => {
+  dispatch(actions.loadBarData(barData));
 };
 
 export {
   hydrateBar,
+  loadBarData,
 };

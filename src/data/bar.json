@@ -1,0 +1,53 @@
+[
+  {
+    "id" : "COCKTAIL",
+    "name" : "Cocktail",
+    "proof" : [ 8, 15, 35 ],
+    "sizes" : [ 4, 6, 10 ]
+  }, {
+    "id" : "LONGDRINK",
+    "name" : "Longdrink",
+    "proof" : [ 8, 15, 35 ],
+    "sizes" : [ 4, 6, 10 ]
+  }, {
+    "id" : "WHISKEY",
+    "name" : "Whiskey",
+    "proof" : [ 43 ],
+    "sizes" : [ 2, 4, 6 ]
+  }, {
+    "id" : "BRANDY",
+    "name" : "Brandy",
+    "proof" : [ 43 ],
+    "sizes" : [ 2, 4, 6 ]
+  }, {
+    "id" : "VODKA",
+    "name" : "Vodka",
+    "proof" : [ 43 ],
+    "sizes" : [ 2, 4, 6 ]
+  }, {
+    "id" : "TEQUILA",
+    "name" : "Tequila",
+    "proof" : [ 43 ],
+    "sizes" : [ 2, 4, 6 ]
+  }, {
+    "id" : "ROM",
+    "name" : "Rum",
+    "proof" : [ 43 ],
+    "sizes" : [ 2, 4, 6 ]
+  }, {
+    "id" : "WINE",
+    "name" : "Wine",
+    "proof" : [ 12 ],
+    "sizes" : [ 10, 14, 18 ]
+  }, {
+    "id" : "SPARKLING",
+    "name" : "Sparkling",
+    "proof" : [ 1, 2, 3 ],
+    "sizes" : [ 10, 14, 18 ]
+  }, {
+    "id" : "BEER",
+    "name" : "Beer & cider",
+    "proof" : [ 4, 7, 9, 12 ],
+    "sizes" : [ 33, 50, 100 ]
+  }
+]
