@@ -5,15 +5,16 @@ import { withRouter } from 'react-router-dom';
 
 import PT from 'prop-types';
 
-import { uiSelectors } from '../../ducks/ui';
+import { barSelectors } from '../../ducks/bar';
 import { userSelectors, userOperations } from '../../ducks/user';
+import * as Icons from '../../components/icons';
 
 import { View } from '../../particles';
 import { Header, Paragraph, Stepper, Button } from '../../components';
 
-import './home.css';
+import './diaryEntry.css';
 
-class Home extends Component {
+class DiaryEntry extends Component {
   componentWillMount() {
   }
 
@@ -21,28 +22,33 @@ class Home extends Component {
   }
 
   render() {
+    const drinkTypes = this.props.drinks.map(drink => ({id: drink.id, title: drink.title, icon: Icons.getIconById(drink.id)}));
+    console.log(drinkTypes);
+
     return (
       <View>
-        <Header>Home</Header>
-        <Button onClick={() => this.props.history.push('diaryentry')}>+</Button>
+        <Header>Add</Header>
+        <Stepper fieldName="drinkType" />
+
       </View>
     );
   }
 }
 
-Home.propTypes = {
+DiaryEntry.propTypes = {
   history: PT.object.isRequired,
 };
 
-Home.defaultProps = {
+DiaryEntry.defaultProps = {
 };
 
 const mapStateToProps = state => ({
+  drinks: barSelectors.allDrinks(state),
 });
 
 const mapDispatchToProps = dispatch => (
   {}
 );
 
-export { Home as TestHome };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+export { DiaryEntry as TestDiaryEntry };
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DiaryEntry));

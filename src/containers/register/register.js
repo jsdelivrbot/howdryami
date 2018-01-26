@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
 import { uiSelectors } from '../../ducks/ui';
@@ -21,6 +22,7 @@ class Register extends Component {
 
   registerHandler = () => {
     this.props.registerUser(this.state.localUser);
+    this.props.history.push('home');
   };
 
   updateField = (fieldName, value) => {
@@ -83,6 +85,7 @@ Register.propTypes = {
   genderList: PT.array,
   user: PT.object.isRequired,
   registerUser: PT.func.isRequired,
+  history: PT.object.isRequired,
 };
 
 Register.defaultProps = {
@@ -101,4 +104,4 @@ const mapDispatchToProps = dispatch => (
 );
 
 export { Register as TestRegister };
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));

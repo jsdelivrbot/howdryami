@@ -24,9 +24,9 @@
   background-position: center; }
 
 .stepper__button--right {
-  background-image: url("../icons/arrow_right.svg");
+  background-image: url("../icons/arrow-right.svg");
   margin-right: 3em; }
 
 .stepper__button--left {
-  background-image: url("../icons/arrow_left.svg");
+  background-image: url("../icons/arrow-left.svg");
   margin-left: 3em; }

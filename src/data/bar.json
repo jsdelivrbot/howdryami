@@ -1,53 +1,51 @@
-[
-  {
+[ {
     "id" : "COCKTAIL",
-    "name" : "Cocktail",
+    "title": "Cocktail",
     "proof" : [ 8, 15, 35 ],
     "sizes" : [ 4, 6, 10 ]
   }, {
     "id" : "LONGDRINK",
-    "name" : "Longdrink",
+    "title": "Longdrink",
     "proof" : [ 8, 15, 35 ],
     "sizes" : [ 4, 6, 10 ]
   }, {
     "id" : "WHISKEY",
-    "name" : "Whiskey",
+    "title": "Whiskey",
     "proof" : [ 43 ],
     "sizes" : [ 2, 4, 6 ]
   }, {
     "id" : "BRANDY",
-    "name" : "Brandy",
+    "title": "Brandy",
     "proof" : [ 43 ],
     "sizes" : [ 2, 4, 6 ]
   }, {
     "id" : "VODKA",
-    "name" : "Vodka",
+    "title": "Vodka",
     "proof" : [ 43 ],
     "sizes" : [ 2, 4, 6 ]
   }, {
     "id" : "TEQUILA",
-    "name" : "Tequila",
+    "title": "Tequila",
     "proof" : [ 43 ],
     "sizes" : [ 2, 4, 6 ]
   }, {
     "id" : "ROM",
-    "name" : "Rum",
+    "title": "Rum",
     "proof" : [ 43 ],
     "sizes" : [ 2, 4, 6 ]
   }, {
     "id" : "WINE",
-    "name" : "Wine",
+    "title": "Wine",
     "proof" : [ 12 ],
     "sizes" : [ 10, 14, 18 ]
   }, {
     "id" : "SPARKLING",
-    "name" : "Sparkling",
+    "title": "Sparkling",
     "proof" : [ 1, 2, 3 ],
     "sizes" : [ 10, 14, 18 ]
   }, {
     "id" : "BEER",
-    "name" : "Beer & cider",
+    "title": "Beer & cider",
     "proof" : [ 4, 7, 9, 12 ],
     "sizes" : [ 33, 50, 100 ]
-  }
-]
+  }]
