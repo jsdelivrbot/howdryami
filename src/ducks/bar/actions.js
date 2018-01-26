@@ -1,10 +1,10 @@
 import * as types from './types';
 
-const hydrateDrinks = () => ({
+const hydrateBar = () => ({
   type: types.HYDRATE,
 });
 
 
 export {
-  hydrateDrinks,
+  hydrateBar,
 };

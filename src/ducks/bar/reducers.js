@@ -1,6 +1,6 @@
 import * as types from './types';
 
-const drinkReducer = (state = false, action) => {
+const barReducer = (state = false, action) => {
   switch (action.type) {
     case types.HYDRATE:
       return { ...state };
@@ -10,4 +10,4 @@ const drinkReducer = (state = false, action) => {
   }
 };
 
-export default drinkReducer;
+export default barReducer;

@@ -9,16 +9,16 @@ Optionally it exports the actions and types if they are needed in other ducks.
 
 import reducer from './reducers';
 
-import * as drinkSelectors from './selectors';
-import * as drinkOperators from './operations';
-import * as drinkActions from './actions';
-import * as drinkType from './types';
+import * as barSelector from './selectors';
+import * as barOperators from './operations';
+import * as barActions from './actions';
+import * as barType from './types';
 
 export {
-  drinkSelectors,
-  drinkOperators,
-  drinkActions,
-  drinkType,
+  barSelectors,
+  barOperations,
+  barActions,
+  barType,
 };
 
 export default reducer;

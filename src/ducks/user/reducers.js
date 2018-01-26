@@ -12,9 +12,7 @@ const userReducer = (state = {}, action) => {
     case types.INFLATE:
       return { ...state, ...defaultUser };
     case types.HYDRATE:
-      console.log('hydrating user', action.user);
       return { ...state, ...action.user };
-      /* ... */
     case types.REGISTER:
       return { ...state, ...action.user };
     default:

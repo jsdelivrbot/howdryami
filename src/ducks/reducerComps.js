@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import drink from './drink';
+import drink from './bar';
 import user from './user';
 import ui from './ui';
 

@@ -1,6 +1,6 @@
 import * as actions from './actions';
 
-const hydrateDrinks = () => dispatch => {
+const hydrateBar = () => dispatch => {
   dispatch(actions.hydrateDrinks()).then(() => {
     // dispatch(actions.swim(distance));
     // dispatch(/* any action */);
@@ -8,5 +8,5 @@ const hydrateDrinks = () => dispatch => {
 };
 
 export {
-  hydrateDrinks,
+  hydrateBar,
 };
