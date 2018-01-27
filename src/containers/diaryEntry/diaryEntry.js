@@ -37,7 +37,9 @@ class DiaryEntry extends Component {
   updateField = (fieldName, value) => {
     const { drink } = this.state;
     drink[fieldName] = value;
-    console.log(drink);
+    console.log(value);
+    console.log(drink)
+
     this.setState({ drink: { ...drink } });
   };
 
@@ -50,7 +52,7 @@ class DiaryEntry extends Component {
       <View>
         <Header>Add</Header>
         <Stepper
-          fieldName="drinkType"
+          fieldName="type"
           stepList={drinkTypes}
           onUpdate={updateField}
           value={type}

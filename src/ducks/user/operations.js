@@ -25,7 +25,7 @@ const hydrateUser = () => dispatch => {
  * @param user
  */
 const registerUser = user => dispatch => {
-  API.saveUserToLocal(user).then(data => {
+  API.saveUserToLocal(user).then(() => {
     dispatch(actions.registerUser(user));
   });
 };

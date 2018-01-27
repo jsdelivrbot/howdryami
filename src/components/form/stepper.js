@@ -3,7 +3,7 @@ import PT from 'prop-types';
 
 import { ArrayHelper } from '../../helpers/utils';
 
-import { Text, View } from '../../particles';
+import { Text, View, Icon } from '../../particles';
 import { Button } from '../button';
 
 import './stepper.css';
@@ -11,7 +11,7 @@ import './stepper.css';
 class Stepper extends Component {
   state = {
     stepSpeed: 500,
-  }
+  };
 
   getValueFromIndex = index => {
     const { stepList } = this.props;
@@ -22,11 +22,17 @@ class Stepper extends Component {
     const { stepList, value } = this.props;
     const stepListIndex = stepList && stepList.findIndex(step => (step.value === value));
     return stepList ? stepListIndex : value;
-  }
+  };
 
   getLabelFromValue = value => {
     const { stepList } = this.props;
-    return stepList ? stepList.find(step => step.value === value).value : value;
+    return stepList ? stepList.find(step => step.value === value).label : value;
+  };
+
+  getIconFromValue = value => {
+    const { stepList } = this.props;
+    const index = this.getIndexFromValue(value);
+    return stepList && stepList[index].icon;
   }
 
   reportNewValue = value => {
@@ -39,14 +45,12 @@ class Stepper extends Component {
     const { stepDirection = direction, stepSpeed } = this.state;
 
     const [clampMin, clampMax] = stepList ? [0, stepList.length - 1] : this.props.clampRange;
-    console.log('clamping', clampMin, clampMax)
     const proposedIndex = this.getIndexFromValue() + stepDirection;
     const clampedIndex = stepList ?
       ArrayHelper.loopRange(proposedIndex, clampMin, clampMax)
       :
       ArrayHelper.clampRange(proposedIndex, clampMin, clampMax);
 
-    console.log(clampedIndex);
     const newValue = stepList ? this.getValueFromIndex(clampedIndex) : clampedIndex;
 
     this.reportNewValue(newValue);
@@ -74,8 +78,10 @@ class Stepper extends Component {
 
   render() {
     const { unit, label, value } = this.props;
-
     const stepperLabel = this.getLabelFromValue(value);
+
+    const stepIconImage = this.getIconFromValue(value);
+    const stepIcon = stepIconImage ? <Icon image={stepIconImage} /> : null;
 
     return (
       <View className="stepper">
@@ -86,7 +92,10 @@ class Stepper extends Component {
             onTouchEnd={() => this.mouseUpHandler()}
             className="stepper__button stepper__button--left"
           />
-          <Text className="stepper__value">{stepperLabel} {unit}</Text>
+          <View>
+            {stepIcon}
+            <Text className="stepper__value">{stepperLabel} {unit}</Text>
+          </View>
           <Button
             onTouchStart={e => this.mouseDownHandler(e, 1)}
             onTouchEnd={() => this.mouseUpHandler()}
