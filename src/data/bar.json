@@ -1,51 +1,68 @@
 [ {
     "id" : "COCKTAIL",
-    "title": "Cocktail",
+    "label": "Cocktail",
     "proof" : [ 8, 15, 35 ],
-    "sizes" : [ 4, 6, 10 ]
+    "sizes" : [ 4, 6, 10 ],
+    "icon": "COCKTAIL"
   }, {
-    "id" : "LONGDRINK",
-    "title": "Longdrink",
+    "id" : "LONG_DRINK",
+    "label": "Longdrink",
     "proof" : [ 8, 15, 35 ],
-    "sizes" : [ 4, 6, 10 ]
+    "sizes" : [ 4, 6, 10 ],
+    "icon": "LONG_DRINK"
   }, {
     "id" : "WHISKEY",
-    "title": "Whiskey",
+    "label": "Whiskey",
     "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ]
+    "sizes" : [ 2, 4, 6 ],
+    "icon": "BRANDY"
   }, {
     "id" : "BRANDY",
-    "title": "Brandy",
+    "label": "Brandy",
     "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ]
+    "sizes" : [ 2, 4, 6 ],
+    "icon": "BRANDY"
   }, {
     "id" : "VODKA",
-    "title": "Vodka",
+    "label": "Vodka",
     "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ]
+    "sizes" : [ 2, 4, 6 ],
+    "icon": "BRANDY"
   }, {
     "id" : "TEQUILA",
-    "title": "Tequila",
+    "label": "Tequila",
     "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ]
+    "sizes" : [ 2, 4, 6 ],
+    "icon": "BRANDY"
   }, {
     "id" : "ROM",
-    "title": "Rum",
+    "label": "Rum",
     "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ]
+    "sizes" : [ 2, 4, 6 ],
+    "icon": "BRANDY"
   }, {
     "id" : "WINE",
-    "title": "Wine",
+    "label": "Wine",
     "proof" : [ 12 ],
-    "sizes" : [ 10, 14, 18 ]
+    "sizes" : [ 10, 14, 18 ],
+    "icon": "WINE"
   }, {
     "id" : "SPARKLING",
-    "title": "Sparkling",
+    "label": "Sparkling",
     "proof" : [ 1, 2, 3 ],
-    "sizes" : [ 10, 14, 18 ]
+    "sizes" : [ 10, 14, 18 ],
+    "icon": "FLUTE"
   }, {
-    "id" : "BEER",
-    "title": "Beer & cider",
+    "id" : "BOTTLE_BEER",
+    "label": "Beer & cider",
     "proof" : [ 4, 7, 9, 12 ],
-    "sizes" : [ 33, 50, 100 ]
-  }]
+    "sizes" : [ 33, 50, 100 ],
+    "icon": "BOTTLE_BEER"
+  }, {
+    "id" : "DRAFT_BEER",
+    "label": "Beer & cider",
+    "proof" : [ 4, 7, 9, 12 ],
+    "sizes" : [ 33, 50, 100 ],
+    "icon": "DRAFT_BEER"
+  }
+]

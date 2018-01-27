@@ -38,10 +38,16 @@ class Stepper extends Component {
     const { stepList } = this.props;
     const { stepDirection = direction, stepSpeed } = this.state;
 
-    const newIndex = this.getIndexFromValue() + stepDirection;
-    const [clampMin, clampMax] = this.props.clampRange || [0, stepList.length - 1];
-    const newClampedIndex = ArrayHelper.clampRange(newIndex, clampMin, clampMax);
-    const newValue = stepList ? this.getValueFromIndex(newClampedIndex) : newClampedIndex;
+    const [clampMin, clampMax] = stepList ? [0, stepList.length - 1] : this.props.clampRange;
+    console.log('clamping', clampMin, clampMax)
+    const proposedIndex = this.getIndexFromValue() + stepDirection;
+    const clampedIndex = stepList ?
+      ArrayHelper.loopRange(proposedIndex, clampMin, clampMax)
+      :
+      ArrayHelper.clampRange(proposedIndex, clampMin, clampMax);
+
+    console.log(clampedIndex);
+    const newValue = stepList ? this.getValueFromIndex(clampedIndex) : clampedIndex;
 
     this.reportNewValue(newValue);
 
@@ -69,7 +75,7 @@ class Stepper extends Component {
   render() {
     const { unit, label, value } = this.props;
 
-    const stepperValue = this.getLabelFromValue(value);
+    const stepperLabel = this.getLabelFromValue(value);
 
     return (
       <View className="stepper">
@@ -80,7 +86,7 @@ class Stepper extends Component {
             onTouchEnd={() => this.mouseUpHandler()}
             className="stepper__button stepper__button--left"
           />
-          <Text className="stepper__value">{stepperValue} {unit}</Text>
+          <Text className="stepper__value">{stepperLabel} {unit}</Text>
           <Button
             onTouchStart={e => this.mouseDownHandler(e, 1)}
             onTouchEnd={() => this.mouseUpHandler()}
@@ -96,7 +102,7 @@ Stepper.propTypes = {
   fieldName: PT.string.isRequired,
   onUpdate: PT.func.isRequired,
   label: PT.string,
-  stepList: PT.arrayOf(PT.shape({ value: PT.string, label: PT.string })),
+  stepList: PT.arrayOf(PT.shape({ value: PT.string, label: PT.string, icon: PT.string })),
   unit: PT.string,
   clampRange: PT.array,
   value: PT.oneOfType([PT.string, PT.number]).isRequired,

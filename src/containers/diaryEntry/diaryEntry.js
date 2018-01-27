@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
 import { barSelectors } from '../../ducks/bar';
-import { userSelectors, userOperations } from '../../ducks/user';
 import * as Icons from '../../components/icons';
 
 import { View } from '../../particles';
@@ -16,30 +15,58 @@ import './diaryEntry.css';
 
 class DiaryEntry extends Component {
   componentWillMount() {
+    this.setState({
+      drink: {
+        type: 'COCKTAIL',
+        size: 1,
+        proof: 1,
+        timestamp: Date.now(),
+      },
+    });
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
+  registerHandler = () => {
+    // this.props.registerUser(this.state.localUser);
+    // this.props.history.push('home');
+  };
+
+  updateField = (fieldName, value) => {
+    const { drink } = this.state;
+    drink[fieldName] = value;
+    console.log(drink);
+    this.setState({ drink: { ...drink } });
+  };
+
   render() {
-    const drinkTypes = this.props.drinks.map(drink => ({id: drink.id, title: drink.title, icon: Icons.getIconById(drink.id)}));
-    console.log(drinkTypes);
+    const { updateField } = this;
+    const { type } = this.state.drink;
+    const drinkTypes = this.props.drinks.map(drink => ({ value: drink.id, label: drink.label, icon: Icons.getIconById(drink.icon) }));
 
     return (
       <View>
         <Header>Add</Header>
-        <Stepper fieldName="drinkType" />
-
+        <Stepper
+          fieldName="drinkType"
+          stepList={drinkTypes}
+          onUpdate={updateField}
+          value={type}
+          label="TYPE"
+        />
       </View>
     );
   }
 }
 
 DiaryEntry.propTypes = {
-  history: PT.object.isRequired,
+  drinks: PT.array,
 };
 
 DiaryEntry.defaultProps = {
+  drinks: [],
 };
 
 const mapStateToProps = state => ({

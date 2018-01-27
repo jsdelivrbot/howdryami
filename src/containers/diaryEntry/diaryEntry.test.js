@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
-import { TestHome } from './home';
+import { TestDiaryEntry } from './diaryEntry';
 
 describe('renders without crashing', () => {
   test('renders without crashing', () => {
     const wrapper = shallow(
-      <TestHome />
+      <TestDiaryEntry />
     );
   })
 });
