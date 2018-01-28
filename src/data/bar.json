@@ -1,68 +1,68 @@
 [ {
     "id" : "COCKTAIL",
     "label": "Cocktail",
-    "proof" : [ 8, 15, 35 ],
-    "sizes" : [ 4, 6, 10 ],
+    "proofs": { "8": "8 %", "15": "15 %", "25": "35 %" },
+    "sizes" : { "4": "4 cl", "6": "6 cl", "10": "10 cl" },
     "icon": "COCKTAIL"
   }, {
     "id" : "LONG_DRINK",
     "label": "Longdrink",
-    "proof" : [ 8, 15, 35 ],
-    "sizes" : [ 4, 6, 10 ],
+  "proofs": { "8": "8 %", "15": "15 %", "25": "25 %" },
+    "sizes" : { "4": "4 cl", "6": "6 cl", "10": "10 cl" },
     "icon": "LONG_DRINK"
   }, {
     "id" : "WHISKEY",
     "label": "Whiskey",
-    "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ],
+  "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
     "icon": "BRANDY"
   }, {
     "id" : "BRANDY",
     "label": "Brandy",
-    "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ],
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
     "icon": "BRANDY"
   }, {
     "id" : "VODKA",
     "label": "Vodka",
-    "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ],
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
     "icon": "BRANDY"
   }, {
     "id" : "TEQUILA",
     "label": "Tequila",
-    "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ],
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
     "icon": "BRANDY"
   }, {
     "id" : "ROM",
     "label": "Rum",
-    "proof" : [ 43 ],
-    "sizes" : [ 2, 4, 6 ],
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
     "icon": "BRANDY"
   }, {
     "id" : "WINE",
     "label": "Wine",
-    "proof" : [ 12 ],
-    "sizes" : [ 10, 14, 18 ],
+    "proofs": { "9": "9 %", "12": "12 %", "16": "16 %" },
+    "sizes" : { "10": "10 cl", "14": "14 cl", "18": "18 cl"},
     "icon": "WINE"
   }, {
     "id" : "SPARKLING",
     "label": "Sparkling",
-    "proof" : [ 1, 2, 3 ],
-    "sizes" : [ 10, 14, 18 ],
+    "proofs": { "9": "9 %", "12": "12 %", "16": "16 %" },
+    "sizes" : { "10":"10 cl", "14": "14 cl", "18": "18 cl"},
     "icon": "FLUTE"
   }, {
     "id" : "BOTTLE_BEER",
     "label": "Beer & cider",
-    "proof" : [ 4, 7, 9, 12 ],
-    "sizes" : [ 33, 50, 100 ],
+    "proofs": { "4": "4 %", "7": "7 %", "9": "9 %", "12": "12 %"},
+    "sizes" : { "33":"33 cl", "50": "50 cl", "100": "100 cl"},
     "icon": "BOTTLE_BEER"
   }, {
     "id" : "DRAFT_BEER",
     "label": "Beer & cider",
-    "proof" : [ 4, 7, 9, 12 ],
-    "sizes" : [ 33, 50, 100 ],
+    "proofs": { "4": "4 %", "7": "7 %", "9": "9 %", "12": "12 %"},
+    "sizes" : { "33": "33 cl", "50": "50 cl", "100": "100 cl"},
     "icon": "DRAFT_BEER"
   }
 ]

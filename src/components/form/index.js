@@ -1,5 +1,6 @@
-import Stepper from './stepper';
+import Stepper, { RFStepper } from './stepper';
 
 export {
   Stepper,
+  RFStepper,
 };

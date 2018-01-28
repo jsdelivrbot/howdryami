@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PT from 'prop-types';
-
+import { Field } from 'redux-form';
 import { ArrayHelper } from '../../helpers/utils';
 
 import { Text, View, Icon } from '../../particles';
@@ -124,4 +124,19 @@ Stepper.defaultProps = {
   clampRange: [-9999999999, 9999999999],
 };
 
+const ReduxStepper = props => {
+  const { fieldName } = props;
+  return (
+    <Field
+      name={fieldName}
+      component={<Stepper {...props} />}
+    />
+  );
+};
+
+ReduxStepper.propTypes = {
+  fieldName: PT.string.isRequired,
+};
+
 export default Stepper;
+export { ReduxStepper as RFStepper };
