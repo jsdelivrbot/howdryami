@@ -92,7 +92,7 @@ class Stepper extends Component {
             onTouchEnd={() => this.mouseUpHandler()}
             className="stepper__button stepper__button--left"
           />
-          <View>
+          <View className="stepper__selection">
             {stepIcon}
             <Text className="stepper__value">{stepperLabel} {unit}</Text>
           </View>

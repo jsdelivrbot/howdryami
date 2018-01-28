@@ -56,7 +56,6 @@ class DiaryEntry extends Component {
           stepList={drinkTypes}
           onUpdate={updateField}
           value={type}
-          label="TYPE"
         />
       </View>
     );

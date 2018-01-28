@@ -2,11 +2,13 @@ import React from 'react';
 import PT from 'prop-types';
 import classname from 'classname';
 
+import './icon.css';
+
 const Icon = props => {
-  const iconClass = classname({ iconClass: true, [props.className]: true });
+  const iconClass = classname({ icon__default: true, [props.className]: true });
 
   return (
-    <div className={iconClass} style={{ backgroundImage: props.image }}>{props.children}</div>
+    <div className={iconClass} style={{ backgroundImage: `url(${props.image})` }}>{props.children}</div>
   );
 };
 
