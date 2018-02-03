@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
 import { barSelectors } from '../../ducks/bar';
-import * as Icons from '../../components/icons';
 
 import { View } from '../../particles';
-import { Header, RFStepper, Button } from '../../components';
+import { Header, RFStepper } from '../../components';
 
 import './diaryEntry.css';
 
@@ -28,7 +27,8 @@ class DiaryEntry extends Component {
     console.log(nextProps);
   }
 
-  registerHandler = () => {
+  registerHandler = e => {
+    e.preventDefault()
     // this.props.registerUser(this.state.localUser);
     // this.props.history.push('home');
   };
@@ -84,11 +84,14 @@ DiaryEntry.defaultProps = {
   availableProofs: [],
   availableSizes: [],
 };
-
+const initValues = {
+  type: 'COCKTAIL',
+}
 const mapStateToProps = (store, ownProps, state) => ({
   availableDrinks: barSelectors.allDrinks(store),
-  availableProofs: barSelectors.availableProofs({ store, drink: state.drink.type }),
-  availableSizes: barSelectors.availableSizes({ store, drink: state.drink.type }),
+  availableProofs: [], // barSelectors.availableProofs({ store, drink: state.drink.type }),
+  availableSizes: [], // barSelectors.availableSizes({ store, drink: state.drink.type }),
+  initialValues: initValues,
 });
 
 const mapDispatchToProps = dispatch => (
@@ -97,8 +100,9 @@ const mapDispatchToProps = dispatch => (
 
 export { DiaryEntry as TestDiaryEntry };
 
-const RFDiaryEntry = (reduxForm({
-  form: 'diaryEntry',
-}))(DiaryEntry);
+const formOptions = {
+  form: 'diaryEntryForm',
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RFDiaryEntry));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)(DiaryEntry)));
+

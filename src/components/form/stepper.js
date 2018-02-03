@@ -5,6 +5,7 @@ import { ArrayHelper } from '../../helpers/utils';
 
 import { Text, View, Icon } from '../../particles';
 import { Button } from '../button';
+import { getIconById } from '../icons/index';
 
 import './stepper.css';
 
@@ -19,20 +20,22 @@ class Stepper extends Component {
   };
 
   getIndexFromValue = () => {
-    const { stepList, value } = this.props;
-    const stepListIndex = stepList && stepList.findIndex(step => (step.value === value));
-    return stepList ? stepListIndex : value;
+    const { stepList = [], value = '' } = this.props;
+    const stepListIndex = stepList.findIndex(step => (step.value === value));
+    return stepList ? stepListIndex : false;
   };
 
   getLabelFromValue = value => {
-    const { stepList } = this.props;
-    return stepList ? stepList.find(step => step.value === value).label : value;
+    const { stepList = [] } = this.props;
+    const foundStep = stepList.find(step => step.value === value);
+    return foundStep ? foundStep.label : '';
   };
 
   getIconFromValue = value => {
-    const { stepList } = this.props;
+    const { stepList = [] } = this.props;
     const index = this.getIndexFromValue(value);
-    return stepList && stepList[index].icon;
+    if (index < 0) return false;
+    return stepList[index].icon;
   }
 
   reportNewValue = value => {
@@ -80,8 +83,8 @@ class Stepper extends Component {
     const { unit, label, value } = this.props;
     const stepperLabel = this.getLabelFromValue(value);
 
-    const stepIconImage = this.getIconFromValue(value);
-    const stepIcon = stepIconImage ? <Icon image={stepIconImage} /> : null;
+    const stepIconID = this.getIconFromValue(value);
+    const stepIcon = stepIconID ? <Icon image={getIconById(stepIconID)} /> : null;
 
     return (
       <View className="stepper">
@@ -126,10 +129,13 @@ Stepper.defaultProps = {
 
 const ReduxStepper = props => {
   const { fieldName } = props;
+  console.log(props)
   return (
     <Field
       name={fieldName}
-      component={<Stepper {...props} />}
+      component={Stepper}
+      type="text"
+      props={props}
     />
   );
 };

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
 import bar from './bar';
 import user from './user';
@@ -10,4 +11,5 @@ export default combineReducers({
   user,
   ui,
   diary,
+  form,
 });
