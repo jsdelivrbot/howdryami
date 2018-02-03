@@ -20,7 +20,8 @@ class Stepper extends Component {
   };
 
   getIndexFromValue = () => {
-    const { stepList = [], value = '' } = this.props;
+    const { stepList = [] } = this.props;
+    const { value } = this.props.input;
     const stepListIndex = stepList.findIndex(step => (step.value === value));
     return stepList ? stepListIndex : false;
   };
@@ -36,11 +37,12 @@ class Stepper extends Component {
     const index = this.getIndexFromValue(value);
     if (index < 0) return false;
     return stepList[index].icon;
-  }
+  };
 
   reportNewValue = value => {
-    const { fieldName, onUpdate } = this.props;
-    onUpdate(fieldName, value);
+    const { onChange } = this.props.input;
+    console.log('change to', value);
+    onChange(value);
   };
 
   stepOnce = direction => {
@@ -80,7 +82,8 @@ class Stepper extends Component {
   };
 
   render() {
-    const { unit, label, value } = this.props;
+    const { unit, label } = this.props;
+    const { value } = this.props.input;
     const stepperLabel = this.getLabelFromValue(value);
 
     const stepIconID = this.getIconFromValue(value);
@@ -111,13 +114,11 @@ class Stepper extends Component {
 }
 
 Stepper.propTypes = {
-  fieldName: PT.string.isRequired,
-  onUpdate: PT.func.isRequired,
   label: PT.string,
   stepList: PT.arrayOf(PT.shape({ value: PT.string, label: PT.string, icon: PT.string })),
   unit: PT.string,
   clampRange: PT.array,
-  value: PT.oneOfType([PT.string, PT.number]).isRequired,
+  input: PT.object.isRequired,
 };
 
 Stepper.defaultProps = {
@@ -129,7 +130,6 @@ Stepper.defaultProps = {
 
 const ReduxStepper = props => {
   const { fieldName } = props;
-  console.log(props)
   return (
     <Field
       name={fieldName}

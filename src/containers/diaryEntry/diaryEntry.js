@@ -12,23 +12,8 @@ import { Header, RFStepper } from '../../components';
 import './diaryEntry.css';
 
 class DiaryEntry extends Component {
-  componentWillMount() {
-    this.setState({
-      drink: {
-        type: 'COCKTAIL',
-        size: '6',
-        proof: '15',
-        timestamp: Date.now(),
-      },
-    });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   registerHandler = e => {
-    e.preventDefault()
+    e.preventDefault();
     // this.props.registerUser(this.state.localUser);
     // this.props.history.push('home');
   };
@@ -42,7 +27,6 @@ class DiaryEntry extends Component {
 
   render() {
     const { updateField, registerHandler } = this;
-    const { type, size, proof } = this.state.drink;
     const { availableDrinks, availableProofs, availableSizes } = this.props;
 
     return (
@@ -53,19 +37,16 @@ class DiaryEntry extends Component {
             fieldName="type"
             stepList={availableDrinks}
             onUpdate={updateField}
-            value={type}
           />
           <RFStepper
             fieldName="size"
             stepList={availableProofs}
             onUpdate={updateField}
-            value={size}
           />
           <RFStepper
             fieldName="proof"
             stepList={availableSizes}
             onUpdate={updateField}
-            value={proof}
           />
         </form>
       </View>
@@ -86,7 +67,8 @@ DiaryEntry.defaultProps = {
 };
 const initValues = {
   type: 'COCKTAIL',
-}
+};
+
 const mapStateToProps = (store, ownProps, state) => ({
   availableDrinks: barSelectors.allDrinks(store),
   availableProofs: [], // barSelectors.availableProofs({ store, drink: state.drink.type }),
@@ -94,7 +76,7 @@ const mapStateToProps = (store, ownProps, state) => ({
   initialValues: initValues,
 });
 
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = () => (
   {}
 );
 
