@@ -5,7 +5,6 @@ const loadBarData = barData => ({
   data: barData,
 });
 
-
 export {
   loadBarData,
 };

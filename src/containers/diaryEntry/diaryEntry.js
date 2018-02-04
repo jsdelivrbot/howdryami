@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, formValueSelector } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
-import { barSelectors } from '../../ducks/bar';
+import { barSelectors, barOperations } from '../../ducks/bar';
 
 import { View } from '../../particles';
 import { Header, RFStepper } from '../../components';
@@ -18,16 +18,16 @@ class DiaryEntry extends Component {
     // this.props.history.push('home');
   };
 
-  updateField = (fieldName, value) => {
-    const { drink } = this.state;
-    drink[fieldName] = value;
+  dispatchChange = e => {
 
-    this.setState({ drink: { ...drink } });
-  };
+  }
 
   render() {
-    const { updateField, registerHandler } = this;
-    const { availableDrinks, availableProofs, availableSizes } = this.props;
+    const { dispatchChange, registerHandler } = this;
+    const { drinkList, drinkLibrary, selectedDrink } = this.props;
+
+    const availableProofs = barSelectors.availableProofs({drinkLibrary, selectedDrink })
+    const availableSizes = barSelectors.availableSizes({drinkLibrary, selectedDrink })
 
     return (
       <View>
@@ -35,18 +35,18 @@ class DiaryEntry extends Component {
         <form onSubmit={registerHandler}>
           <RFStepper
             fieldName="type"
-            stepList={availableDrinks}
-            onUpdate={updateField}
+            stepList={drinkList}
+            dispatchChange={dispatchChange}
           />
           <RFStepper
             fieldName="size"
             stepList={availableProofs}
-            onUpdate={updateField}
+            dispatchChange={dispatchChange}
           />
           <RFStepper
             fieldName="proof"
             stepList={availableSizes}
-            onUpdate={updateField}
+            dispatchChange={dispatchChange}
           />
         </form>
       </View>
@@ -55,30 +55,30 @@ class DiaryEntry extends Component {
 }
 
 DiaryEntry.propTypes = {
-  availableDrinks: PT.array,
-  availableProofs: PT.array,
-  availableSizes: PT.array,
+  drinkList: PT.array,
+  drinkLibrary: PT.array,
+  selectedDrink: PT.string,
 };
 
 DiaryEntry.defaultProps = {
-  availableDrinks: [],
-  availableProofs: [],
-  availableSizes: [],
+  drinkList: [],
+  drinkLibrary: [],
+  selectedDrink: '',
 };
 const initValues = {
   type: 'COCKTAIL',
+  size: '1',
+  proof: '1',
 };
 
-const mapStateToProps = (store, ownProps, state) => ({
-  availableDrinks: barSelectors.allDrinks(store),
-  availableProofs: [], // barSelectors.availableProofs({ store, drink: state.drink.type }),
-  availableSizes: [], // barSelectors.availableSizes({ store, drink: state.drink.type }),
+const mapStateToProps = (store, ownProps) => ({
+  drinkLibrary: barSelectors.allDrinks(store),
+  drinkList: barSelectors.availableDrinks({ store }),
+  selectedDrink: formValueSelector('diaryEntryForm')(store, 'type'),
   initialValues: initValues,
 });
 
-const mapDispatchToProps = () => (
-  {}
-);
+const mapDispatchToProps = () => ({});
 
 export { DiaryEntry as TestDiaryEntry };
 
@@ -86,5 +86,5 @@ const formOptions = {
   form: 'diaryEntryForm',
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)(DiaryEntry)));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)((DiaryEntry))));
 

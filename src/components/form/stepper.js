@@ -41,8 +41,8 @@ class Stepper extends Component {
 
   reportNewValue = value => {
     const { onChange } = this.props.input;
-    console.log('change to', value);
     onChange(value);
+    this.props.dispatchChange();
   };
 
   stepOnce = direction => {
@@ -86,8 +86,8 @@ class Stepper extends Component {
     const { value } = this.props.input;
     const stepperLabel = this.getLabelFromValue(value);
 
-    const stepIconID = this.getIconFromValue(value);
-    const stepIcon = stepIconID ? <Icon image={getIconById(stepIconID)} /> : null;
+    const stepIconResource = this.getIconFromValue(value) || '';
+    const stepIcon = stepIconResource ? <Icon image={stepIconResource} /> : null;
 
     return (
       <View className="stepper">
