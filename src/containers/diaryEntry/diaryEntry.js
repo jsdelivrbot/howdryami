@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
+import moment from 'moment';
 
 import { barSelectors, barOperations } from '../../ducks/bar';
 
 import { View } from '../../particles';
-import { Header, RFStepper } from '../../components';
+import { Header, RangeStepper } from '../../components';
 
 import './diaryEntry.css';
 
@@ -29,17 +30,10 @@ class DiaryEntry extends Component {
       <View>
         <Header>Add</Header>
         <form onSubmit={registerHandler}>
-          <RFStepper
-            fieldName="type"
-            stepList={drinkList}
-          />
-          <RFStepper
-            fieldName="size"
-            stepList={availableProofs}
-          />
-          <RFStepper
-            fieldName="proof"
-            stepList={availableSizes}
+          <RangeStepper
+            fieldName="foo"
+            header="a number"
+            unit="stk"
           />
         </form>
       </View>
@@ -58,17 +52,11 @@ DiaryEntry.defaultProps = {
   drinkLibrary: [],
   selectedDrink: '',
 };
-const initValues = {
-  type: 'COCKTAIL',
-  size: null,
-  proof: null,
-};
 
 const mapStateToProps = (store, ownProps) => ({
   drinkLibrary: barSelectors.allDrinks(store),
   drinkList: barSelectors.availableDrinks({ store }),
   selectedDrink: formValueSelector('diaryEntryForm')(store, 'type'),
-  initialValues: initValues,
 });
 
 const mapDispatchToProps = () => ({});

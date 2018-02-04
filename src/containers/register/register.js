@@ -7,7 +7,7 @@ import { uiSelectors } from '../../ducks/ui';
 import { userSelectors, userOperations } from '../../ducks/user';
 
 import { View } from '../../particles';
-import { Header, Paragraph, Stepper, Button } from '../../components';
+import { Header, Paragraph, ListStepper, RangeStepper, Button } from '../../components';
 
 import './register.css';
 
@@ -41,14 +41,14 @@ class Register extends Component {
       <View className="Register">
         <Header>Register</Header>
         <Paragraph>To get for a correct-ish calculation of your Blood Alcohol Content (BAC), please swipe and set your correct body stats.</Paragraph>
-        <Stepper
+        <ListStepper
           label="gender"
           value={localUser.gender}
           stepList={genderList}
           fieldName="gender"
           onUpdate={this.updateField}
         />
-        <Stepper
+        <RangeStepper
           label="age"
           startIndex={30}
           clampRange={[18, 120]}
@@ -57,7 +57,7 @@ class Register extends Component {
           fieldName="age"
           onUpdate={this.updateField}
         />
-        <Stepper
+        <RangeStepper
           label="weight"
           startIndex={70}
           clampRange={[40, 250]}
@@ -66,7 +66,7 @@ class Register extends Component {
           fieldName="weight"
           onUpdate={this.updateField}
         />
-        <Stepper
+        <RangeStepper
           label="height"
           startIndex={170}
           clampRange={[20, 250]}

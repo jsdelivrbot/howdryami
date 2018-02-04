@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PT from 'prop-types';
 import { Field } from 'redux-form';
-import { ArrayHelper } from '../../helpers/utils';
+import { ArrayHelper } from '../../../helpers/utils';
 
-import { Text, View, Icon } from '../../particles';
-import { Button } from '../button';
-import { getIconById } from '../icons/index';
+import { Text, View, Icon } from '../../../particles/index';
+import { Button } from '../../button/index';
 
 import './stepper.css';
 
@@ -13,6 +12,21 @@ class Stepper extends Component {
   state = {
     stepSpeed: 500,
   };
+
+  componentWillMount() {
+    this.checkForLegalValueSelection(this.props.input.value);
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.checkForLegalValueSelection(newProps.input.value);
+  }
+
+  checkForLegalValueSelection(value){
+    if (!this.getLabelFromValue(value)) {
+      console.log(this.getMidrangeValue())
+      this.reportNewValue(this.getMidrangeValue());
+    }
+  }
 
   getValueFromIndex = index => {
     const { stepList } = this.props;
@@ -89,10 +103,6 @@ class Stepper extends Component {
     const { unit, label } = this.props;
     const { value } = this.props.input;
 
-    if (!this.getLabelFromValue(value)) {
-      this.reportNewValue(this.getMidrangeValue());
-    }
-
     const stepperLabel = this.getLabelFromValue(value);
 
 
@@ -123,8 +133,15 @@ class Stepper extends Component {
   }
 }
 
+Stepper.types = {
+  NUMBER: 'NUMBER',
+  LIST: 'LIST',
+  TIME: 'TIME',
+}
+
 Stepper.propTypes = {
   label: PT.string,
+  type: PT.oneOf([Stepper.NUMBER, Stepper.LIST, Stepper.TIME]),
   stepList: PT.arrayOf(PT.shape({ value: PT.string, label: PT.string, icon: PT.string })),
   unit: PT.string,
   clampRange: PT.array,
@@ -133,6 +150,7 @@ Stepper.propTypes = {
 
 Stepper.defaultProps = {
   label: '',
+  type: Stepper.NUMBER,
   stepList: null,
   unit: '',
   clampRange: [-9999999999, 9999999999],

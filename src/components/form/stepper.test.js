@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from 'react';
-import Stepper from './stepper';
+import Stepper from './steppers/stepper';
 
 
 describe('Test that the list stepper', () => {

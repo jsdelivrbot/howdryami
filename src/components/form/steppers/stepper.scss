@@ -1,10 +1,10 @@
-@import '../styles/globalStyles.scss';
+@import '../../styles/globalStyles.scss';
 
 .stepper {
   margin: 1em 0;
 }
 
-.stepper__label {
+.stepper__header {
   text-align: center;
   text-transform: uppercase;
   color:$white;
@@ -20,7 +20,8 @@
   flex-direction: column;
   align-items: center;
 }
-.stepper__value {
+
+.stepper__label {
   color:$white;
   text-transform: uppercase;
   font-size: $baseFontSize * 1.5;
@@ -36,11 +37,11 @@
 }
 
 .stepper__button--right {
-  background-image: url('../icons/arrow-right.svg');
+  background-image: url('../../icons/arrow-right.svg');
   margin-right: 3em;
 }
 
 .stepper__button--left {
-  background-image: url('../icons/arrow-left.svg');
+  background-image: url('../../icons/arrow-left.svg');
   margin-left: 3em;
 }
