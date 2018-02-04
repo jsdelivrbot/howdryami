@@ -18,16 +18,12 @@ class DiaryEntry extends Component {
     // this.props.history.push('home');
   };
 
-  dispatchChange = e => {
-
-  }
-
   render() {
     const { dispatchChange, registerHandler } = this;
     const { drinkList, drinkLibrary, selectedDrink } = this.props;
 
-    const availableProofs = barSelectors.availableProofs({drinkLibrary, selectedDrink })
-    const availableSizes = barSelectors.availableSizes({drinkLibrary, selectedDrink })
+    const availableProofs = barSelectors.availableProofs({ drinkLibrary, selectedDrink });
+    const availableSizes = barSelectors.availableSizes({ drinkLibrary, selectedDrink });
 
     return (
       <View>
@@ -36,17 +32,14 @@ class DiaryEntry extends Component {
           <RFStepper
             fieldName="type"
             stepList={drinkList}
-            dispatchChange={dispatchChange}
           />
           <RFStepper
             fieldName="size"
             stepList={availableProofs}
-            dispatchChange={dispatchChange}
           />
           <RFStepper
             fieldName="proof"
             stepList={availableSizes}
-            dispatchChange={dispatchChange}
           />
         </form>
       </View>
@@ -67,8 +60,8 @@ DiaryEntry.defaultProps = {
 };
 const initValues = {
   type: 'COCKTAIL',
-  size: '1',
-  proof: '1',
+  size: null,
+  proof: null,
 };
 
 const mapStateToProps = (store, ownProps) => ({

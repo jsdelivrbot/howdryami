@@ -29,7 +29,7 @@ class Stepper extends Component {
   getLabelFromValue = value => {
     const { stepList = [] } = this.props;
     const foundStep = stepList.find(step => step.value === value);
-    return foundStep ? foundStep.label : '';
+    return foundStep ? foundStep.label : false;
   };
 
   getIconFromValue = value => {
@@ -39,10 +39,14 @@ class Stepper extends Component {
     return stepList[index].icon;
   };
 
+  getMidrangeValue = () => {
+    const { stepList = [] } = this.props;
+    return stepList.length > 0 ? stepList[Math.floor(stepList.length / 2)].value : '';
+  }
+
   reportNewValue = value => {
     const { onChange } = this.props.input;
     onChange(value);
-    this.props.dispatchChange();
   };
 
   stepOnce = direction => {
@@ -84,7 +88,13 @@ class Stepper extends Component {
   render() {
     const { unit, label } = this.props;
     const { value } = this.props.input;
+
+    if (!this.getLabelFromValue(value)) {
+      this.reportNewValue(this.getMidrangeValue());
+    }
+
     const stepperLabel = this.getLabelFromValue(value);
+
 
     const stepIconResource = this.getIconFromValue(value) || '';
     const stepIcon = stepIconResource ? <Icon image={stepIconResource} /> : null;
