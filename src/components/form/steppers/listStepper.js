@@ -41,9 +41,7 @@ class Stepper extends Component {
     return stepList[index].icon;
   };
 
-  getMidrangeValue = (stepList = []) => {
-    return stepList.length > 0 ? stepList[Math.floor(stepList.length / 2)].value : '';
-  }
+  getMidrangeValue = (stepList = []) => (stepList.length > 0 ? stepList[Math.floor(stepList.length / 2)].value : '');
 
   checkForLegalValueSelection = (value, stepList) => {
     if (!this.getLabelFromValue(value, stepList)) {
