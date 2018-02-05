@@ -66,13 +66,21 @@ RangeStepper.defaultProps = {
 };
 
 const ReduxStepper = props => {
-  const { fieldName } = props;
+  const {
+    fieldName,
+    unit,
+    clampRange,
+    header,
+  } = props;
+
   return (
     <Field
       name={fieldName}
       component={RangeStepper}
       type="text"
-      props={props}
+      unit={unit}
+      clampRange={clampRange}
+      header={header}
     />
   );
 };
@@ -88,6 +96,6 @@ ReduxStepper.defaultProps = {
   unit: '',
   clampRange: [-9999999999, 9999999999],
   header: '',
-}
+};
 
 export { ReduxStepper as RangeStepper };
