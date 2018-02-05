@@ -8,7 +8,7 @@ import moment from 'moment';
 import { barSelectors, barOperations } from '../../ducks/bar';
 
 import { View } from '../../particles';
-import { Header, RangeStepper } from '../../components';
+import { Header, ListStepper } from '../../components';
 
 import './diaryEntry.css';
 
@@ -30,10 +30,22 @@ class DiaryEntry extends Component {
       <View>
         <Header>Add</Header>
         <form onSubmit={registerHandler}>
-          <RangeStepper
-            fieldName="foo"
-            header="a number"
+          <ListStepper
+            fieldName="type"
             unit="stk"
+            stepList={drinkList}
+          />
+          <ListStepper
+            fieldName="proofs"
+            header="proofs"
+            unit="stk"
+            stepList={availableProofs}
+          />
+          <ListStepper
+            fieldName="sizes"
+            header="sizes"
+            unit="stk"
+            stepList={availableSizes}
           />
         </form>
       </View>

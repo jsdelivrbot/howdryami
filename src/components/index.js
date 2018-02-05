@@ -8,6 +8,6 @@ export {
   Paragraph,
   Button,
   RangeStepper,
-  TimeStepper,
   ListStepper,
+  TimeStepper,
 };

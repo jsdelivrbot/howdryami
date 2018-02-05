@@ -1,7 +1,7 @@
-import { RangeStepper, ListStepper, TimeStepper } from './steppers/rangeStepper';
+import { TimeStepper, ListStepper, RangeStepper } from './steppers';
 
 export {
   RangeStepper,
-  ListStepper,
   TimeStepper,
+  ListStepper,
 };
