@@ -5,7 +5,7 @@ import classname from 'classname';
 import './button.css';
 
 const Button = props => {
-  const { type, className } = props;
+  const { type, className, dataRole } = props;
   const allClassNames = classname({
     button: true,
     'button--regular': type === Button.REGULAR,
@@ -19,6 +19,7 @@ const Button = props => {
       onTouchStart={props.onTouchStart}
       onTouchEnd={props.onTouchEnd}
       className={allClassNames}
+      data-role={dataRole}
     >{props.children}
     </button>
   );
@@ -34,6 +35,7 @@ Button.propTypes = {
   onTouchEnd: PT.func,
   type: PT.oneOf([Button.REGULAR, Button.SUBMIT]),
   className: PT.string,
+  dataRole: PT.string,
 };
 
 Button.defaultProps = {
@@ -43,6 +45,7 @@ Button.defaultProps = {
   onTouchEnd: () => {},
   onClick: () => {},
   className: '',
+  dataRole: '',
 };
 
 export default Button;

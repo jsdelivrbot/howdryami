@@ -8,4 +8,6 @@ body {
 body, div, p, button, input, textarea {
   display: flex;
   flex-direction: column;
+  outline:none;
 }
+

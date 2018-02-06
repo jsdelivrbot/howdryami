@@ -1,0 +1,68 @@
+[ {
+    "value": "COCKTAIL",
+    "label": "Cocktail",
+    "proofs": { "8": "8 %", "15": "15 %", "25": "35 %" },
+    "sizes" : { "4": "4 cl", "6": "6 cl", "10": "10 cl" },
+    "icon": "COCKTAIL"
+  }, {
+    "value": "LONG_DRINK",
+    "label": "Longdrink",
+  "proofs": { "8": "8 %", "15": "15 %", "25": "25 %" },
+    "sizes" : { "4": "4 cl", "6": "6 cl", "10": "10 cl" },
+    "icon": "LONG_DRINK"
+  }, {
+    "value": "WHISKEY",
+    "label": "Whiskey",
+  "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
+    "icon": "BRANDY"
+  }, {
+    "value": "BRANDY",
+    "label": "Brandy",
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
+    "icon": "BRANDY"
+  }, {
+    "value": "VODKA",
+    "label": "Vodka",
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
+    "icon": "BRANDY"
+  }, {
+    "value": "TEQUILA",
+    "label": "Tequila",
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
+    "icon": "BRANDY"
+  }, {
+    "value": "ROM",
+    "label": "Rum",
+    "proofs": { "35": "8 %", "43": "43 %", "55": "55 %" },
+    "sizes" : { "2": "2 cl", "4": "4 cl", "6": "6 cl",  "8": "8 cl" },
+    "icon": "BRANDY"
+  }, {
+    "value": "WINE",
+    "label": "Wine",
+    "proofs": { "9": "9 %", "12": "12 %", "16": "16 %" },
+    "sizes" : { "10": "10 cl", "14": "14 cl", "18": "18 cl"},
+    "icon": "WINE"
+  }, {
+    "value": "SPARKLING",
+    "label": "Sparkling",
+    "proofs": { "9": "9 %", "12": "12 %", "16": "16 %" },
+    "sizes" : { "10":"10 cl", "14": "14 cl", "18": "18 cl"},
+    "icon": "FLUTE"
+  }, {
+    "value": "BOTTLE_BEER",
+    "label": "Beer & cider",
+    "proofs": { "4": "4 %", "7": "7 %", "9": "9 %", "12": "12 %"},
+    "sizes" : { "33":"33 cl", "50": "50 cl", "100": "100 cl"},
+    "icon": "BOTTLE_BEER"
+  }, {
+    "value": "DRAFT_BEER",
+    "label": "Beer & cider",
+    "proofs": { "4": "4 %", "7": "7 %", "9": "9 %", "12": "12 %"},
+    "sizes" : { "33": "33 cl", "50": "50 cl", "100": "100 cl"},
+    "icon": "DRAFT_BEER"
+  }
+]

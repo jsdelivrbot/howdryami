@@ -1,11 +1,13 @@
 import { Header } from './header';
 import { Paragraph } from './paragraph';
 import { Button } from './button';
-import { Stepper } from './form';
+import { RangeStepper, TimeStepper, ListStepper } from './form';
 
 export {
   Header,
   Paragraph,
   Button,
-  Stepper,
+  RangeStepper,
+  ListStepper,
+  TimeStepper,
 };

@@ -1,16 +1,21 @@
 .stepper {
   margin: 1em 0; }
 
-.stepper__label {
+.stepper__header {
   text-align: center;
   text-transform: uppercase;
   color: #ffffff; }
 
 .stepper__wrapper {
   flex-direction: row;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
 
-.stepper__value {
+.stepper__selection {
+  flex-direction: column;
+  align-items: center; }
+
+.stepper__label {
   color: #ffffff;
   text-transform: uppercase;
   font-size: 27px;
@@ -24,9 +29,9 @@
   background-position: center; }
 
 .stepper__button--right {
-  background-image: url("../icons/arrow_right.svg");
+  background-image: url("../../icons/arrow-right.svg");
   margin-right: 3em; }
 
 .stepper__button--left {
-  background-image: url("../icons/arrow_left.svg");
+  background-image: url("../../icons/arrow-left.svg");
   margin-left: 3em; }

@@ -1,9 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
-import API from '../services/api';
 import reducerComps from './reducerComps';
+
+const logger = createLogger({
+  duration: false,
+  timestamp: false,
+  collapsed: true,
+  logErrors: false,
+  diff: false,
+})
 
 const store = createStore(
   reducerComps,

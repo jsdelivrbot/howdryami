@@ -11,8 +11,9 @@ localforage.config({
 
 class API {
   static saveUserToLocal = user => (localforage.setItem('user', user));
-
-  static loadUserFromLocal = user => (localforage.getItem('user'));
+  static saveDiaryToLocal = diary => (localforage.setItem('diary', diary));
+  static loadUserFromLocal = () => (localforage.getItem('user'));
+  static loadDiaryFromLocal = () => (localforage.getItem('diary'));
 }
 
 export default API;

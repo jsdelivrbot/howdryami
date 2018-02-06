@@ -1,3 +1,4 @@
+const INFLATE = 'app/user/INFLATE';
 const HYDRATE = 'app/user/HYDRATE';
 const REGISTER = 'app/user/REGISTER';
 
@@ -8,6 +9,7 @@ const GENDERS = {
 };
 
 export {
+  INFLATE,
   HYDRATE,
   REGISTER,
   GENDERS,
