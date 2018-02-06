@@ -1,5 +1,12 @@
 import { createSelector } from 'reselect';
 
+const DEFAULT_USER = {
+  gender: 'MALE',
+  age: 34,
+  weight: 75,
+  height: 180,
+};
+
 const age = createSelector(
   store => store.user,
   user => user.age,
@@ -22,7 +29,7 @@ const gender = createSelector(
 
 const allUser = createSelector(
   store => store.user,
-  user => user || {},
+  user => user || DEFAULT_USER,
 );
 
 

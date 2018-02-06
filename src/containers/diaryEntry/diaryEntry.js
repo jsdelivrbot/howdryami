@@ -7,7 +7,7 @@ import PT from 'prop-types';
 import { barSelectors, barOperations } from '../../ducks/bar';
 
 import { View } from '../../particles';
-import { Header, ListStepper, TimeStepper } from '../../components';
+import { Header, ListStepper, TimeStepper, Button } from '../../components';
 
 import './diaryEntry.css';
 
@@ -50,6 +50,7 @@ class DiaryEntry extends Component {
             fieldName="time"
             header="time"
           />
+          <Button type={Button.SUBMIT} onClick={registerHandler}>Add drink</Button>
         </form>
       </View>
     );

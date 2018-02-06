@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { reduxForm, getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
@@ -12,17 +13,13 @@ import { Header, Paragraph, ListStepper, RangeStepper, Button } from '../../comp
 import './register.css';
 
 class Register extends Component {
-  componentWillMount() {
-    this.setState({ localUser: { ...this.props.user } });
-  }
+  registerHandler = e => {
+    e.preventDefault();
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ localUser: { ...nextProps.user } });
-  }
-
-  registerHandler = () => {
-    this.props.registerUser(this.state.localUser);
-    this.props.history.push('home');
+    if (e.target.dataset.role === 'register') {
+      this.props.registerUser({ ...this.props.formUser });
+      this.props.history.push('home');
+    }
   };
 
   updateField = (fieldName, value) => {
@@ -33,7 +30,6 @@ class Register extends Component {
 
   render() {
     const { genderList } = this.props;
-    const { localUser } = this.state;
     const { registerHandler } = this;
 
 
@@ -41,41 +37,36 @@ class Register extends Component {
       <View className="Register">
         <Header>Register</Header>
         <Paragraph>To get for a correct-ish calculation of your Blood Alcohol Content (BAC), please swipe and set your correct body stats.</Paragraph>
-        <ListStepper
-          label="gender"
-          value={localUser.gender}
-          stepList={genderList}
-          fieldName="gender"
-          onUpdate={this.updateField}
-        />
-        <RangeStepper
-          label="age"
-          startIndex={30}
-          clampRange={[18, 120]}
-          value={localUser.age}
-          unit="yrs"
-          fieldName="age"
-          onUpdate={this.updateField}
-        />
-        <RangeStepper
-          label="weight"
-          startIndex={70}
-          clampRange={[40, 250]}
-          value={localUser.weight}
-          unit="kg"
-          fieldName="weight"
-          onUpdate={this.updateField}
-        />
-        <RangeStepper
-          label="height"
-          startIndex={170}
-          clampRange={[20, 250]}
-          value={localUser.height}
-          unit="cm"
-          fieldName="height"
-          onUpdate={this.updateField}
-        />
-        <Button type={Button.SUBMIT} onClick={registerHandler}>Register</Button>
+        <form onSubmit={registerHandler}>
+          <ListStepper
+            label="gender"
+            stepList={genderList}
+            fieldName="gender"
+            onUpdate={this.updateField}
+          />
+          <RangeStepper
+            label="age"
+            clampRange={[18, 120]}
+            unit="yrs"
+            fieldName="age"
+            onUpdate={this.updateField}
+          />
+          <RangeStepper
+            label="weight"
+            clampRange={[40, 250]}
+            unit="kg"
+            fieldName="weight"
+            onUpdate={this.updateField}
+          />
+          <RangeStepper
+            label="height"
+            clampRange={[20, 250]}
+            unit="cm"
+            fieldName="height"
+            onUpdate={this.updateField}
+          />
+          <Button dataRole="register" type={Button.SUBMIT} onClick={registerHandler}>Register</Button>
+        </form>
       </View>
     ) : null;
   }
@@ -84,17 +75,21 @@ class Register extends Component {
 Register.propTypes = {
   genderList: PT.array,
   user: PT.object.isRequired,
+  formUser: PT.object,
   registerUser: PT.func.isRequired,
   history: PT.object.isRequired,
 };
 
 Register.defaultProps = {
   genderList: [],
+  formUser: {},
 };
 
 const mapStateToProps = state => ({
   genderList: uiSelectors.genderListSelector(state),
   user: userSelectors.allUser(state),
+  formUser: getFormValues('userRegistrationForm')(state),
+  initialValues: userSelectors.allUser(state),
 });
 
 const mapDispatchToProps = dispatch => (
@@ -103,5 +98,11 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
+const formOptions = {
+  form: 'userRegistrationForm',
+  enableReinitialize: true,
+};
+
 export { Register as TestRegister };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register));
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)((Register))));
