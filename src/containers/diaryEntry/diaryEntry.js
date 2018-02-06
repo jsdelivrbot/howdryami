@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { reduxForm, formValueSelector } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
-import moment from 'moment';
 
 import { barSelectors, barOperations } from '../../ducks/bar';
 
 import { View } from '../../particles';
-import { Header, ListStepper } from '../../components';
+import { Header, ListStepper, TimeStepper } from '../../components';
 
 import './diaryEntry.css';
 
@@ -46,6 +45,10 @@ class DiaryEntry extends Component {
             header="sizes"
             unit="stk"
             stepList={availableSizes}
+          />
+          <TimeStepper
+            fieldName="time"
+            header="time"
           />
         </form>
       </View>
