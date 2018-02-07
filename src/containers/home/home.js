@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { withRouter } from 'react-router-dom';
-
 import PT from 'prop-types';
 
-import { uiSelectors } from '../../ducks/ui';
-import { userSelectors, userOperations } from '../../ducks/user';
 import { diarySelectors } from '../../ducks/diary';
 
 import { View } from '../../particles';
-import { Header, Paragraph, Stepper, Button } from '../../components';
+import { Header, Button } from '../../components';
 
 import './home.css';
 

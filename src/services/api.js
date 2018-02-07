@@ -1,6 +1,5 @@
 import localforage from 'localforage';
 import { STORAGE_KEY } from './constants';
-import store from '../ducks/store';
 
 localforage.config({
   name: 'howdryami',

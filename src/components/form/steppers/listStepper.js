@@ -3,7 +3,6 @@ import PT from 'prop-types';
 import { Field } from 'redux-form';
 import { ArrayHelper } from '../../../helpers/utils';
 
-import { Icon } from '../../../particles/index';
 import PureStepper from './pureStepper';
 
 import './stepper.css';
@@ -73,7 +72,6 @@ class Stepper extends Component {
     const label = this.getLabelFromValue(value, stepList);
 
     const stepIconResource = this.getIconFromValue(value) || '';
-    const stepIcon = stepIconResource ? <Icon image={stepIconResource} /> : null;
 
     return (
       <PureStepper

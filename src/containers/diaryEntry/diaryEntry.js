@@ -23,7 +23,7 @@ class DiaryEntry extends Component {
   };
 
   render() {
-    const { dispatchChange, registerHandler } = this;
+    const { registerHandler } = this;
     const { drinkList, drinkLibrary, selectedDrink } = this.props;
 
     const availableProofs = barSelectors.availableProofs({ drinkLibrary, selectedDrink });
