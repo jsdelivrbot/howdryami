@@ -1,6 +1,6 @@
 import * as types from './types';
 
-const diaryReducer = (state = false, action) => {
+const diaryReducer = (state = [], action) => {
   switch (action.type) {
     case types.HYDRATE_DIARY:
       return [...action.data];

@@ -15,8 +15,11 @@ import './diaryEntry.css';
 class DiaryEntry extends Component {
   registerHandler = e => {
     e.preventDefault();
-    this.props.addDiaryEntry(this.props.formDiaryEntry);
-    this.props.history.push('home');
+
+    if (e.target.dataset.role === 'register') {
+      this.props.addDiaryEntry(this.props.formDiaryEntry);
+      this.props.history.push('home');
+    }
   };
 
   render() {
@@ -51,7 +54,7 @@ class DiaryEntry extends Component {
             fieldName="time"
             header="time"
           />
-          <Button type={Button.SUBMIT} onClick={registerHandler}>Add drink</Button>
+          <Button dataRole="register" type={Button.SUBMIT} onClick={registerHandler}>Add drink</Button>
         </form>
       </View>
     );

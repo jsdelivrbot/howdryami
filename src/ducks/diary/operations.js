@@ -12,8 +12,10 @@ const hydrateDiary = () => dispatch => {
 };
 
 const addDiaryEntry = entry => dispatch => {
-  const mutatedEntry = { ...entry, uuid: uuid() };
-  dispatch(actions.addDiaryEntry(mutatedEntry));
+  API.saveDiaryToLocal(entry).then(() => {
+    const mutatedEntry = { ...entry, uuid: uuid() };
+    dispatch(actions.addDiaryEntry(mutatedEntry));
+  });
 };
 
 const deleteDiaryEntry = entry => dispatch => {

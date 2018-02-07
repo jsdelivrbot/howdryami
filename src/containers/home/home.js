@@ -7,6 +7,7 @@ import PT from 'prop-types';
 
 import { uiSelectors } from '../../ducks/ui';
 import { userSelectors, userOperations } from '../../ducks/user';
+import { diarySelectors } from '../../ducks/diary';
 
 import { View } from '../../particles';
 import { Header, Paragraph, Stepper, Button } from '../../components';
@@ -21,6 +22,8 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.entriesPast24hours);
+
     return (
       <View>
         <Header>Home</Header>
@@ -32,12 +35,15 @@ class Home extends Component {
 
 Home.propTypes = {
   history: PT.object.isRequired,
+  entriesPast24hours: PT.array,
 };
 
 Home.defaultProps = {
+  entriesPast24hours: [],
 };
 
 const mapStateToProps = state => ({
+  entriesPast24hours: diarySelectors.entriesPast24hours(state),
 });
 
 const mapDispatchToProps = dispatch => (

@@ -77,7 +77,7 @@ const ReduxStepper = props => {
     <Field
       name={fieldName}
       component={RangeStepper}
-      type="text"
+      parse={value => parseInt(value, 10)}
       unit={unit}
       clampRange={clampRange}
       header={header}
