@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, formValueSelector } from 'redux-form';
+import { reduxForm, formValueSelector, getFormValues } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
-import { barSelectors, barOperations } from '../../ducks/bar';
+import { barSelectors } from '../../ducks/bar';
+import { diaryOperations } from '../../ducks/diary';
 
 import { View } from '../../particles';
 import { Header, ListStepper, TimeStepper, Button } from '../../components';
@@ -14,8 +15,8 @@ import './diaryEntry.css';
 class DiaryEntry extends Component {
   registerHandler = e => {
     e.preventDefault();
-    // this.props.registerUser(this.state.localUser);
-    // this.props.history.push('home');
+    this.props.addDiaryEntry(this.props.formDiaryEntry);
+    this.props.history.push('home');
   };
 
   render() {
@@ -58,24 +59,31 @@ class DiaryEntry extends Component {
 }
 
 DiaryEntry.propTypes = {
+  history: PT.object.isRequired,
+  addDiaryEntry: PT.func.isRequired,
   drinkList: PT.array,
   drinkLibrary: PT.array,
   selectedDrink: PT.string,
+  formDiaryEntry: PT.object,
 };
 
 DiaryEntry.defaultProps = {
   drinkList: [],
   drinkLibrary: [],
   selectedDrink: '',
+  formDiaryEntry: {},
 };
 
 const mapStateToProps = (store, ownProps) => ({
   drinkLibrary: barSelectors.allDrinks(store),
   drinkList: barSelectors.availableDrinks({ store }),
   selectedDrink: formValueSelector('diaryEntryForm')(store, 'type'),
+  formDiaryEntry: getFormValues('diaryEntryForm')(store),
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  addDiaryEntry: entry => diaryOperations.addDiaryEntry(entry)(dispatch),
+});
 
 export { DiaryEntry as TestDiaryEntry };
 
