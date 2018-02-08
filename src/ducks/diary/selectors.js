@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 import moment from 'moment';
 
+import { barSelectors } from '../bar';
+
 const MILLISECONDS_IN_A_DAY = 86400000;
 
 const allEntries = createSelector(
@@ -10,9 +12,15 @@ const allEntries = createSelector(
 
 const entriesPast24hours = createSelector(
   store => allEntries(store),
-  all => {
+  store => barSelectors.allDrinks(store),
+  (allDiary, allDrinks) => {
     const rightNow = parseInt(moment().format('x'), 10);
-    return all.filter(item => rightNow - item.time < MILLISECONDS_IN_A_DAY);
+    return allDiary
+      .filter(item => rightNow - item.time < MILLISECONDS_IN_A_DAY)
+      .reduce((collection, item) => {
+        const foundDrink = allDrinks.find(singleDrink => singleDrink.value === item.type);
+        return foundDrink ? [...collection, { ...item, ...foundDrink }] : [...collection];
+      }, []);
   },
 );
 

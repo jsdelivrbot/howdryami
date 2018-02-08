@@ -7,23 +7,21 @@ import { diarySelectors } from '../../ducks/diary';
 
 import { View } from '../../particles';
 import { Header, Button } from '../../components';
+import DiaryList from '../../components/diaryList/diaryList';
 
 import './home.css';
 
 class Home extends Component {
-  componentWillMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
-  }
-
   render() {
-    console.log(this.props.entriesPast24hours);
+    const { entriesPast24hours } = this.props;
 
     return (
       <View>
         <Header>Home</Header>
         <Button onClick={() => this.props.history.push('diaryentry')}>+</Button>
+        <DiaryList
+          diaryEntries={entriesPast24hours}
+        />
       </View>
     );
   }
