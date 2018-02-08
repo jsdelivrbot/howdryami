@@ -16,4 +16,7 @@
     color: #ffffff; }
   .diarylist__item .item__time {
     flex-grow: 1;
-    color: rgba(255, 255, 255, 0.5); }
+    color: rgba(255, 255, 255, 0.5);
+    background-image: url("../icons/clock.svg");
+    background-repeat: no-repeat;
+    padding-left: 1.5em; }
