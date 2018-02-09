@@ -5,9 +5,7 @@ class BacEngine {
    * @param proof
    * @returns {number}
    */
-  static convertToPureAlcohol = (total, proof) => {
-    return (total * 10) * proof / 100;
-  }
+  static convertToPureAlcohol = (total, proof) => ((total * 10) * (proof / 100))
 }
 
 export default BacEngine;
