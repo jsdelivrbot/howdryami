@@ -14,7 +14,7 @@ const DiaryList = props => {
   const { diaryEntries } = props;
 
   return (
-    <View>
+    <View className="diarylist">
       { diaryEntries.map(entry => <DiaryListItem key={uuid()} diaryItem={entry} />) }
     </View>
   );

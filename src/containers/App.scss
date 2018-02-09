@@ -1,7 +1,8 @@
 @import '../components/styles/globalStyles.scss';
 
 .App {
-  background-image: linear-gradient(-180deg, $purple 0%, $indigo 98%);
+  background-image: linear-gradient(-180deg, $blue 0%, $purple 100%);
+
   flex: 1;
   flex-grow: 1;
   height:100vh;
