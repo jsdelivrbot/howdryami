@@ -24,8 +24,16 @@ const entriesPast24hours = createSelector(
   },
 );
 
+const bacRightNow = createSelector(
+  store => entriesPast24hours(store),
+  allDiary => {
+    return 1.5;
+  },
+);
+
 export {
   allEntries,
   entriesPast24hours,
+  bacRightNow,
 };
 
