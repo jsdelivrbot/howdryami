@@ -19,7 +19,7 @@ const DiarySummary = props => {
 };
 
 DiarySummary.propTypes = {
-  bac: PT.string.isRequired,
+  bac: PT.number.isRequired,
   addItemToDiaryHandler: PT.func.isRequired,
 };
 

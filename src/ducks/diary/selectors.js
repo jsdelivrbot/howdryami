@@ -27,7 +27,8 @@ const entriesPast24hours = createSelector(
 const bacRightNow = createSelector(
   store => entriesPast24hours(store),
   allDiary => {
-    // 1. Convert drink to pure alcohol
+    // 1. Convert drink to pure alcohol (in grams)
+    // 2. Calculate each drink
 
     return 1.5;
   },
