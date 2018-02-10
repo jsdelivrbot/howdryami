@@ -1,0 +1,24 @@
+.diarylist__item {
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0.3em;
+  padding: 0.5em 0.3em;
+  border-radius: 0.1em;
+  background-color: rgba(255, 255, 255, 0.2);
+  align-items: center; }
+  .diarylist__item .item__icon {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 1em 0 0.5em; }
+  .diarylist__item .item__label {
+    flex-grow: 1;
+    color: #ffffff; }
+  .diarylist__item .item__time {
+    color: rgba(255, 255, 255, 0.5);
+    background-image: url("../icons/clock.svg");
+    background-repeat: no-repeat;
+    padding-left: 1.5em;
+    margin: 0 0.5em 0 0; }

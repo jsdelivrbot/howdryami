@@ -5,7 +5,7 @@ body {
   height:100vh;
 }
 
-body, div, p, button, input, textarea {
+body, div, p, button, input, textarea, form {
   display: flex;
   flex-direction: column;
   outline:none;

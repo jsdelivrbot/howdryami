@@ -63,9 +63,9 @@ const ReduxStepper = props => {
   const { fieldName } = props;
   return (
     <Field
+      parse={value => parseInt(value, 10)}
       name={fieldName}
       component={TimeStepper}
-      type="text"
       props={props}
     />
   );

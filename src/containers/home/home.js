@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { withRouter } from 'react-router-dom';
-
 import PT from 'prop-types';
 
-import { uiSelectors } from '../../ducks/ui';
-import { userSelectors, userOperations } from '../../ducks/user';
+import { diarySelectors } from '../../ducks/diary';
 
 import { View } from '../../particles';
-import { Header, Paragraph, Stepper, Button } from '../../components';
+import { Header } from '../../components';
+import DiaryList from '../../components/diaryList/diaryList';
+import DiarySummary from '../../components/diarySummary/diarySummary';
 
 import './home.css';
 
 class Home extends Component {
-  componentWillMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
-  }
-
   render() {
+    const { entriesPast24hours, bacRightNow } = this.props;
+
     return (
       <View>
         <Header>Home</Header>
-        <Button onClick={() => this.props.history.push('diaryentry')}>+</Button>
+        <DiarySummary
+          addItemToDiaryHandler={() => this.props.history.push('diaryentry')}
+          bac={bacRightNow}
+        />
+        <DiaryList
+          diaryEntries={entriesPast24hours}
+        />
       </View>
     );
   }
@@ -32,12 +33,18 @@ class Home extends Component {
 
 Home.propTypes = {
   history: PT.object.isRequired,
+  entriesPast24hours: PT.array,
+  bacRightNow: PT.number,
 };
 
 Home.defaultProps = {
+  entriesPast24hours: [],
+  bacRightNow: 0,
 };
 
 const mapStateToProps = state => ({
+  entriesPast24hours: diarySelectors.entriesPast24hours(state),
+  bacRightNow: diarySelectors.bacRightNow(state),
 });
 
 const mapDispatchToProps = dispatch => (

@@ -11,7 +11,14 @@ localforage.config({
 
 class API {
   static saveUserToLocal = user => (localforage.setItem('user', user));
-  static saveDiaryToLocal = diary => (localforage.setItem('diary', diary));
+  static saveDiaryToLocal = newDiaryItem => (
+    localforage
+      .getItem('diary')
+      .then(storedDiaryItem => {
+        const stored = storedDiaryItem ? [...storedDiaryItem] : [];
+        localforage.setItem('diary', [...stored, newDiaryItem]);
+      })
+  );
   static loadUserFromLocal = () => (localforage.getItem('user'));
   static loadDiaryFromLocal = () => (localforage.getItem('diary'));
 }
