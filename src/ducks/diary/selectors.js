@@ -2,8 +2,10 @@ import { createSelector } from 'reselect';
 import moment from 'moment';
 
 import { barSelectors } from '../bar';
+import { userSelectors } from '../user';
 
 import BacEngine from '../../services/bacEngine';
+import { BAC_BURNDOWN, GENDER_CONSTANT } from '../../services/constants';
 
 const MILLISECONDS_IN_A_DAY = 86400000;
 
@@ -28,10 +30,21 @@ const entriesPast24hours = createSelector(
 
 const bacRightNow = createSelector(
   store => entriesPast24hours(store),
-  allDiary => {
-    console.log(allDiary)
+  store => userSelectors.allUser(store),
+  (allDiary, allUser) => {
+    const currentBac = allDiary.reduce((collection, entry) => {
+      const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600;
+      const amountDrunk = BacEngine.convertToPureAlcohol(entry.size, entry.proof);
+      const { weight, age } = allUser;
+      const genderConstant = GENDER_CONSTANT[allUser.gender];
+      const singleBac = BacEngine.calculateBac(hoursFromConsumption, amountDrunk, weight, age, genderConstant, BAC_BURNDOWN);
+      console.log(singleBac);
+      return collection + 0.2;
+    }, 0);
 
-    return 1.5;
+    const roundedBac = Math.round(currentBac * 1000) / 1000;
+
+    return roundedBac;
   },
 );
 
