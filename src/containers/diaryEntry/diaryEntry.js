@@ -77,7 +77,7 @@ DiaryEntry.defaultProps = {
   formDiaryEntry: {},
 };
 
-const mapStateToProps = (store, ownProps) => ({
+const mapStateToProps = store => ({
   drinkLibrary: barSelectors.allDrinks(store),
   drinkList: barSelectors.availableDrinks({ store }),
   selectedDrink: formValueSelector('diaryEntryForm')(store, 'type'),

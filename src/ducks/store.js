@@ -10,7 +10,7 @@ const logger = createLogger({
   collapsed: true,
   logErrors: false,
   diff: false,
-})
+});
 
 const store = createStore(
   reducerComps,

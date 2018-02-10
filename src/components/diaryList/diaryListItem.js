@@ -25,9 +25,9 @@ DiaryListItem.propTypes = {
 };
 
 DiaryListItem.defaultProps = {
-}
+};
 
-const mapStateToProps = store => ({
+const mapStateToProps = () => ({
 });
 
 export default connect(mapStateToProps)(DiaryListItem);

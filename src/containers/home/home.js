@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
@@ -12,24 +12,22 @@ import DiarySummary from '../../components/diarySummary/diarySummary';
 
 import './home.css';
 
-class Home extends Component {
-  render() {
-    const { entriesPast24hours, bacRightNow } = this.props;
+const Home = props => {
+  const { entriesPast24hours, bacRightNow, history } = props;
 
-    return (
-      <View>
-        <Header>Home</Header>
-        <DiarySummary
-          addItemToDiaryHandler={() => this.props.history.push('diaryentry')}
-          bac={bacRightNow}
-        />
-        <DiaryList
-          diaryEntries={entriesPast24hours}
-        />
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <Header>Home</Header>
+      <DiarySummary
+        addItemToDiaryHandler={() => history.push('diaryentry')}
+        bac={bacRightNow}
+      />
+      <DiaryList
+        diaryEntries={entriesPast24hours}
+      />
+    </View>
+  );
+};
 
 Home.propTypes = {
   history: PT.object.isRequired,
@@ -47,7 +45,7 @@ const mapStateToProps = state => ({
   bacRightNow: diarySelectors.bacRightNow(state),
 });
 
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = () => (
   {}
 );
 
