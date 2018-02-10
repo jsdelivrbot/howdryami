@@ -3,6 +3,8 @@ import moment from 'moment';
 
 import { barSelectors } from '../bar';
 
+import BacEngine from '../../services/bacEngine';
+
 const MILLISECONDS_IN_A_DAY = 86400000;
 
 const allEntries = createSelector(
@@ -27,8 +29,7 @@ const entriesPast24hours = createSelector(
 const bacRightNow = createSelector(
   store => entriesPast24hours(store),
   allDiary => {
-    // 1. Convert drink to pure alcohol (in grams)
-    // 2. Calculate each drink
+    console.log(allDiary)
 
     return 1.5;
   },

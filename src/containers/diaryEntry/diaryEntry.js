@@ -39,13 +39,13 @@ class DiaryEntry extends Component {
             stepList={drinkList}
           />
           <ListStepper
-            fieldName="proofs"
+            fieldName="proof"
             header="proofs"
             unit="stk"
             stepList={availableProofs}
           />
           <ListStepper
-            fieldName="sizes"
+            fieldName="size"
             header="sizes"
             unit="stk"
             stepList={availableSizes}
