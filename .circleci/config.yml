@@ -41,20 +41,8 @@ jobs:
 
       # run tests!
       - run: yarn test
-
-      - run: yarn build
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build-stage
-      - deploy-stage:
-          requires:
-            - build-stage
-          filters:
-            branches:
-              only: develop
-          commands:
-            - scp -r circle-pushing/* whiskey@46.101.175.155:/var/www/html/
+      - run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t company/app:$CIRCLE_BRANCH .
+      - run: docker push company/app:$CIRCLE_BRANCH
 
