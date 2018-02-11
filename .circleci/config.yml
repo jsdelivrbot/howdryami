@@ -10,7 +10,7 @@ general:
       - develop
 
 jobs:
-  build-stage:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
