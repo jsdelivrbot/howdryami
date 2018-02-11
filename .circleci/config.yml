@@ -42,7 +42,7 @@ jobs:
       # run tests!
       - run: yarn test
       - run: |
-         docker login -u $DOCKER_USER -p $DOCKER_PASS
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run: docker build -t company/app:$CIRCLE_BRANCH .
       - run: docker push company/app:$CIRCLE_BRANCH
 
