@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "stopping running application"
-ssh root@46.101.175.155 'docker stop howdryami'
+echo 'yes' | ssh root@46.101.175.155 'docker stop howdryami'
 ssh root@46.101.175.155 'docker rm howdryami'
 
 echo "pulling latest version of the code"
