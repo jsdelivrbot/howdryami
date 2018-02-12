@@ -11,7 +11,10 @@ general:
 
 jobs:
   build:
-    machine: true
+    CIRCLE_BRANCH: stage
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.2.1
     steps:
       - checkout
 
@@ -31,8 +34,9 @@ jobs:
 
       # run tests!
       - run: yarn test
+      - setup_remote_docker
       - run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - run: docker build -t company/app:$CIRCLE_BRANCH .
-      - run: docker push company/app:$CIRCLE_BRANCH
+      - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
+      - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
 
