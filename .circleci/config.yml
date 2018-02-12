@@ -8,7 +8,9 @@ general:
     only:
       - master # list of branches to build
       - develop
-
+  - add_ssh_keys:
+    fingerprints:
+      - "2b:1e:62:8d:81:48:94:ea:59:e0:b1:5d:c4:d3:0c:37"
 jobs:
   build:
     CIRCLE_BRANCH: stage
