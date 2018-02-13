@@ -38,5 +38,7 @@ jobs:
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
+      - run:
+      - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
       - run: bash ./dockerstart.sh
 
