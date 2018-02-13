@@ -17,5 +17,29 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-        fingerprints:
-          - "a9:14:20:1c:70:cb:84:89:01:5e:53:35:06:fe:01:58"
+          fingerprints:
+            - "a9:14:20:1c:70:cb:84:89:01:5e:53:35:06:fe:01:58"
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run: yarn test
+      - setup_remote_docker
+      - run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
+      - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
+      - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
+      - run: bash ./dockerstart.sh
