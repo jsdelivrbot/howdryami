@@ -31,10 +31,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - add_ssh_keys:
-        fingerprints:
-          - "a9:14:20:1c:70:cb:84:89:01:5e:53:35:06:fe:01:58"
-
       # run tests!
       - run: yarn test
       - setup_remote_docker
@@ -43,5 +39,8 @@ jobs:
       - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
       - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
+      - add_ssh_keys:
+        fingerprints:
+          - "a9:14:20:1c:70:cb:84:89:01:5e:53:35:06:fe:01:58"
       - run: bash ./dockerstart.sh
 
