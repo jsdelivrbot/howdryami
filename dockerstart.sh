@@ -3,7 +3,7 @@
 cat >> ~/.ssh/config  << EOF
   VerifyHostKeyDNS yes
   StrictHostKeyChecking no
-  EOF
+EOF
   
 echo "stopping running application"
 echo ssh root@howdryami.deploythenscotch.com 'docker stop howdryami'
