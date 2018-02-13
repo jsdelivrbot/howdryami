@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+cat >> ~/.ssh/config << EOF
+  VerifyHostKeyDNS yes
+  StrictHostKeyChecking no
+  EOF
+  
 echo "stopping running application"
 echo ssh root@howdryami.deploythenscotch.com 'docker stop howdryami'
 ssh root@howdryami.deploythenscotch.com 'docker rm howdryami'
