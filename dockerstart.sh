@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 cat >> ~/.ssh/config  << EOF
-  VerifyHostKeyDNS yes
-  StrictHostKeyChecking no
+VerifyHostKeyDNS yes
+StrictHostKeyChecking no
 EOF
   
 echo "stopping running application"
