@@ -6,7 +6,7 @@ StrictHostKeyChecking no
 EOF
   
 echo "stopping running application"
-echo ssh -i $PATH_TO_PRIVATE_KEY root@howdryami.deploythenscotch.com 'docker stop howdryami'
+echo ssh -i root@howdryami.deploythenscotch.com 'docker stop howdryami'
 ssh root@howdryami.deploythenscotch.com 'docker rm howdryami'
 
 echo "pulling latest version of the code"
