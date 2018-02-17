@@ -5,14 +5,9 @@ VerifyHostKeyDNS yes
 StrictHostKeyChecking no
 EOF
 
-echo "stopping running application"
-echo ssh whiskey@howdryami.deploythenscotch.com 'docker kill $(docker ps -q)'
-ssh whiskey@howdryami.deploythenscotch.com 'docker rm howdryami'
-
 echo "pulling latest version of the code"
 ssh whiskey@howdryami.deploythenscotch.com 'docker pull terjeofnorway/howdryami:master'
-ssh whiskey@howdryami.deploythenscotch.com 'docker stop howdryami_master'
-ssh whiskey@howdryami.deploythenscotch.com 'docker rm howdryami_master'
+ssh whiskey@howdryami.deploythenscotch.com 'docker kill $(docker ps -q)'
 
 echo "starting the new version"
 ssh whiskey@howdryami.deploythenscotch.com 'docker run -d --restart=always --name howdryami_master -p 80:5000 terjeofnorway/howdryami:master'
