@@ -11,7 +11,7 @@ const Welcome = props => {
   const { history } = props;
 
   return (
-    <View className="Welcome">
+    <View className="Welcome there!">
       <Header>Welcome!</Header>
       <Paragraph>You know that fine line where you’re tipsy but still in control and having a good time?</Paragraph>
       <Paragraph>This app helps you know when to grab that next drink to keep you in your happy-tipsy place.</Paragraph>
