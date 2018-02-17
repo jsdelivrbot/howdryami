@@ -10,7 +10,7 @@ ssh whiskey@howdryami.deploythenscotch.com 'docker pull terjeofnorway/howdryami:
 ssh whiskey@howdryami.deploythenscotch.com 'docker kill $(docker ps -q)'
 
 echo "starting the new version"
-ssh whiskey@howdryami.deploythenscotch.com 'docker run -d --restart=always --name howdryami_master -p 80:5000 terjeofnorway/howdryami:master'
+ssh whiskey@howdryami.deploythenscotch.com 'docker run -d --restart=always -p 80:5000 terjeofnorway/howdryami:master'
 
 echo "success!"
 
