@@ -6,7 +6,7 @@ StrictHostKeyChecking no
 EOF
 
 echo "stopping running application"
-echo ssh whiskey@howdryami.deploythenscotch.com 'docker stop howdryami'
+echo ssh whiskey@howdryami.deploythenscotch.com 'docker kill $(docker ps -q)'
 ssh whiskey@howdryami.deploythenscotch.com 'docker rm howdryami'
 
 echo "pulling latest version of the code"
