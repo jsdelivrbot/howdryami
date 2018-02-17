@@ -42,4 +42,5 @@ jobs:
       - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
       - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
+      - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
       - run: bash ./dockerstart.sh
