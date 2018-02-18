@@ -44,8 +44,7 @@ jobs:
           name: Start docker build and save
           command: |
             docker build -f /tmp/my-project/Dockerfile.static -t howdryami:$CIRCLE_BRANCH .
-            mkdir -p docker-cache
-            docker save -o docker-cache/built-image.tar howdryami:$CIRCLE_BRANCH
+            docker save -o /tmp/my-project/built-image.tar howdryami:$CIRCLE_BRANCH
   deploy:
     docker:
       # specify the version you desire here
