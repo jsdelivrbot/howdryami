@@ -47,6 +47,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8.2.1
     steps:
+      - setup_remote_docker
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
       - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
       - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
