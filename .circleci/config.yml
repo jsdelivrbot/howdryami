@@ -42,9 +42,10 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start docker build and save
-          command: |
-            docker build -f /tmp/my-project/Dockerfile.static -t howdryami:$CIRCLE_BRANCH .
-            docker save -o /tmp/my-project/built-image.tar howdryami:$CIRCLE_BRANCH
+          command: docker build -f /tmp/my-project/Dockerfile.static -t howdryami:$CIRCLE_BRANCH .
+      - run:
+          name: Save docker to tar
+          command: docker save -o /tmp/my-project/built-image.tar howdryami:$CIRCLE_BRANCH
   deploy:
     docker:
       # specify the version you desire here
