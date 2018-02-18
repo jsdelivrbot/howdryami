@@ -9,6 +9,9 @@ general:
       - master # list of branches to build
 jobs:
   test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.2.1
     steps:
       - run: yarn install
       - run: yarn build
@@ -38,6 +41,9 @@ jobs:
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
   deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.2.1
     steps:
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
       - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
