@@ -21,6 +21,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
+    working_directory: /tmp/my-project
     steps:
       - checkout
       - run: yarn install
@@ -46,6 +47,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
+    working_directory: /tmp/my-project
     steps:
       - setup_remote_docker
       - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
