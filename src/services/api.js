@@ -21,6 +21,7 @@ class API {
   );
   static loadUserFromLocal = () => (localforage.getItem('user'));
   static loadDiaryFromLocal = () => (localforage.getItem('diary'));
+  static clearAllUserData = () => (localforage.clear());
 }
 
 export default API;

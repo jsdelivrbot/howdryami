@@ -15,9 +15,13 @@ const registerUser = user => ({
   user,
 });
 
+const clearUserData = () => ({
+  type: types.CLEAR_DATA,
+});
 
 export {
   inflateUser,
   hydrateUser,
   registerUser,
+  clearUserData,
 };
