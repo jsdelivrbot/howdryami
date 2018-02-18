@@ -21,6 +21,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
+    working_directory: /tmp/my-project
     steps:
       - checkout
       - run: yarn install
@@ -42,13 +43,14 @@ jobs:
       - run:
           name: Start docker build and save
           command: |
-            docker build -f Dockerfile.static -t howdryami:$CIRCLE_BRANCH .
+            docker build -f /tmp/my-project/Dockerfile.static -t howdryami:$CIRCLE_BRANCH .
             mkdir -p docker-cache
             docker save -o docker-cache/built-image.tar howdryami:$CIRCLE_BRANCH
   deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
+    working_directory: /tmp/my-project
     steps:
       - setup_remote_docker
       - run:
