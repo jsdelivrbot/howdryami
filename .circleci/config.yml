@@ -9,9 +9,10 @@ general:
       - master # list of branches to build
 jobs:
   test:
-    - run: yarn install
-    - run: yarn build
-    - run: yarn test
+    steps:
+      - run: yarn install
+      - run: yarn build
+      - run: yarn test
   build:
     docker:
       # specify the version you desire here
@@ -37,7 +38,19 @@ jobs:
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
   deploy:
-    - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
-    - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
-    - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
-    - run: bash ./dockerstart.sh
+    steps:
+      - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
+      - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
+      - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
+      - run: bash ./dockerstart.sh
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
+  docker_build_and_deploy:
+    jobs:
+      - deploy:
+          requires:
+            - build_and_test
