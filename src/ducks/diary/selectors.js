@@ -28,17 +28,21 @@ const entriesPast24hours = createSelector(
   },
 );
 
+/** Calculate the current BAC based on all previous drinks. Assume that any drink from 24
+ * hours or more has been burned by now, so don't bring in any older drinks than that.
+ *
+ * @return Float The BAC number of all summed drinks.
+ */
 const bacRightNow = createSelector(
   store => entriesPast24hours(store),
   store => userSelectors.allUser(store),
   (allDiary, allUser) => {
     const currentBac = allDiary.reduce((collection, entry) => {
-      const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600;
+      const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600000;
       const amountDrunk = BacEngine.convertToPureAlcohol(entry.size, entry.proof);
       const { weight, age } = allUser;
       const genderConstant = GENDER_CONSTANT[allUser.gender];
       const singleBac = BacEngine.calculateBac(hoursFromConsumption, amountDrunk, weight, age, genderConstant, BAC_BURNDOWN);
-      console.log(singleBac);
       return collection + 0.2;
     }, 0);
 
