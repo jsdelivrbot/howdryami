@@ -40,9 +40,12 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - setup_remote_docker
-      - run: |
-         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - run: docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
+      - run:
+          name: Start docker build and save
+          command: |
+            docker build -f Dockerfile.static -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
+            mkdir -p docker-cache
+            docker save -o docker-cache/built-image.tar my_app:$CIRCLE_BRANCH
   deploy:
     docker:
       # specify the version you desire here
@@ -50,7 +53,15 @@ jobs:
     working_directory: /tmp/my-project
     steps:
       - setup_remote_docker
-      - run: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
+      - run:
+          name: Load saved docker file
+          command: docker load < docker-cache/built-image.tar
+      - run:
+          name: Log in to docker hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run:
+          name: Push docker file to docker hub
+          command: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
       - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
       - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
       - run: bash ./dockerstart.sh
