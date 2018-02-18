@@ -44,7 +44,7 @@ jobs:
           command: |
             docker build -f Dockerfile.static -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
             mkdir -p docker-cache
-            docker save -o docker-cache/built-image.tar my_app:$CIRCLE_BRANCH
+            docker save -o docker-cache/built-image.tar terjeofnorway/howdryami:$CIRCLE_BRANCH
   deploy:
     docker:
       # specify the version you desire here
