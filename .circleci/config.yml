@@ -57,7 +57,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Load saved docker file
-          command: docker load < docker-cache/built-image.tar
+          command: docker load < $CIRCLE_WORKING_DIRECTORY/built-image.tar
       - run:
           name: Log in to docker hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
