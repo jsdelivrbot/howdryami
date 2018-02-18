@@ -50,5 +50,5 @@ workflows:
   docker_build_and_deploy:
     jobs:
       - deploy:
-        requires:
-          - build_and_test
+          requires:
+            - build_and_test
