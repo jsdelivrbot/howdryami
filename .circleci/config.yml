@@ -49,9 +49,9 @@ jobs:
           name: Save docker to tar
           command: docker save -o $CIRCLE_WORKING_DIRECTORY/built-image.tar howdryami:$CIRCLE_BRANCH
       - save_cache:
-          key: m2-dockercache
+          key: my-cache
           paths:
-            - docker-cache
+            - $CIRCLE_WORKING_DIRECTORY/built-image.tar
   deploy:
     docker:
       # specify the version you desire here
@@ -59,10 +59,9 @@ jobs:
     working_directory: /tmp/my-project
     steps:
       - setup_remote_docker
-      -  restore_cache:
+      - restore_cache:
           keys:
-           - m2-dockercache
-           - m2- # used if checksum fails
+           - my-cache
       - run:
           name: Load saved docker file
           command: docker load < $CIRCLE_WORKING_DIRECTORY/built-image.tar
