@@ -15,6 +15,8 @@ const userReducer = (state = {}, action) => {
       return { ...state, ...action.user };
     case types.REGISTER:
       return { ...state, ...action.user };
+    case types.CLEAR_DATA:
+      return {};
     default:
       return state;
   }

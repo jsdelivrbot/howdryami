@@ -14,6 +14,11 @@ const allEntries = createSelector(
   diary => diary.sort((a, b) => a.time < b.time),
 );
 
+/** Get all entries for the past 24 hours, as we assume that any older
+ * drinks consumed has been burned by now and won't affect any BAC calculations
+ *
+ * @return Array A list of drink objects consumed.
+ */
 const entriesPast24hours = createSelector(
   store => allEntries(store),
   store => barSelectors.allDrinks(store),
@@ -28,22 +33,25 @@ const entriesPast24hours = createSelector(
   },
 );
 
+/** Calculate the current BAC based on all previous drinks. Assume that any drink from 24
+ * hours or more has been burned by now, so don't bring in any older drinks than that.
+ *
+ * @return Float The BAC number of all summed drinks.
+ */
 const bacRightNow = createSelector(
   store => entriesPast24hours(store),
   store => userSelectors.allUser(store),
   (allDiary, allUser) => {
     const currentBac = allDiary.reduce((collection, entry) => {
-      const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600;
+      const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600000;
       const amountDrunk = BacEngine.convertToPureAlcohol(entry.size, entry.proof);
       const { weight, age } = allUser;
       const genderConstant = GENDER_CONSTANT[allUser.gender];
       const singleBac = BacEngine.calculateBac(hoursFromConsumption, amountDrunk, weight, age, genderConstant, BAC_BURNDOWN);
-      console.log(singleBac);
-      return collection + 0.2;
+      return collection + singleBac;
     }, 0);
 
-    const roundedBac = Math.round(currentBac * 1000) / 1000;
-
+    const roundedBac = Math.round(currentBac * 100) / 100; // Round, but keep 2 places.
     return roundedBac;
   },
 );

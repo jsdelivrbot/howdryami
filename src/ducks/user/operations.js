@@ -30,8 +30,15 @@ const registerUser = user => dispatch => {
   });
 };
 
+const clearUserData = () => dispatch => {
+  API.clearAllUserData().then(() => {
+    dispatch(actions.clearUserData);
+  });
+};
+
 export {
   inflateUser,
   hydrateUser,
   registerUser,
+  clearUserData,
 };
