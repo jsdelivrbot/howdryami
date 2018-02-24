@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Start docker build
           command: |
-            docker build -t howdryami:$CIRCLE_BRANCH .
+            docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
       - run:
           name: Log in to docker hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
