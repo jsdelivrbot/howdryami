@@ -56,8 +56,6 @@ workflows:
   build_and_deploy:
     jobs:
       - build_and_deploy:
-          requires:
-            - build_and_test
           filters:
             branches:
               only:
