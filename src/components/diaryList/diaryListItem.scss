@@ -35,12 +35,17 @@
 
   .editdelete__container {
     position:absolute;
+    transform: translateX(200px);
     right:0;
     flex-direction: row;
     background-color: $turquoise;
     align-items: center;
     height: 100%;
     box-shadow: 8px 3px 10px 9px rgba(0,0,0,.2);
+  }
+
+  .editdelete__container--visible {
+    transform: translateX(0);
   }
 
   .item__delete, .item__edit {

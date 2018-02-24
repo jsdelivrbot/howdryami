@@ -26,12 +26,15 @@
     margin: 0 0.5em 0 0; }
   .diarylist__item .editdelete__container {
     position: absolute;
+    transform: translateX(200px);
     right: 0;
     flex-direction: row;
     background-color: #69E3BF;
     align-items: center;
     height: 100%;
     box-shadow: 8px 3px 10px 9px rgba(0, 0, 0, 0.2); }
+  .diarylist__item .editdelete__container--visible {
+    transform: translateX(0); }
   .diarylist__item .item__delete, .diarylist__item .item__edit {
     width: 25px;
     height: 25px;
