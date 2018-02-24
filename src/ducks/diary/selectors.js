@@ -51,8 +51,7 @@ const bacRightNow = createSelector(
       return collection + singleBac;
     }, 0);
 
-    const roundedBac = Math.round(currentBac * 1000) / 1000;
-
+    const roundedBac = Math.round(currentBac * 100) / 100; // Round, but keep 2 places.
     return roundedBac;
   },
 );
