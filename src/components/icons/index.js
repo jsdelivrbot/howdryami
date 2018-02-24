@@ -2,6 +2,8 @@ import ArrowLeft from './arrow-left.svg';
 import ArrowRight from './arrow-right.svg';
 import AddItem from './add-item.svg';
 import Clock from './clock.svg';
+import Edit from './edit.svg';
+import Delete from './delete.svg';
 import DrinkWine from './drink-wine.svg';
 import DrinkCocktail from './drink-cocktail.svg';
 import DrinkBottleBer from './drink-bottle-beer.svg';
@@ -18,6 +20,8 @@ const getIconById = id => {
     case 'ARROW_RIGHT': return (ArrowRight);
     case 'ADD_ITEM': return (AddItem);
     case 'CLOCK': return (Clock);
+    case 'EDIT': return (Edit);
+    case 'DELETE': return (Delete);
     case 'WINE': return (DrinkWine);
     case 'COCKTAIL': return (DrinkCocktail);
     case 'BOTTLE_BEER': return (DrinkBottleBer);
@@ -36,6 +40,8 @@ export {
   ArrowLeft,
   ArrowRight,
   Clock,
+  Edit,
+  Delete,
   AddItem,
   DrinkWine,
   DrinkCocktail,
