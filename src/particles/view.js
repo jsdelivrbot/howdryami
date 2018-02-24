@@ -2,7 +2,13 @@ import React from 'react';
 import PT from 'prop-types';
 
 const View = props => (
-  <div className={props.className} onClick={props.onClick}>{props.children}</div>
+  <div
+    className={props.className}
+    onClick={props.onClick}
+    onKeyPress={props.onClick}
+  >
+    {props.children}
+  </div>
 );
 
 View.propTypes = {

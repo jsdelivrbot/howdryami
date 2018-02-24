@@ -27,6 +27,7 @@
   .diarylist__item .editdelete__container {
     position: absolute;
     transform: translateX(200px);
+    transition: all .5s;
     right: 0;
     flex-direction: row;
     background-color: #69E3BF;

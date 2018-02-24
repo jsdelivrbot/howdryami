@@ -5,7 +5,13 @@ const genderListSelector = createSelector(
   genders => genders,
 );
 
+const diaryEditContainerToShowSelector = createSelector(
+  store => store.ui.diaryEditContainerToShow,
+  diaryEditContainerToShow => diaryEditContainerToShow,
+);
+
 export {
   genderListSelector,
+  diaryEditContainerToShowSelector,
 };
 

@@ -9,8 +9,14 @@ const loadUIData = uiData => ({
   data: uiData,
 });
 
+const toggleDiaryEditContainer = id => ({
+  type: types.TOGGLE_DIARYEDIT_CONTAINER,
+  data: id,
+});
+
 
 export {
   hydrateUI,
   loadUIData,
+  toggleDiaryEditContainer,
 };

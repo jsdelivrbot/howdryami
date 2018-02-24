@@ -11,7 +11,12 @@ const loadUIData = uiData => dispatch => {
   dispatch(actions.loadUIData(uiData));
 };
 
+const toggleDiaryEditContainer = id => dispatch => {
+  dispatch(actions.toggleDiaryEditContainer(id));
+};
+
 export {
   hydrateUI,
   loadUIData,
+  toggleDiaryEditContainer,
 };

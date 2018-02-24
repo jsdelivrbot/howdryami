@@ -15,7 +15,7 @@ const DiaryList = props => {
 
   return (
     <View className="diarylist">
-      { diaryEntries.map(entry => <DiaryListItem key={uuid()} diaryItem={entry} />) }
+      { diaryEntries.map(entry => <DiaryListItem key={uuid()} id={uuid()} diaryItem={entry} />) }
     </View>
   );
 };
