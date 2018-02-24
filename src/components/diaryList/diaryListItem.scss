@@ -9,6 +9,8 @@
   border-radius: 0.1em;
   background-color: rgba(255,255,255,.2);
   align-items: center;
+  position: relative;
+  overflow: hidden;
 
   .item__icon {
     width: 30px;
@@ -29,5 +31,33 @@
     background-repeat: no-repeat;
     padding-left:1.5em;
     margin: 0 0.5em 0 0;
+  }
+
+  .editdelete__container {
+    position:absolute;
+    right:0;
+    flex-direction: row;
+    background-color: $turquoise;
+    align-items: center;
+    height: 100%;
+    box-shadow: 8px 3px 10px 9px rgba(0,0,0,.2);
+  }
+
+  .item__delete, .item__edit {
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    margin: 0 1em;
+    padding:0.1em;
+  }
+
+  .item__delete {
+    background-image: url('../icons/delete.svg');
+  }
+
+  .item__edit {
+    background-image: url('../icons/edit.svg');
   }
 }
