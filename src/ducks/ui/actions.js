@@ -14,9 +14,14 @@ const toggleDiaryEditContainer = id => ({
   data: id,
 });
 
+const toggleConfirmModal = options => ({
+  type: types.TOGGLE_CONFIRM_MODAL,
+  data: options,
+});
 
 export {
   hydrateUI,
   loadUIData,
   toggleDiaryEditContainer,
+  toggleConfirmModal,
 };

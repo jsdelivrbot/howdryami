@@ -11,6 +11,9 @@ const uiReducer = (state = false, action) => {
       const newID = state.diaryEditContainerToShow === action.data ? '' : action.data;
       return { ...state, diaryEditContainerToShow: newID };
     }
+    case types.TOGGLE_CONFIRM_MODAL: {
+      return { ...state, confirmModalOptions: action.data };
+    }
     default:
       return state;
   }

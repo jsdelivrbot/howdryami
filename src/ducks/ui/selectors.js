@@ -10,8 +10,14 @@ const diaryEditContainerToShowSelector = createSelector(
   diaryEditContainerToShow => diaryEditContainerToShow,
 );
 
+const confirmModalOptionsSelector = createSelector(
+  store => store.ui.confirmModalOptions,
+  confirmModalOptions => confirmModalOptions || {},
+);
+
 export {
   genderListSelector,
   diaryEditContainerToShowSelector,
+  confirmModalOptionsSelector,
 };
 
