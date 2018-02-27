@@ -21,10 +21,17 @@ const addDiaryEntry = entry => dispatch => {
 };
 
 const deleteDiaryEntry = id => dispatch => {
-  // dispatch(actions.deleteDiaryEntry(id));
-  const modalOptions = { isVisible: true, text: 'foobar', confirmCallback: () => {}, cancelCallback: () => {} };
-  dispatch(uiOperations.toggleConfirmModal(modalOptions));
-  console.log('delete entry', id);
+  const userResponse = new Promise((resolve, reject) => {
+    const modalOptions = {
+      isVisible: true,
+      text: 'foobar',
+      confirmCallback: () => resolve(),
+      cancelCallback: () => reject(),
+    };
+
+    dispatch(uiOperations.toggleConfirmModal(modalOptions));
+  }).then(response => dispatch(actions.deleteDiaryEntry(id)))
+    .catch(response => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
 };
 
 const updateDiaryEntry = entry => dispatch => {
