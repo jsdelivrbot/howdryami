@@ -1,6 +1,8 @@
 import API from '../../services/api';
 import * as actions from './actions';
 
+import { uiOperations } from '../ui';
+
 const uuid = require('uuid/v4');
 
 const hydrateDiary = () => dispatch => {
@@ -18,8 +20,11 @@ const addDiaryEntry = entry => dispatch => {
   });
 };
 
-const deleteDiaryEntry = entry => dispatch => {
-  dispatch(actions.deleteDiaryEntry(entry));
+const deleteDiaryEntry = id => dispatch => {
+  // dispatch(actions.deleteDiaryEntry(id));
+  const modalOptions = { isVisible: true, text: 'foobar', confirmCallback: () => {}, cancelCallback: () => {} };
+  dispatch(uiOperations.toggleConfirmModal(modalOptions));
+  console.log('delete entry', id);
 };
 
 const updateDiaryEntry = entry => dispatch => {

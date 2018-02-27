@@ -8,6 +8,7 @@ import { View, Icon, Touchable } from '../../particles';
 import Button from '../button/button';
 
 import { uiSelectors, uiOperations } from '../../ducks/ui';
+import { diaryOperations } from '../../ducks/diary';
 
 import * as Icons from '../icons';
 
@@ -31,7 +32,7 @@ const DiaryListItem = props => {
         <time className="item__time">{moment(time).format('HH:mm')}</time>
         <View className={editdeleteVisibilityStyleClasses}>
           <Button className="item__edit" onTouchStart={editClickHandler} type={Button.REGULAR} />
-          <Button className="item__delete" onTouchStart={deleteClickHandler} type={Button.REGULAR} />
+          <Button className="item__delete" onTouchStart={() => deleteClickHandler(id)} type={Button.REGULAR} />
         </View>
       </View>
     </Touchable>
@@ -57,7 +58,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   editClickHandler: (event) => { event.stopPropagation(); console.log('editclick') },
-  deleteClickHandler: () => console.log('deleteclick'),
+  deleteClickHandler: id => dispatch(diaryOperations.deleteDiaryEntry(id)),
   toggleDiaryEditContainer: id => dispatch(uiOperations.toggleDiaryEditContainer(id)),
 });
 
