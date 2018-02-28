@@ -16,7 +16,8 @@ const diaryReducer = (state = [], action) => {
       return [...state, entry];
     }
     case types.DELETE_DIARY_ENTRY: {
-      return [...state.filter(item => item.id !== action.id)];
+      console.log('id to delete', action.data);
+      return [...state.filter(item => item.id !== action.data)];
     }
     default:
       return state;

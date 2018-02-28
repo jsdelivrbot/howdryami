@@ -14,8 +14,9 @@ const hydrateDiary = () => dispatch => {
 };
 
 const addDiaryEntry = entry => dispatch => {
-  API.saveDiaryToLocal(entry).then(() => {
-    const mutatedEntry = { ...entry, uuid: uuid() };
+  const mutatedEntry = { ...entry, id: uuid() };
+
+  API.saveDiaryToLocal(mutatedEntry).then(() => {
     dispatch(actions.addDiaryEntry(mutatedEntry));
   });
 };
@@ -30,7 +31,8 @@ const deleteDiaryEntry = id => dispatch => {
     };
 
     dispatch(uiOperations.toggleConfirmModal(modalOptions));
-  }).then(response => dispatch(actions.deleteDiaryEntry(id)))
+  }).then(API.deleteDiaryFromLocal(id))
+    .then(response => dispatch(actions.deleteDiaryEntry(id)))
     .catch(response => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
 };
 

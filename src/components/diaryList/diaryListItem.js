@@ -15,9 +15,10 @@ import * as Icons from '../icons';
 import './diaryListItem.css';
 
 const DiaryListItem = props => {
-  const { label, time, icon } = props.diaryItem;
-  const { id, diaryEditContainerToShow, toggleDiaryEditContainer } = props;
+  const { id, label, time, icon } = props.diaryItem;
+  const { diaryEditContainerToShow, toggleDiaryEditContainer } = props;
   const { editClickHandler, deleteClickHandler } = props;
+  console.log(props.diaryItem)
 
   const editdeleteVisibilityStyleClasses = classname({
     editdelete__container: true,
