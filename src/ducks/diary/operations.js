@@ -32,8 +32,8 @@ const deleteDiaryEntry = id => dispatch => {
 
     dispatch(uiOperations.toggleConfirmModal(modalOptions));
   }).then(API.deleteDiaryFromLocal(id))
-    .then(response => dispatch(actions.deleteDiaryEntry(id)))
-    .catch(response => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
+    .then(() => dispatch(actions.deleteDiaryEntry(id)))
+    .catch(() => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
 };
 
 const updateDiaryEntry = entry => dispatch => {

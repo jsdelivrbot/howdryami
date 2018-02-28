@@ -48,6 +48,6 @@ const mapStateToProps = state => ({
   isVisible: uiSelectors.confirmModalOptionsSelector(state).isVisible,
 });
 
-const mapDispatchToProps = state => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Confirm);

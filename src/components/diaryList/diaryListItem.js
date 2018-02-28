@@ -15,10 +15,11 @@ import * as Icons from '../icons';
 import './diaryListItem.css';
 
 const DiaryListItem = props => {
-  const { id, label, time, icon } = props.diaryItem;
+  const {
+    id, label, time, icon,
+  } = props.diaryItem;
   const { diaryEditContainerToShow, toggleDiaryEditContainer } = props;
   const { editClickHandler, deleteClickHandler } = props;
-  console.log(props.diaryItem)
 
   const editdeleteVisibilityStyleClasses = classname({
     editdelete__container: true,
@@ -44,7 +45,6 @@ DiaryListItem.propTypes = {
   diaryItem: PT.object.isRequired,
   editClickHandler: PT.func.isRequired,
   deleteClickHandler: PT.func.isRequired,
-  id: PT.string.isRequired,
   diaryEditContainerToShow: PT.string,
   toggleDiaryEditContainer: PT.func.isRequired,
 };
@@ -58,7 +58,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  editClickHandler: (event) => { event.stopPropagation(); console.log('editclick') },
+  editClickHandler: event => { event.stopPropagation(); console.log('editclick'); },
   deleteClickHandler: id => dispatch(diaryOperations.deleteDiaryEntry(id)),
   toggleDiaryEditContainer: id => dispatch(uiOperations.toggleDiaryEditContainer(id)),
 });
