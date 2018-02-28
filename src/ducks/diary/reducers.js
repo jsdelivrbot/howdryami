@@ -1,5 +1,7 @@
 import * as types from './types';
 
+const uuid = require('uuid/v4');
+
 const diaryReducer = (state = [], action) => {
   switch (action.type) {
     case types.HYDRATE_DIARY:
@@ -9,7 +11,7 @@ const diaryReducer = (state = [], action) => {
         type, time, proof, size,
       } = action.data;
       const entry = {
-        type, time, proof: parseInt(proof, 10), size: parseInt(size, 10),
+        id: uuid(), type, time, proof: parseInt(proof, 10), size: parseInt(size, 10),
       };
       return [...state, entry];
     }
