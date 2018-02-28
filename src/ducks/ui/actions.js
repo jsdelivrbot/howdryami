@@ -9,8 +9,19 @@ const loadUIData = uiData => ({
   data: uiData,
 });
 
+const toggleDiaryEditContainer = id => ({
+  type: types.TOGGLE_DIARYEDIT_CONTAINER,
+  data: id,
+});
+
+const toggleConfirmModal = options => ({
+  type: types.TOGGLE_CONFIRM_MODAL,
+  data: options,
+});
 
 export {
   hydrateUI,
   loadUIData,
+  toggleDiaryEditContainer,
+  toggleConfirmModal,
 };

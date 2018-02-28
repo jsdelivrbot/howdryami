@@ -1,0 +1,56 @@
+@import "../styles/globalStyles.scss";
+
+// React Modal overrides
+
+
+.confirm__background {
+  display:flex;
+  flex-direction:column;
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0,;
+}
+
+.confirm__container {
+  display:flex;
+  align-self: center;
+  justify-self: center;
+  height: auto;
+  margin: auto 2em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px 3px rgba(0,0,0,.2);
+  background-color: $purple;
+  z-index:2;
+}
+
+.confirm__button__container {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.confirm__content__text {
+  font-size: 1.5em;
+  font-weight: 200;
+  color: $white;
+  margin: 1em .5em;
+}
+
+.confirm__button {
+  flex-grow: 1;
+  background-color: $white;
+  color: $purple;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: 200;
+  align-items: center;
+  padding: .4em;
+  border-radius: 2px;
+  margin: .2em;
+}
+
+.confirm__content {
+  margin: 2em 1em;
+}

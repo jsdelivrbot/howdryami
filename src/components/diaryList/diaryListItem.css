@@ -6,7 +6,9 @@
   padding: 0.5em 0.3em;
   border-radius: 0.1em;
   background-color: rgba(255, 255, 255, 0.2);
-  align-items: center; }
+  align-items: center;
+  position: relative;
+  overflow: hidden; }
   .diarylist__item .item__icon {
     width: 30px;
     height: 30px;
@@ -22,3 +24,27 @@
     background-repeat: no-repeat;
     padding-left: 1.5em;
     margin: 0 0.5em 0 0; }
+  .diarylist__item .editdelete__container {
+    position: absolute;
+    transform: translateX(200px);
+    transition: all .5s;
+    right: 0;
+    flex-direction: row;
+    background-color: #69E3BF;
+    align-items: center;
+    height: 100%;
+    box-shadow: 8px 3px 10px 9px rgba(0, 0, 0, 0.2); }
+  .diarylist__item .editdelete__container--visible {
+    transform: translateX(0); }
+  .diarylist__item .item__delete, .diarylist__item .item__edit {
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    margin: 0 1em;
+    padding: 0.1em; }
+  .diarylist__item .item__delete {
+    background-image: url("../icons/delete.svg"); }
+  .diarylist__item .item__edit {
+    background-image: url("../icons/edit.svg"); }

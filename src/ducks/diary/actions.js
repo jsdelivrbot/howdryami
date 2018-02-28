@@ -10,9 +10,9 @@ const addDiaryEntry = entryData => ({
   data: entryData,
 });
 
-const deleteDiaryEntry = entryData => ({
+const deleteDiaryEntry = id => ({
   type: types.DELETE_DIARY_ENTRY,
-  data: entryData,
+  data: id,
 });
 
 const updateDiaryEntry = entryData => ({
