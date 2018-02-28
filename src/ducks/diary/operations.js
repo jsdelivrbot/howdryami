@@ -22,7 +22,7 @@ const addDiaryEntry = entry => dispatch => {
 };
 
 const deleteDiaryEntry = id => dispatch => {
-  const userResponse = new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     const modalOptions = {
       isVisible: true,
       text: 'foobar',
@@ -32,7 +32,10 @@ const deleteDiaryEntry = id => dispatch => {
 
     dispatch(uiOperations.toggleConfirmModal(modalOptions));
   }).then(API.deleteDiaryFromLocal(id))
-    .then(() => dispatch(actions.deleteDiaryEntry(id)))
+    .then(() => {
+      dispatch(actions.deleteDiaryEntry(id));
+      dispatch(uiOperations.toggleConfirmModal({ isVisible: false }));
+    })
     .catch(() => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
 };
 
