@@ -1,17 +1,25 @@
 import API from '../../services/api';
 import * as actions from './actions';
+import { DIARY_HYDRATION_EMPTY, DIARY_HYDRATION_HAS_DATA } from './types';
 
 import { uiOperations } from '../ui';
 
 const uuid = require('uuid/v4');
 
-const hydrateDiary = () => dispatch => {
-  API.loadDiaryFromLocal().then(diary => {
-    if (diary) {
-      dispatch(actions.hydrateDiary(diary));
-    }
-  });
-};
+const hydrateDiary = () => dispatch => (
+  new Promise(resolve => {
+    API.loadDiaryFromLocal().then(diary => {
+      if (diary) {
+        dispatch(actions.hydrateDiary(diary));
+      }
+      if (diary) {
+        resolve(DIARY_HYDRATION_HAS_DATA);
+      } else {
+        resolve(DIARY_HYDRATION_EMPTY);
+      }
+    });
+  })
+);
 
 const addDiaryEntry = entry => dispatch => {
   const mutatedEntry = { ...entry, id: uuid() };

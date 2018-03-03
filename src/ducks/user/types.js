@@ -3,6 +3,9 @@ const HYDRATE = 'app/user/HYDRATE';
 const REGISTER = 'app/user/REGISTER';
 const CLEAR_DATA = 'app/user/CLEAR_DATA';
 
+const USER_HYDRATION_EMPTY = 'app/user/HYDRATION_EMPTY';
+const USER_HYDRATION_HAS_DATA = 'app/user/HYDRATION_HAS_DATA';
+
 const GENDERS = {
   MALE: 'MALE',
   FEMALE: 'FEMALE',
@@ -15,4 +18,6 @@ export {
   REGISTER,
   GENDERS,
   CLEAR_DATA,
+  USER_HYDRATION_EMPTY,
+  USER_HYDRATION_HAS_DATA,
 };
