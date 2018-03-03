@@ -1,3 +1,4 @@
+import LoadLogo from './load-logo.svg';
 import ArrowLeft from './arrow-left.svg';
 import ArrowRight from './arrow-right.svg';
 import AddItem from './add-item.svg';
@@ -16,6 +17,7 @@ import DrinkFlute from './drink-flute.svg';
 
 const getIconById = id => {
   switch (id) {
+    case 'LOAD_LOGO': return (LoadLogo);
     case 'ARROW_LEFT': return (ArrowLeft);
     case 'ARROW_RIGHT': return (ArrowRight);
     case 'ADD_ITEM': return (AddItem);
@@ -37,6 +39,7 @@ const getIconById = id => {
 
 export {
   getIconById,
+  LoadLogo,
   ArrowLeft,
   ArrowRight,
   Clock,

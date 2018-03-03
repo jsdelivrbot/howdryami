@@ -1,0 +1,5 @@
+.startupLoader {
+  align-items: center; }
+  .startupLoader .loader__logo {
+    width: 80%;
+    height: 100vh; }

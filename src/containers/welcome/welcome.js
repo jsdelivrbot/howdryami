@@ -12,10 +12,12 @@ const Welcome = props => {
 
   return (
     <View className="Welcome">
-      <Header>Welcome my friend!</Header>
-      <Paragraph>You know that fine line where you’re tipsy but still in control and having a good time?</Paragraph>
-      <Paragraph>This app helps you know when to grab that next drink to keep you in your happy-tipsy place.</Paragraph>
-      <Button onClick={() => history.push('register')}>Join in</Button>
+      <Header>Hi there!</Header>
+      <Paragraph>You know that fine line between being tipsy and being stupid-ass-drunk?</Paragraph>
+      <Paragraph>This app helps you know when to shold concider stop drinking in order to
+        still have a good time and not making a complete ass of yourself.
+      </Paragraph>
+      <Button type={Button.SUBMIT} onClick={() => history.push('register')}>Join in</Button>
     </View>
   );
 };
