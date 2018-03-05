@@ -1,5 +1,15 @@
 .paragraph {
   color: #ffffff;
-  margin: 1.5em;
+  margin: 1em 1.5em;
   font-size: 18px;
   font-weight: 100; }
+
+.paragraph__intro {
+  font-size: 27px;
+  font-weight: 300;
+  color: #69E3BF; }
+
+.paragraph__small {
+  font-size: 16.2px;
+  font-weight: 700;
+  color: #ffffff; }

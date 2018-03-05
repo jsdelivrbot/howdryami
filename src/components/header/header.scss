@@ -3,8 +3,9 @@
 .header {
   text-transform: uppercase;
   color: $white;
-  margin:1.5em;
-  font-size: $baseFontSize * 1.5;
+  margin:1.5em 1em 1em 1em;
+  font-size: $baseFontSize * 2;
   text-align: center;
-  font-weight:100;
+  font-weight: 100;
+  font-style: italic;
 }

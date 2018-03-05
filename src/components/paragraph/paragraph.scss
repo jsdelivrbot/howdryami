@@ -2,7 +2,19 @@
 
 .paragraph {
   color: $white;
-  margin:1.5em;
+  margin:1em 1.5em;
   font-size: $baseFontSize;
   font-weight:100;
+}
+
+.paragraph__intro {
+  font-size: $baseFontSize * 1.5;
+  font-weight:300;
+  color: $turquoise;
+}
+
+.paragraph__small {
+  font-size: $baseFontSize * .9;
+  font-weight:700;
+  color: $white;
 }

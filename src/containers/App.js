@@ -21,7 +21,7 @@ class App extends Component {
     const { dispatch, history } = this.props;
     loadUIData(dispatch).then(result => {
       const nextRoute = result.includes(userType.USER_HYDRATION_EMPTY) ? '/welcome' : '/home';
-      history.push(nextRoute);
+      setTimeout(() => history.push(nextRoute), 3000);
     });
   }
 

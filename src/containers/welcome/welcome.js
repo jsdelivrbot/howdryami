@@ -2,8 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PT from 'prop-types';
 
-import { View } from '../../particles';
+import { View, Icon } from '../../particles';
 import { Header, Paragraph, Button } from '../../components';
+
+import { GraphIllustration } from '../../components/icons';
 
 import './welcome.css';
 
@@ -11,13 +13,17 @@ const Welcome = props => {
   const { history } = props;
 
   return (
-    <View className="Welcome">
-      <Header>Hi there!</Header>
-      <Paragraph>You know that fine line between being tipsy and being stupid-ass-drunk?</Paragraph>
-      <Paragraph>This app helps you know when to shold concider stop drinking in order to
-        still have a good time and not making a complete ass of yourself.
+    <View className="welcome">
+      <Header>How dry am I!</Header>
+      <Paragraph>
+        Drinking is all fun and games, until it&#39;s not.
+        This app helps you to stay in your happy zone, and to know when it&#39;s time for another one!
       </Paragraph>
-      <Button type={Button.SUBMIT} onClick={() => history.push('register')}>Join in</Button>
+      <Icon image={GraphIllustration} className="welcome__illustration" />
+      <Button type={Button.SUBMIT} onClick={() => history.push('register')}>Get started!</Button>
+      <Paragraph type={Paragraph.SMALL} className="welcome__gdpr">
+        This app adheres to the new GDPR regulations. Read more how you&#39;re in control of your data.
+      </Paragraph>
     </View>
   );
 };

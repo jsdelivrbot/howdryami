@@ -1,7 +1,8 @@
 .header {
   text-transform: uppercase;
   color: #ffffff;
-  margin: 1.5em;
-  font-size: 27px;
+  margin: 1.5em 1em 1em 1em;
+  font-size: 36px;
   text-align: center;
-  font-weight: 100; }
+  font-weight: 100;
+  font-style: italic; }

@@ -14,6 +14,7 @@ import DrinkShortDrink from './drink-short-drink.svg';
 import DrinkBrandy from './drink-brandy.svg';
 import DrinkShot from './drink-shot.svg';
 import DrinkFlute from './drink-flute.svg';
+import GraphIllustration from './graph-illustration.svg';
 
 const getIconById = id => {
   switch (id) {
@@ -33,6 +34,7 @@ const getIconById = id => {
     case 'BRANDY': return (DrinkBrandy);
     case 'SHOT': return (DrinkShot);
     case 'FLUTE': return (DrinkFlute);
+    case 'GRAPH_ILLUSTRATION': return (GraphIllustration);
     default: return null;
   }
 };
@@ -55,5 +57,6 @@ export {
   DrinkBrandy,
   DrinkShot,
   DrinkFlute,
+  GraphIllustration,
 };
 

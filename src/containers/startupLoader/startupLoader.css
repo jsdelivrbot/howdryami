@@ -1,5 +1,10 @@
 .startupLoader {
-  align-items: center; }
+  align-items: center;
+  height: 100vh;
+  justify-content: center; }
   .startupLoader .loader__logo {
     width: 80%;
-    height: 100vh; }
+    height: 200px; }
+
+.startupLoader__payoff {
+  text-align: center; }
