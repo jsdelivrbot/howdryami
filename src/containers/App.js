@@ -44,9 +44,4 @@ App.propTypes = {
   history: PT.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  dispatch: state,
-});
-
-
 export default withRouter(connect()(App));
