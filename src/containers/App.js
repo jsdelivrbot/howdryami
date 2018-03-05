@@ -20,7 +20,7 @@ class App extends Component {
   componentWillMount() {
     const { dispatch, history } = this.props;
     loadUIData(dispatch).then(result => {
-      const nextRoute = result.includes(userType.USER_HYDRATION_EMPTY) ? '/register' : '/home';
+      const nextRoute = result.includes(userType.USER_HYDRATION_EMPTY) ? '/welcome' : '/home';
       history.push(nextRoute);
     });
   }
