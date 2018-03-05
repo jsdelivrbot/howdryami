@@ -1,4 +1,5 @@
 import * as actions from './actions';
+import { UI_DATA_IS_LOADED } from './types';
 
 const hydrateUI = () => dispatch => {
   dispatch(actions.hydrateUI()).then(() => {
@@ -7,9 +8,12 @@ const hydrateUI = () => dispatch => {
   });
 };
 
-const loadUIData = uiData => dispatch => {
-  dispatch(actions.loadUIData(uiData));
-};
+const loadUIData = uiData => dispatch => (
+  new Promise(resolve => {
+    dispatch(actions.loadUIData(uiData));
+    resolve(UI_DATA_IS_LOADED);
+  })
+);
 
 const toggleDiaryEditContainer = id => dispatch => {
   dispatch(actions.toggleDiaryEditContainer(id));

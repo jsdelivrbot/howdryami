@@ -4,14 +4,15 @@
   border: 0; }
 
 .button--submit {
-  padding: 1em 2em;
+  padding: 1em .5em;
   margin: 1em 2em;
   border-radius: 5px;
-  color: #ffffff;
+  color: #48116D;
   background: #69E3BF;
   box-shadow: 0 0 0.1em 0.1em rgba(0, 0, 0, 0.09);
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 23.4px;
+  letter-spacing: 0.2em;
   font-style: italic;
   font-weight: 100;
   align-items: center; }

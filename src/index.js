@@ -6,11 +6,7 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import App from './containers/App';
 import store from './ducks/store';
-import { loadUIData } from './startup';
 import './index.css';
-
-loadUIData(store);
-
 
 withRouter(ReactDOM.render(
   <Provider store={store}>

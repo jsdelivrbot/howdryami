@@ -1,6 +1,8 @@
 import React from 'react';
 import PT from 'prop-types';
 
+import './touchable.css';
+
 const Touchable = props => {
   const { children, onTouchStart, onTouchEnd } = props;
 
@@ -9,6 +11,7 @@ const Touchable = props => {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       role="button"
+      className="touchable"
     >
       {children}
     </div>
