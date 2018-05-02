@@ -6,7 +6,6 @@ import PT from 'prop-types';
 import { diarySelectors } from '../../ducks/diary';
 
 import { View } from '../../particles';
-import { Header } from '../../components';
 import TitleBar from '../../components/titleBar/titleBar';
 import DiaryList from '../../components/diaryList/diaryList';
 import DiarySummary from '../../components/diarySummary/diarySummary';
@@ -18,7 +17,10 @@ const Home = props => {
 
   return (
     <View>
-      <TitleBar title="Some title" />
+      <TitleBar
+        label="Your dryness"
+        disableBack
+      />
       <DiarySummary
         addItemToDiaryHandler={() => history.push('diaryentry')}
         bac={bacRightNow}

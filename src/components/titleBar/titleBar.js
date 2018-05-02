@@ -1,16 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import PT from 'prop-types';
 import { View, Touchable, Icon } from '../../particles';
 
-import { ArrowLeft } from '../icons';
+import { ArrowLeft, MenuIcon } from '../icons';
 
 import './titleBar.css';
 
-const TitleBar = () => (
-  <View className="titleBar">
-    <Touchable><Icon image={ArrowLeft} /></Touchable>
-    <View>some header here</View>
-    <Touchable><View /></Touchable>
-  </View>
-);
+const TitleBar = props => {
+  const { disableBack, label } = props;
 
-export default TitleBar;
+  return (
+    <View className="titleBar">
+      <View className="titleBar__backButton">
+        {!disableBack && <Touchable onTouchEnd={() => props.history.go(-1)}><Icon image={ArrowLeft} /></Touchable> }
+      </View>
+      <View className="titleBar__label">{ label }</View>
+      <View className="titleBar__menuButton">
+        <Touchable><Icon image={MenuIcon} /></Touchable>
+      </View>
+    </View>
+  );
+};
+
+TitleBar.propTypes = {
+  history: PT.object.isRequired,
+  label: PT.string.isRequired,
+  disableBack: PT.bool,
+};
+
+TitleBar.defaultProps = {
+  disableBack: false,
+};
+
+export default withRouter(TitleBar);

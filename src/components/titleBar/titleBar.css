@@ -1,0 +1,15 @@
+.titleBar {
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .8em 0; }
+  .titleBar .titleBar__backButton {
+    flex: 1; }
+  .titleBar .titleBar__label {
+    flex: 8;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 100;
+    font-size: 21.6px; }
+  .titleBar .titleBar__menuButton {
+    flex: 1; }
