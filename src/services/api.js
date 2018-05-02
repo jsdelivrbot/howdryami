@@ -14,14 +14,16 @@ class API {
   static saveDiaryToLocal = newDiaryItem => (
     localforage
       .getItem('diary')
-      .then((diaryList = []) => {
+      .then(response => {
+        const diaryList = response || [];
         localforage.setItem('diary', [...diaryList, newDiaryItem]);
       })
   );
   static deleteDiaryFromLocal = id => (
     localforage
       .getItem('diary')
-      .then((diaryList = []) => {
+      .then(response => {
+        const diaryList = response || [];
         localforage.setItem('diary', diaryList.filter(item => item.id !== id));
       })
   );
