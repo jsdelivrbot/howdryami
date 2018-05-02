@@ -20,7 +20,7 @@ class App extends Component {
   componentWillMount() {
     const { dispatch, history } = this.props;
     loadUIData(dispatch).then(result => {
-      if (this.props.match.path === '/') {
+      if (this.props.location.pathname === '/') {
         const nextRoute = result.includes(userType.USER_HYDRATION_EMPTY) ? '/welcome' : '/home';
         setTimeout(() => history.push(nextRoute), 3000);
       }
@@ -44,7 +44,7 @@ class App extends Component {
 App.propTypes = {
   dispatch: PT.func.isRequired,
   history: PT.object.isRequired,
-  match: PT.object.isRequired,
+  location: PT.object.isRequired,
 };
 
 export default withRouter(connect()(App));
