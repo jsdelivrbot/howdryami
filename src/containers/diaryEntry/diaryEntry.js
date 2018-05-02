@@ -7,8 +7,9 @@ import PT from 'prop-types';
 import { barSelectors } from '../../ducks/bar';
 import { diaryOperations } from '../../ducks/diary';
 
+import TitleBar from '../../components/titleBar/titleBar';
 import { View } from '../../particles';
-import { Header, ListStepper, TimeStepper, Button } from '../../components';
+import { ListStepper, TimeStepper, Button } from '../../components';
 
 import './diaryEntry.css';
 
@@ -31,7 +32,9 @@ class DiaryEntry extends Component {
 
     return (
       <View>
-        <Header>Add</Header>
+        <TitleBar
+          label="Your dryness"
+        />
         <form onSubmit={registerHandler}>
           <ListStepper
             fieldName="type"
