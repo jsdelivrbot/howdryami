@@ -1,0 +1,14 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 2em;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.5);
+  background-color: #34AAFE;
+  transform: translateX(110%);
+  transition: all .5s; }
+
+.drawer--open {
+  transform: translateX(0%); }

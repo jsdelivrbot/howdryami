@@ -19,9 +19,14 @@ const toggleConfirmModal = options => ({
   data: options,
 });
 
+const toggleDrawer = () => ({
+  type: types.TOGGLE_DRAWER,
+})
+
 export {
   hydrateUI,
   loadUIData,
   toggleDiaryEditContainer,
   toggleConfirmModal,
+  toggleDrawer,
 };

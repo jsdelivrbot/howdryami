@@ -19,6 +19,10 @@ const toggleDiaryEditContainer = id => dispatch => {
   dispatch(actions.toggleDiaryEditContainer(id));
 };
 
+const toggleDrawer = () => dispatch => {
+  dispatch(actions.toggleDrawer());
+};
+
 const toggleConfirmModal = options => dispatch => {
   dispatch(actions.toggleConfirmModal(options));
 };
@@ -28,4 +32,5 @@ export {
   loadUIData,
   toggleDiaryEditContainer,
   toggleConfirmModal,
+  toggleDrawer,
 };

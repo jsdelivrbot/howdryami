@@ -14,6 +14,10 @@ const uiReducer = (state = false, action) => {
     case types.TOGGLE_CONFIRM_MODAL: {
       return { ...state, confirmModalOptions: action.data };
     }
+    case types.TOGGLE_DRAWER: {
+      const newDrawerState = state.drawer ? !state.drawer.isDrawerOpen : false;
+      return { ...state, drawer: { ...state.drawer, isDrawerOpen: newDrawerState } };
+    }
     default:
       return state;
   }
