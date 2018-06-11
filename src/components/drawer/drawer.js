@@ -6,25 +6,35 @@ import classNames from 'classname';
 import { uiSelectors, uiOperations } from '../../ducks/ui';
 
 import { MenuIcon } from '../icons';
-import { View, Touchable, Icon } from '../../particles';
+import { View, Touchable, Icon, Text } from '../../particles';
 
 import './drawer.css';
 
-const Drawer = props => {
-  const { isDrawerOpen, closeDrawer } = props;
+class Drawer extends Component {
+  itemClicked = () => {
+    console.log('clicked');
+  }
 
-  console.log(isDrawerOpen)
-  const cl = classNames({
-    drawer: true,
-    'drawer--open': isDrawerOpen,
-  });
+  render() {
+    const { isDrawerOpen, closeDrawer } = this.props;
 
-  return (
-    <View className={cl}>
-      <Touchable onTouchEnd={closeDrawer}><Icon image={MenuIcon} /></Touchable>
-    </View>
-  );
-};
+    const cl = classNames({
+      drawer: true,
+      'drawer--open': isDrawerOpen,
+    });
+
+    return (
+      <View className={cl}>
+        <View className="drawer__closebutton">
+          <Touchable onTouchEnd={closeDrawer}><Icon image={MenuIcon} /></Touchable>
+        </View>
+        <View className="drawer__item">
+          <Touchable onTouchEnd={this.itemClicked} ><Icon image={MenuIcon} /><Text>Some text</Text></Touchable>
+        </View>
+      </View>
+    );
+  }
+}
 
 Drawer.propTypes = {
   closeDrawer: PT.func.isRequired,
