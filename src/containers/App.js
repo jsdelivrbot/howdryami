@@ -9,6 +9,7 @@ import Register from './register/register';
 import Home from './home/home';
 import DiaryEntry from './diaryEntry/diaryEntry';
 import Confirm from '../components/confirm/confirm';
+import Drawer from '../components/drawer/drawer';
 
 import { loadUIData } from '../startup';
 
@@ -31,6 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Confirm />
+        <Drawer />
         <Route exact path="/" component={StartupLoader} />
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/register" component={Register} />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PT from 'prop-types';
+import { uiOperations } from '../../ducks/ui';
 import { View, Touchable, Icon } from '../../particles';
 
 import { ArrowLeft, MenuIcon } from '../icons';
@@ -8,7 +10,7 @@ import { ArrowLeft, MenuIcon } from '../icons';
 import './titleBar.css';
 
 const TitleBar = props => {
-  const { disableBack, label } = props;
+  const { disableBack, label, openDrawer } = props;
 
   return (
     <View className="titleBar">
@@ -17,13 +19,14 @@ const TitleBar = props => {
       </View>
       <View className="titleBar__label">{ label }</View>
       <View className="titleBar__menuButton">
-        <Touchable><Icon image={MenuIcon} /></Touchable>
+        <Touchable onTouchEnd={openDrawer}><Icon image={MenuIcon} /></Touchable>
       </View>
     </View>
   );
 };
 
 TitleBar.propTypes = {
+  openDrawer: PT.func.isRequired,
   history: PT.object.isRequired,
   label: PT.string.isRequired,
   disableBack: PT.bool,
@@ -33,4 +36,8 @@ TitleBar.defaultProps = {
   disableBack: false,
 };
 
-export default withRouter(TitleBar);
+const mapDispatchToProps = dispatch => ({
+  openDrawer: () => dispatch(uiOperations.toggleDrawer()),
+})
+
+export default withRouter(connect(null, mapDispatchToProps)(TitleBar));
