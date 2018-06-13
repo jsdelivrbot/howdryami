@@ -39,11 +39,11 @@ class Drawer extends Component {
 Drawer.propTypes = {
   closeDrawer: PT.func.isRequired,
   isDrawerOpen: PT.bool,
-}
+};
 
 Drawer.defaultProps = {
   isDrawerOpen: true,
-}
+};
 
 const mapStateToProps = state => ({
   isDrawerOpen: uiSelectors.drawerSelector(state).isDrawerOpen,
@@ -51,6 +51,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   closeDrawer: () => dispatch(uiOperations.toggleDrawer()),
-})
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Drawer));
