@@ -11,19 +11,24 @@ import { View, Touchable, Icon, Text } from '../../particles';
 import './drawer.css';
 
 class Drawer extends Component {
+  diaryClickHandler = () => {
+    this.props.closeDrawer();
+    this.props.history.push('/diary');
+  };
+
   profileClickHandler = () => {
     this.props.closeDrawer();
     this.props.history.push('/profile');
-  }
+  };
 
   nukeClickHandler = () => {
     this.props.closeDrawer();
-  }
+  };
 
   privacyClickHandler = () => {
     this.props.closeDrawer();
     this.props.history.push('/privacy');
-  }
+  };
 
   render() {
     const { isDrawerOpen, closeDrawer } = this.props;
@@ -37,6 +42,9 @@ class Drawer extends Component {
       <View className={cl}>
         <View className="drawer__closebutton">
           <Touchable onTouchEnd={closeDrawer}><Icon image={Icons.Close} /></Touchable>
+        </View>
+        <View className="drawer__item">
+          <Touchable onTouchEnd={this.diaryClickHandler} ><Icon image={Icons.Book} /><Text className="item__text">Your diary</Text></Touchable>
         </View>
         <View className="drawer__item">
           <Touchable onTouchEnd={this.profileClickHandler} ><Icon image={Icons.Person} /><Text className="item__text">Your profile</Text></Touchable>
