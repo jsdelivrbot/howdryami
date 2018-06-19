@@ -6,6 +6,7 @@ import PT from 'prop-types';
 import StartupLoader from './startupLoader/startupLoader';
 import Welcome from './welcome/welcome';
 import Register from './register/register';
+import Privacy from './privacy/privacy';
 import Home from './home/home';
 import DiaryEntry from './diaryEntry/diaryEntry';
 import Confirm from '../components/confirm/confirm';
@@ -38,6 +39,7 @@ class App extends Component {
         <Route exact path="/register" component={Register} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/diaryentry" component={DiaryEntry} />
+        <Route exact path="/privacy" component={Privacy} />
       </div>
     );
   }
