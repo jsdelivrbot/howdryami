@@ -6,7 +6,7 @@ import { Text } from '../../particles';
 import './header.css';
 
 const Header = props => (
-  <Text className="header">{props.children}</Text>
+  <h1 className="header">{props.children}</h1>
 );
 
 Header.propTypes = {
@@ -17,4 +17,16 @@ Header.defaultProps = {
   children: '',
 };
 
-export default Header;
+const SubHeader = props => (
+  <h1 className="subHeader">{props.children}</h1>
+);
+
+SubHeader.propTypes = {
+  children: PT.any,
+};
+
+SubHeader.defaultProps = {
+  children: '',
+};
+
+export { Header, SubHeader };

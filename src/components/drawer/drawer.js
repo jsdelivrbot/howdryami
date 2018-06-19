@@ -59,7 +59,7 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
-  isDrawerOpen: true,
+  isDrawerOpen: false,
 };
 
 const mapStateToProps = state => ({
