@@ -1,12 +1,12 @@
 /* eslint-disable */
 
 import React from 'react';
-import Welcome from './welcome';
+import Privacy from './privacy';
 
 describe('renders without crashing', () => {
   test('renders without crashing', () => {
     const wrapper = shallow(
-      <Welcome />
+      <Privacy />
     );
   })
 });
