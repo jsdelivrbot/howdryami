@@ -16,7 +16,7 @@ const Home = props => {
   const { entriesPast24hours, bacRightNow, history } = props;
 
   return (
-    <View>
+    <View className="Home">
       <TitleBar
         label="Your dryness"
         disableBack

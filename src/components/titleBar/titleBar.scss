@@ -1,6 +1,10 @@
 @import '../styles/globalStyles.scss';
 
 .titleBar {
+  position: fixed;
+  width:100%;
+  background-color: $indigo;
+  box-shadow: 0 2px 1px 0 rgba(0,0,0,.3);
   flex-direction: row;
   justify-content: space-between;
   padding: .8em 0;
@@ -21,4 +25,8 @@
   .titleBar__menuButton {
     flex: 1;
   }
+}
+
+.titleBar__wrapper {
+  margin-bottom: 3.5em;
 }

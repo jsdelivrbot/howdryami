@@ -13,13 +13,15 @@ const TitleBar = props => {
   const { disableBack, label, openDrawer } = props;
 
   return (
-    <View className="titleBar">
-      <View className="titleBar__backButton">
-        {!disableBack && <Touchable onTouchEnd={() => props.history.go(-1)}><Icon image={ArrowLeft} /></Touchable> }
-      </View>
-      <View className="titleBar__label">{ label }</View>
-      <View className="titleBar__menuButton">
-        <Touchable onTouchEnd={openDrawer}><Icon image={MenuIcon} /></Touchable>
+    <View className="titleBar__wrapper">
+      <View className="titleBar">
+        <View className="titleBar__backButton">
+          {!disableBack && <Touchable onTouchEnd={() => props.history.go(-1)}><Icon image={ArrowLeft} /></Touchable> }
+        </View>
+        <View className="titleBar__label">{ label }</View>
+        <View className="titleBar__menuButton">
+          <Touchable onTouchEnd={openDrawer}><Icon image={MenuIcon} /></Touchable>
+        </View>
       </View>
     </View>
   );
@@ -38,6 +40,6 @@ TitleBar.defaultProps = {
 
 const mapDispatchToProps = dispatch => ({
   openDrawer: () => dispatch(uiOperations.toggleDrawer()),
-})
+});
 
 export default withRouter(connect(null, mapDispatchToProps)(TitleBar));
