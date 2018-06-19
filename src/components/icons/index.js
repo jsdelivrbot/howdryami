@@ -2,6 +2,7 @@ import LoadLogo from './load-logo.svg';
 import ArrowLeft from './arrow-left.svg';
 import ArrowRight from './arrow-right.svg';
 import AddItem from './add-item.svg';
+import Book from './book.svg';
 import Clock from './clock.svg';
 import Edit from './edit.svg';
 import Delete from './delete.svg';
@@ -27,6 +28,7 @@ const getIconById = id => {
     case 'ARROW_LEFT': return (ArrowLeft);
     case 'ARROW_RIGHT': return (ArrowRight);
     case 'ADD_ITEM': return (AddItem);
+    case 'BOOK': return (Book);
     case 'CLOCK': return (Clock);
     case 'EDIT': return (Edit);
     case 'DELETE': return (Delete);
@@ -54,6 +56,7 @@ export {
   LoadLogo,
   ArrowLeft,
   ArrowRight,
+  Book,
   Clock,
   Edit,
   Delete,
