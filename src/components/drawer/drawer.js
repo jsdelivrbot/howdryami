@@ -13,7 +13,7 @@ import './drawer.css';
 class Drawer extends Component {
   diaryClickHandler = () => {
     this.props.closeDrawer();
-    this.props.history.push('/diary');
+    this.props.history.push('/home');
   };
 
   profileClickHandler = () => {

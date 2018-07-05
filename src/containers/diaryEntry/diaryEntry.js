@@ -31,9 +31,9 @@ class DiaryEntry extends Component {
     const availableSizes = barSelectors.availableSizes({ drinkLibrary, selectedDrink });
 
     return (
-      <View>
+      <View className="DiaryEntry">
         <TitleBar
-          label="Your dryness"
+          label="Add drink"
         />
         <form onSubmit={registerHandler}>
           <ListStepper

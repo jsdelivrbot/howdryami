@@ -33,7 +33,7 @@ const deleteDiaryEntry = id => dispatch => {
   new Promise((resolve, reject) => {
     const modalOptions = {
       isVisible: true,
-      text: 'foobar',
+      text: 'Are you sure you want to delete this entry?',
       confirmCallback: () => resolve(),
       cancelCallback: () => reject(),
     };

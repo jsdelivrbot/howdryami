@@ -18,7 +18,7 @@ const confirmModalOptionsSelector = createSelector(
 const drawerSelector = createSelector(
   store => store.ui.drawer,
   drawer => drawer || {},
-)
+);
 
 export {
   genderListSelector,
