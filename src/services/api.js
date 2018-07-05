@@ -27,6 +27,7 @@ class API {
         localforage.setItem('diary', diaryList.filter(item => item.id !== id));
       })
   );
+  static replaceDiaryToLocal = newDiary => localforage.setItem('diary', newDiary);
   static loadUserFromLocal = () => (localforage.getItem('user'));
   static loadDiaryFromLocal = () => (localforage.getItem('diary'));
   static clearAllUserData = () => (localforage.clear());

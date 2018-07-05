@@ -1,3 +1,4 @@
+import moment from 'moment';
 import API from '../../services/api';
 import * as actions from './actions';
 import { DIARY_HYDRATION_EMPTY, DIARY_HYDRATION_HAS_DATA } from './types';
@@ -6,11 +7,19 @@ import { uiOperations } from '../ui';
 
 const uuid = require('uuid/v4');
 
+const filterEntriesLessThan24Hours = diary => {
+  const timeRightNow = moment().format('x');
+  const millisecondsInADay = 3600 * 24 * 1000;
+  return diary.filter(entry => entry.time > timeRightNow - millisecondsInADay);
+};
+
 const hydrateDiary = () => dispatch => (
   new Promise(resolve => {
     API.loadDiaryFromLocal().then(diary => {
       if (diary) {
-        dispatch(actions.hydrateDiary(diary));
+        const filteredDiary = filterEntriesLessThan24Hours(diary);
+        API.replaceDiaryToLocal(filteredDiary);
+        dispatch(actions.hydrateDiary(filteredDiary));
       }
       if (diary) {
         resolve(DIARY_HYDRATION_HAS_DATA);
@@ -57,4 +66,5 @@ export {
   addDiaryEntry,
   deleteDiaryEntry,
   updateDiaryEntry,
+  filterEntriesLessThan24Hours,
 };
