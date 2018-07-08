@@ -16,7 +16,16 @@ class API {
       .getItem('diary')
       .then(response => {
         const diaryList = response || [];
-        localforage.setItem('diary', [...diaryList, newDiaryItem]);
+        const filteredDiaryList = diaryList.filter(item => item.id !== newDiaryItem.id);
+        localforage.setItem('diary', [...filteredDiaryList, newDiaryItem]);
+      })
+  );
+  static fetchDiaryFromLocal = diaryID => (
+    localforage
+      .getItem('diary')
+      .then(response => {
+        const diaryList = response || [];
+        return diaryList.find(item => item.id === diaryID) || [];
       })
   );
   static deleteDiaryFromLocal = id => (

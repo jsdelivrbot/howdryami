@@ -14,26 +14,43 @@ import { ListStepper, TimeStepper, Button } from '../../components';
 import './diaryEntry.css';
 
 class DiaryEntry extends Component {
+  state = { isNew: true };
+
+  componentDidUpdate() {
+    const { diaryID } = this.props.match.params;
+
+    if (diaryID) {
+      this.props.fetchDiaryEntry(diaryID);
+      if (!this.state.isNew) {
+        this.setState({ isNew: true });
+      }
+    }
+  }
+
   registerHandler = e => {
     e.preventDefault();
 
     if (e.target.dataset.role === 'register') {
-      this.props.addDiaryEntry(this.props.formDiaryEntry);
-      this.props.history.push('home');
+      this.props.saveDiaryEntry(this.props.formDiaryEntry);
+      this.props.history.push('/home');
     }
   };
 
   render() {
     const { registerHandler } = this;
     const { drinkList, drinkLibrary, selectedDrink } = this.props;
+    const { isNew } = this.state;
 
     const availableProofs = barSelectors.availableProofs({ drinkLibrary, selectedDrink });
     const availableSizes = barSelectors.availableSizes({ drinkLibrary, selectedDrink });
 
+    const titleBarHeader = isNew ? 'Add new drink' : 'Update drink';
+    const submitLabel = isNew ? 'Add drink' : 'Update drink';
+
     return (
       <View className="DiaryEntry">
         <TitleBar
-          label="Add drink"
+          label={titleBarHeader}
         />
         <form onSubmit={registerHandler}>
           <ListStepper
@@ -57,7 +74,7 @@ class DiaryEntry extends Component {
             fieldName="time"
             header="time"
           />
-          <Button dataRole="register" type={Button.SUBMIT} onClick={registerHandler}>Add drink</Button>
+          <Button dataRole="register" type={Button.SUBMIT} onClick={registerHandler}>{submitLabel}</Button>
         </form>
       </View>
     );
@@ -66,12 +83,15 @@ class DiaryEntry extends Component {
 
 DiaryEntry.propTypes = {
   history: PT.object.isRequired,
-  addDiaryEntry: PT.func.isRequired,
+  saveDiaryEntry: PT.func.isRequired,
+  fetchDiaryEntry: PT.func.isRequired,
+  match: PT.object.isRequired,
   drinkList: PT.array,
   drinkLibrary: PT.array,
   selectedDrink: PT.string,
   formDiaryEntry: PT.object,
 };
+
 
 DiaryEntry.defaultProps = {
   drinkList: [],
@@ -88,7 +108,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addDiaryEntry: entry => diaryOperations.addDiaryEntry(entry)(dispatch),
+  saveDiaryEntry: entry => diaryOperations.saveDiaryEntry(entry)(dispatch),
+  fetchDiaryEntry: diaryID => diaryOperations.fetchDiaryEntry(diaryID)(dispatch),
 });
 
 export { DiaryEntry as TestDiaryEntry };
