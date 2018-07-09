@@ -5,7 +5,7 @@ import { barSelectors } from '../bar';
 import { userSelectors } from '../user';
 
 import BacEngine from '../../services/bacEngine';
-import { BAC_BURNDOWN, GENDER_CONSTANT } from '../../services/constants';
+import { BAC_BURNDOWN, GENDER_CONSTANT } from '../../helpers/constants';
 
 const MILLISECONDS_IN_A_DAY = 86400000;
 
@@ -44,15 +44,23 @@ const bacRightNow = createSelector(
   (allDiary, allUser) => {
     const currentBac = allDiary.reduce((collection, entry) => {
       const hoursFromConsumption = (parseInt(moment().format('x'), 10) - entry.time) / 3600000;
-      const amountDrunk = BacEngine.convertToPureAlcohol(entry.size, entry.proof);
+      const consumptionInGrams = BacEngine.convertToPureAlcohol(entry.size, entry.proof);
       const { weight, age } = allUser;
       const genderConstant = GENDER_CONSTANT[allUser.gender];
-      const singleBac = BacEngine.calculateBac(hoursFromConsumption, amountDrunk, weight, age, genderConstant, BAC_BURNDOWN);
+      const bacData = {
+        hoursFromConsumption,
+        consumptionInGrams,
+        bodyWeightInGrams: weight * 1000,
+        age,
+        genderConstant,
+        burndown: BAC_BURNDOWN,
+      };
+
+      const singleBac = BacEngine.calculateSingleBac(bacData);
       return collection + singleBac;
     }, 0);
 
-    const roundedBac = Math.round(currentBac * 100) / 100; // Round, but keep 2 places.
-    return roundedBac;
+    return Math.round(currentBac * 100) / 100; // Round, but keep 2 places.
   },
 );
 

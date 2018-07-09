@@ -7,9 +7,13 @@ class BacEngine {
    */
   static convertToPureAlcohol = (total, proof) => ((total * 10) * (proof / 100));
 
-  static calculateBac = (hoursFromConsumption, amountDrunk, bodyWeight, age, genderConstant, burndown) => (
-    amountDrunk / (bodyWeight * genderConstant)) - (burndown * hoursFromConsumption
-    )
+  static calculateSingleBac = bacData => {
+    const {
+      hoursFromConsumption, consumptionInGrams, bodyWeightInGrams, genderConstant, burndown,
+    } = bacData;
+    const calculatedBac = ((consumptionInGrams / (bodyWeightInGrams * genderConstant)) * 100) - (burndown * hoursFromConsumption);
+    return Math.max(0, calculatedBac);
+  };
 }
 
 export default BacEngine;

@@ -1,5 +1,5 @@
 import localforage from 'localforage';
-import { STORAGE_KEY } from './constants';
+import { STORAGE_KEY } from '../helpers/constants';
 
 localforage.config({
   name: 'howdryami',
