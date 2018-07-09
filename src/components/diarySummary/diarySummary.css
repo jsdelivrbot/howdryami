@@ -5,8 +5,7 @@
   .diarysummmary .summary__bac {
     font-size: 54px;
     font-weight: 100;
-    color: #ffffff;
-    margin-bottom: 0.4em; }
+    color: #ffffff; }
   .diarysummmary .summary__estimatedlabel {
     color: #ffffff;
     font-weight: 100;
@@ -20,5 +19,5 @@
     background-size: contain;
     background-position: center;
     border-radius: 1em;
-    width: 75px;
-    height: 150px; }
+    width: 100px;
+    height: 100px; }
