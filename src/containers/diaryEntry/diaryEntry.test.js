@@ -12,6 +12,8 @@ describe('renders without crashing', () => {
         drinkLibrary={[]}
         selectedDrink=""
         formDiaryEntry={{}}
+        fetchDiaryEntry={() => {}}
+        match={{params: {}}}
       />
     );
   })
