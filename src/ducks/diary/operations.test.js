@@ -1,9 +1,11 @@
 import * as operations from './operations';
 
+const mockdate = require('mockdate');
+
 describe('Testing operations: ', () => {
   describe('filterEntriesLessThan24Hours', () => {
     test('filters correct diary entries', () => {
-      jest.mock('moment', () => () => ({ format: () => 1530808404000 }));
+      mockdate.set(1530819579000);
       // 24 hours in epoch: 86400000
       // Minimum epoch 1444419583000
       const mockDiary = [

@@ -7,11 +7,13 @@ describe('renders without crashing', () => {
     const wrapper = shallow(
       <TestDiaryEntry
         history={{}}
-        addDiaryEntry={() => {}}
+        saveDiaryEntry={() => {}}
         drinkList={[]}
         drinkLibrary={[]}
         selectedDrink=""
         formDiaryEntry={{}}
+        fetchDiaryEntry={() => {}}
+        match={{params: {}}}
       />
     );
   })

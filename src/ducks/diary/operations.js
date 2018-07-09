@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { change } from 'redux-form';
 import API from '../../services/api';
 import * as actions from './actions';
 import { DIARY_HYDRATION_EMPTY, DIARY_HYDRATION_HAS_DATA } from './types';
@@ -30,11 +31,31 @@ const hydrateDiary = () => dispatch => (
   })
 );
 
-const addDiaryEntry = entry => dispatch => {
-  const mutatedEntry = { ...entry, id: uuid() };
+const saveDiaryEntry = entry => dispatch => {
+  const isNew = entry.id === undefined;
+  const mutatedEntry = isNew ? { ...entry, id: uuid() } : { ...entry };
 
-  API.saveDiaryToLocal(mutatedEntry).then(() => {
-    dispatch(actions.addDiaryEntry(mutatedEntry));
+  API.saveDiaryToLocal(mutatedEntry).then(() => (
+    isNew
+      ?
+      dispatch(actions.addDiaryEntry(mutatedEntry))
+      :
+      dispatch(actions.updateDiaryEntry(mutatedEntry))
+  ));
+};
+
+const fetchDiaryEntry = diaryID => dispatch => {
+  API.fetchDiaryFromLocal(diaryID).then(response => {
+    const {
+      id, proof, size, time, type,
+    } = response;
+
+    dispatch(change('diaryEntryForm', 'id', id));
+    dispatch(change('diaryEntryForm', 'proof', proof));
+    dispatch(change('diaryEntryForm', 'size', size));
+    dispatch(change('diaryEntryForm', 'time', time));
+    dispatch(change('diaryEntryForm', 'type', type));
+    dispatch(change('diaryEntryForm', 'isDoneLoading', true));
   });
 };
 
@@ -57,14 +78,10 @@ const deleteDiaryEntry = id => dispatch => {
     .catch(() => dispatch(uiOperations.toggleConfirmModal({ isVisible: false })));
 };
 
-const updateDiaryEntry = entry => dispatch => {
-  dispatch(actions.updateDiaryEntry(entry));
-};
-
 export {
   hydrateDiary,
-  addDiaryEntry,
+  saveDiaryEntry,
+  fetchDiaryEntry,
   deleteDiaryEntry,
-  updateDiaryEntry,
   filterEntriesLessThan24Hours,
 };

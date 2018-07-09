@@ -10,11 +10,8 @@ import './diaryList.css';
 
 const uuid = require('uuid/v4');
 
-
 class DiaryList extends Component {
-  editEntryHandler = id =>
-    this.props.history.push(`diaryEntry/${id}`)
-
+  editEntryHandler = id => this.props.history.push(`diaryentry/${id}`)
 
   render() {
     const { diaryEntries } = this.props;
