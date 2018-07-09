@@ -14,16 +14,18 @@ describe('calculates correct values', () => {
   })
 
   test('calculates correct bac from time of drinking to now', () => {
-    const genderConstant = 0.68;
-    const burndown = 0.15;
-    const bodyWeight = 85;
-    const age = 37;
-    const consumptionIngrams = 16.8;
-    const hoursFromConsumption = 0.25;
+    const bacData = {
+      genderConstant: 0.68, //Male
+      burndown: 0.015,
+      bodyWeightInGrams: 85000,
+      age: 37,
+      consumptionInGrams: 16.8,
+      hoursFromConsumption: 0.25,
+    };
 
-    const currentBac = BacEngine.calculateBac(hoursFromConsumption, consumptionIngrams, bodyWeight, age, genderConstant, burndown);
+    const currentBac = BacEngine.calculateSingleBac(bacData);
     const roundedBac = Math.round(currentBac * 10000)  / 10000;
 
-    expect(roundedBac).toBe(0.2532);
+    expect(roundedBac).toBe(0.0253);
   })
 });
