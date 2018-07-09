@@ -14,16 +14,13 @@ import { ListStepper, TimeStepper, Button } from '../../components';
 import './diaryEntry.css';
 
 class DiaryEntry extends Component {
-  state = { isNew: true };
-
-  componentDidUpdate() {
+  constructor(props) {
+    super(props);
     const { diaryID } = this.props.match.params;
+    this.state = { isNew: diaryID === undefined };
 
     if (diaryID) {
       this.props.fetchDiaryEntry(diaryID);
-      if (!this.state.isNew) {
-        this.setState({ isNew: true });
-      }
     }
   }
 
@@ -38,8 +35,10 @@ class DiaryEntry extends Component {
 
   render() {
     const { registerHandler } = this;
-    const { drinkList, drinkLibrary, selectedDrink } = this.props;
     const { isNew } = this.state;
+    const {
+      drinkList, drinkLibrary, selectedDrink, formDiaryEntry,
+    } = this.props;
 
     const availableProofs = barSelectors.availableProofs({ drinkLibrary, selectedDrink });
     const availableSizes = barSelectors.availableSizes({ drinkLibrary, selectedDrink });
@@ -47,11 +46,10 @@ class DiaryEntry extends Component {
     const titleBarHeader = isNew ? 'Add new drink' : 'Update drink';
     const submitLabel = isNew ? 'Add drink' : 'Update drink';
 
-    return (
-      <View className="DiaryEntry">
-        <TitleBar
-          label={titleBarHeader}
-        />
+    const isFinishedLoading = !isNew ? (!isNew && formDiaryEntry.isDoneLoading) : true;
+
+    const diaryForm = isFinishedLoading ?
+      (
         <form onSubmit={registerHandler}>
           <ListStepper
             fieldName="type"
@@ -76,6 +74,16 @@ class DiaryEntry extends Component {
           />
           <Button dataRole="register" type={Button.SUBMIT} onClick={registerHandler}>{submitLabel}</Button>
         </form>
+      )
+      :
+      null;
+
+    return (
+      <View className="DiaryEntry">
+        <TitleBar
+          label={titleBarHeader}
+        />
+        {diaryForm}
       </View>
     );
   }

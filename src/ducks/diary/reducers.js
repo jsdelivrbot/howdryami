@@ -21,7 +21,6 @@ const diaryReducer = (state = [], action) => {
         id, type, time, proof: parseInt(proof, 10), size: parseInt(size, 10),
       };
 
-      console.log(entry);
       return [...state.filter(item => item.id !== id), entry];
     }
     case types.DELETE_DIARY_ENTRY: {

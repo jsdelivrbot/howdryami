@@ -55,6 +55,7 @@ const fetchDiaryEntry = diaryID => dispatch => {
     dispatch(change('diaryEntryForm', 'size', size));
     dispatch(change('diaryEntryForm', 'time', time));
     dispatch(change('diaryEntryForm', 'type', type));
+    dispatch(change('diaryEntryForm', 'isDoneLoading', true));
   });
 };
 
