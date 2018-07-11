@@ -4,12 +4,11 @@
   margin: 0 0 1em 0; }
   .diarysummmary .summary__bac {
     font-size: 54px;
-    font-weight: 100;
-    color: #ffffff;
-    margin-bottom: 0.4em; }
+    font-weight: 300;
+    color: #ffffff; }
   .diarysummmary .summary__estimatedlabel {
     color: #ffffff;
-    font-weight: 100;
+    font-weight: 500;
     font-size: 16.2px; }
   .diarysummmary .summary__additem {
     align-self: flex-end;
@@ -20,5 +19,5 @@
     background-size: contain;
     background-position: center;
     border-radius: 1em;
-    width: 75px;
-    height: 150px; }
+    width: 100px;
+    height: 100px; }

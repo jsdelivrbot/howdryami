@@ -6,14 +6,13 @@
 
   .summary__bac {
     font-size: $baseFontSize * 3;
-    font-weight: 100;
+    font-weight: 300;
     color: $white;
-    margin-bottom: 0.4em;
   }
 
   .summary__estimatedlabel {
     color:$white;
-    font-weight: 100;
+    font-weight: 500;
     font-size: $baseFontSize * 0.9;
   }
 
@@ -26,7 +25,7 @@
     background-size: contain;
     background-position: center;
     border-radius: 1em;
-    width: 75px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 }
