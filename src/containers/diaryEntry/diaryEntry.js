@@ -6,6 +6,7 @@ import PT from 'prop-types';
 
 import { barSelectors } from '../../ducks/bar';
 import { diaryOperations } from '../../ducks/diary';
+import { uiOperations, uiSelectors } from '../../ducks/ui';
 
 import TitleBar from '../../components/titleBar/titleBar';
 import { View } from '../../particles';
@@ -26,11 +27,19 @@ class DiaryEntry extends Component {
 
   registerHandler = e => {
     e.preventDefault();
+    if (e.target.dataset.role !== 'register') { return; }
+    const {
+      formDiaryEntry, saveDiaryEntry, saveDiaryUIDefaults, history,
+    } = this.props;
 
-    if (e.target.dataset.role === 'register') {
-      this.props.saveDiaryEntry(this.props.formDiaryEntry);
-      this.props.history.push('/home');
+    const { isNew } = this.state;
+
+    if (isNew) {
+      saveDiaryUIDefaults(formDiaryEntry);
     }
+
+    saveDiaryEntry(formDiaryEntry);
+    history.push('/home');
   };
 
   render() {
@@ -94,7 +103,8 @@ DiaryEntry.propTypes = {
   saveDiaryEntry: PT.func.isRequired,
   fetchDiaryEntry: PT.func.isRequired,
   match: PT.object.isRequired,
-  drinkList: PT.array,
+  saveDiaryUIDefaults: PT.func.isRequired,
+  drinkList: PT.array.isRequired,
   drinkLibrary: PT.array,
   selectedDrink: PT.string,
   formDiaryEntry: PT.object,
@@ -102,7 +112,6 @@ DiaryEntry.propTypes = {
 
 
 DiaryEntry.defaultProps = {
-  drinkList: [],
   drinkLibrary: [],
   selectedDrink: '',
   formDiaryEntry: {},
@@ -113,17 +122,20 @@ const mapStateToProps = store => ({
   drinkList: barSelectors.availableDrinks({ store }),
   selectedDrink: formValueSelector('diaryEntryForm')(store, 'type'),
   formDiaryEntry: getFormValues('diaryEntryForm')(store),
+  initialValues: uiSelectors.diaryDefaultsSelector(store),
 });
 
 const mapDispatchToProps = dispatch => ({
   saveDiaryEntry: entry => diaryOperations.saveDiaryEntry(entry)(dispatch),
   fetchDiaryEntry: diaryID => diaryOperations.fetchDiaryEntry(diaryID)(dispatch),
+  saveDiaryUIDefaults: newDefaults => uiOperations.saveDiaryUIDefaults(newDefaults)(dispatch),
 });
 
 export { DiaryEntry as TestDiaryEntry };
 
 const formOptions = {
   form: 'diaryEntryForm',
+  enableReinitialize: true,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)((DiaryEntry))));

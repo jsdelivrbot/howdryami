@@ -20,10 +20,16 @@ const drawerSelector = createSelector(
   drawer => drawer || {},
 );
 
+const diaryDefaultsSelector = createSelector(
+  store => store.ui.diaryDefaults,
+  diaryDefaults => diaryDefaults || { type: 'COCKTAIL', size: '15', proof: '6' },
+);
+
 export {
   genderListSelector,
   diaryEditContainerToShowSelector,
   confirmModalOptionsSelector,
   drawerSelector,
+  diaryDefaultsSelector,
 };
 

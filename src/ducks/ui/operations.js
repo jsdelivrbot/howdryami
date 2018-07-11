@@ -27,10 +27,15 @@ const toggleConfirmModal = options => dispatch => {
   dispatch(actions.toggleConfirmModal(options));
 };
 
+const saveDiaryUIDefaults = options => dispatch => {
+  dispatch(actions.saveDiaryUIDefaults(options));
+};
+
 export {
   hydrateUI,
   loadUIData,
   toggleDiaryEditContainer,
   toggleConfirmModal,
   toggleDrawer,
+  saveDiaryUIDefaults,
 };

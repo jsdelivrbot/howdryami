@@ -18,6 +18,9 @@ const uiReducer = (state = false, action) => {
       const newDrawerState = state.drawer ? !state.drawer.isDrawerOpen : false;
       return { ...state, drawer: { ...state.drawer, isDrawerOpen: newDrawerState } };
     }
+    case types.SAVE_DIARY_DEFAULTS: {
+      return { ...state, diaryDefaults: { ...action.data } };
+    }
     default:
       return state;
   }

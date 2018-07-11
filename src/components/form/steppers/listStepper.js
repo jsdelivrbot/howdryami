@@ -8,12 +8,10 @@ import PureStepper from './pureStepper';
 import './stepper.css';
 
 class Stepper extends Component {
-  componentWillMount() {
-    this.checkForLegalValueSelection(this.props.input.value, this.props.stepList);
-  }
+  componentDidUpdate() {
+    const { input, stepList } = this.props;
 
-  componentWillReceiveProps(newProps) {
-    this.checkForLegalValueSelection(newProps.input.value, newProps.stepList);
+    this.checkForLegalValueSelection(input.value, stepList);
   }
 
   getValueFromIndex = index => {
