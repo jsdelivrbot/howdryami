@@ -135,7 +135,7 @@ export { DiaryEntry as TestDiaryEntry };
 
 const formOptions = {
   form: 'diaryEntryForm',
-  enableReinitialize: true,
+  enableReinitialize: false,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(reduxForm(formOptions)((DiaryEntry))));
