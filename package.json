@@ -37,6 +37,7 @@
     "react-test-renderer": "^16.2.0"
   },
   "scripts": {
+    "postinstall": "yarn build",
     "eslint": "eslint ./src/ --ext .js --ext .jsx",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
