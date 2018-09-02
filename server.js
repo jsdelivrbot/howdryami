@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 express()
   .use((req, res) => {
     if (req.protocol !== 'https' && !isRunningLocally) {
+      console.log(req.protocol, req.secure);
       const secureUrl = `https://${req.headers.host}${req.url}`;
       res.writeHead(301, { Location: secureUrl });
       res.end();
