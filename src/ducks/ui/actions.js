@@ -23,10 +23,16 @@ const toggleDrawer = () => ({
   type: types.TOGGLE_DRAWER,
 });
 
+const saveDiaryUIDefaults = diaryDefaults => ({
+  type: types.SAVE_DIARY_DEFAULTS,
+  data: diaryDefaults,
+});
+
 export {
   hydrateUI,
   loadUIData,
   toggleDiaryEditContainer,
   toggleConfirmModal,
   toggleDrawer,
+  saveDiaryUIDefaults,
 };
