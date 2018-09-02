@@ -8,55 +8,17 @@ general:
     only:
       - master # list of branches to build
 jobs:
-  build_and_test:
+  test_and_build:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.2.1
     steps:
       - checkout
       - run: yarn install
-      - run: yarn build
       - run: yarn test
-  build_and_deploy:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:8.2.1
-    working_directory: /tmp/my-project
-    steps:
-      - checkout
-      - run: yarn install
-      - add_ssh_keys:
-          fingerprints:
-            - "a9:14:20:1c:70:cb:84:89:01:5e:53:35:06:fe:01:58"
-      # Download and cache dependencies
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests!
-      - setup_remote_docker
-      - run:
-          name: Start docker build
-          command: |
-            docker build -t terjeofnorway/howdryami:$CIRCLE_BRANCH .
-      - run:
-          name: Log in to docker hub
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - run:
-          name: Push docker file to docker hub
-          command: docker push terjeofnorway/howdryami:$CIRCLE_BRANCH
-      - run: ssh-keyscan 46.101.175.155 >> ~/.ssh/known_hosts
-      - run: ssh-keyscan howdryami.deploythenscotch.com >> ~/.ssh/known_hosts
-      - run: bash ./dockerstart.sh
+      - run: yarn build
 workflows:
   version: 2
-  build_and_test:
+  test_and_build:
     jobs:
       - build_and_test
-  build_and_deploy:
-    jobs:
-      - build_and_deploy:
-          filters:
-            branches:
-              only:
-                - master
