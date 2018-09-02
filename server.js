@@ -11,6 +11,7 @@ express()
   .use((req, res) => {
     if (req.protocol !== 'https' && !isRunningLocally) {
       console.log(req.protocol, req.secure);
+      console.log('redirecting');
       const secureUrl = `https://${req.headers.host}${req.url}`;
       res.writeHead(301, { Location: secureUrl });
       res.end();
