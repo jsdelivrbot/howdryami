@@ -1,0 +1,8 @@
+{
+  "name": "How Dry Am I",
+  "description": "A web app for logging and estimating blood alcohol content.",
+  "repository": "https://github.com/terjeofnorway/howdryami",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
